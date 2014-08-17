@@ -173,6 +173,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Config\Controllers.xml" />
+    <Content Include="App_Data\db.mdf" />
+    <Content Include="App_Data\db_log.ldf">
+      <DependentUpon>db.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\Logon.css" />
     <Content Include="Content\owl.carousel.css" />
     <Content Include="Content\productviewgallery.css" />
@@ -849,7 +853,6 @@
     <EmbeddedResource Include="Resource\zh-CN.resx" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Content\skin\" />
     <Folder Include="Models\" />
   </ItemGroup>
