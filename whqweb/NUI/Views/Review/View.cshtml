@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_LayoutMg.cshtml";
+}
+@section mg{
+<script language="javascript" type="text/javascript">
+
+    function submit() {
+        $('#form').form('submit', {
+            onSubmit: function () {
+                return $(this).form('validate');
+            },
+            success: function (msg) {
+                $.messager.alert('提示', "保存成功", 'info', function () {
+                    window.location.href = "/Review/Index/";
+                });
+            }
+        });
+    }
+
+</script>
+}
+<div region="center" border="false">
+        <div region="north" border="true" class="title" style="text-align: center; height: 40px; line-height: 40px; font-size: x-large;">
+            回复留言信息
+        </div>
+        <div region="center">
+
+            <form id="form" method="post" action="/Review/Save/" enctype="application/x-www-form-urlencoded">
+                <input type="hidden" id="id" name="id" value="<%= ((dynamic)this.ViewData["review"]).ID %>" />
+                <input type="hidden" name="articleId" value="<%= ((dynamic)this.ViewData["review"]).Article.ID %>"/>
+                <table style="width: 100%">
+                    <tr>
+                        <td style="text-align: right; width: 120px;">商品或文章标题：
+                        </td>
+                        <td>
+                            <label><%= ((dynamic)this.ViewData["review"]).Article.Name %></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">昵称：
+                        </td>
+                        <td>
+                            <label><%= ((dynamic)this.ViewData["review"]).Name %></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">回复邮件：
+                        </td>
+                        <td>
+                            <label><%= ((dynamic)this.ViewData["review"]).Email %></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">显示(<font color="red">*</font>)：
+                        </td>
+
+                        <td>
+                            <input type="checkbox" name="isEnabled" 
+                                <%= ((dynamic)this.ViewData["review"]).IsEnabled?"checked=\"checked\"":string.Empty%>
+                                value="<%= ((dynamic)this.ViewData["review"]).IsEnabled %>" 
+                                onclick="this.value = checked == 'checked' || 'true';" />
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">评分：
+                        </td>
+                        <td>
+                            <label><%= ((dynamic)this.ViewData["review"]).Rating %></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">内容：
+                        </td>
+                        <td>
+                            <label><%= ((dynamic)this.ViewData["review"]).Content %></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">留言时间：
+                        </td>
+                        <td>
+                            <label><%= ((dynamic)this.ViewData["review"]).ReviewDate %></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">回复：(<font color="red">*</font>)：
+                        </td>
+                        <td>
+                            <textarea name="reply" rows="5" cols="1" style="height: 178px; width: 777px"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div region="south" border="true" style="text-align: right; height: 40px; line-height: 30px; background-color: #f7f7f7;">
+        <table style="width: 100%">
+            <tr>
+                <td></td>
+                <td style="text-align: right">
+                    <a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit();">提交</a>
+                    <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="location.href = document.referrer;">返回</a>
+                </td>
+            </tr>
+        </table>
+    </div>

@@ -1,0 +1,996 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{21C29473-3FE8-4308-B439-60E389AAC222}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NUI</RootNamespace>
+    <AssemblyName>NUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\lib\NHibernate\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Bamboo.Prevalence">
+      <HintPath>..\lib\NHibernate\Bamboo.Prevalence.dll</HintPath>
+    </Reference>
+    <Reference Include="Bamboo.Prevalence.Util">
+      <HintPath>..\lib\NHibernate\Bamboo.Prevalence.Util.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\lib\Spring.NET\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender">
+      <HintPath>..\lib\NHibernate\HibernatingRhinos.Profiler.Appender.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\lib\NHibernate\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="LinFu.DynamicProxy">
+      <HintPath>..\lib\NHibernate\LinFu.DynamicProxy.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\lib\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcFckEditor">
+      <HintPath>..\lib\MvcFckEditor\MvcFckEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\lib\NHibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.LinFu">
+      <HintPath>..\lib\NHibernate\NHibernate.ByteCode.LinFu.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.Prevalence">
+      <HintPath>..\lib\NHibernate\NHibernate.Caches.Prevalence.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Data.Linq">
+      <HintPath>..\lib\NHibernate\Remotion.Data.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Aop">
+      <HintPath>..\lib\Spring.NET\Spring.Aop.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Core">
+      <HintPath>..\lib\Spring.NET\Spring.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data">
+      <HintPath>..\lib\Spring.NET\Spring.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Data.NHibernate30">
+      <HintPath>..\lib\Spring.NET\Spring.Data.NHibernate30.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Services">
+      <HintPath>..\lib\Spring.NET\Spring.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Template.Velocity">
+      <HintPath>..\lib\Spring.NET\Spring.Template.Velocity.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web">
+      <HintPath>..\lib\Spring.NET\Spring.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Spring.Web.Mvc">
+      <HintPath>..\lib\Spring.NET\Spring.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.3.0.20105.1\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.1.0.20105.408\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.1.0.20105.408\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ForumController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
+    <Compile Include="Controllers\UserInfoController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource\en-US.Designer.cs" />
+    <Compile Include="Resource\zh-CN.Designer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Config\Controllers.xml" />
+    <Content Include="Content\Logon.css" />
+    <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\productviewgallery.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\slider.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="easyui\easyloader.js" />
+    <Content Include="easyui\jquery.easyui.min.js" />
+    <Content Include="easyui\locale\easyui-lang-af.js" />
+    <Content Include="easyui\locale\easyui-lang-bg.js" />
+    <Content Include="easyui\locale\easyui-lang-ca.js" />
+    <Content Include="easyui\locale\easyui-lang-cs.js" />
+    <Content Include="easyui\locale\easyui-lang-da.js" />
+    <Content Include="easyui\locale\easyui-lang-de.js" />
+    <Content Include="easyui\locale\easyui-lang-en.js" />
+    <Content Include="easyui\locale\easyui-lang-fr.js" />
+    <Content Include="easyui\locale\easyui-lang-nl.js" />
+    <Content Include="easyui\locale\easyui-lang-zh_CN.js" />
+    <Content Include="easyui\locale\easyui-lang-zh_TW.js" />
+    <Content Include="easyui\plugins\jquery.accordion.js" />
+    <Content Include="easyui\plugins\jquery.calendar.js" />
+    <Content Include="easyui\plugins\jquery.combo.js" />
+    <Content Include="easyui\plugins\jquery.combobox.js" />
+    <Content Include="easyui\plugins\jquery.combogrid.js" />
+    <Content Include="easyui\plugins\jquery.combotree.js" />
+    <Content Include="easyui\plugins\jquery.datagrid.js" />
+    <Content Include="easyui\plugins\jquery.datebox.js" />
+    <Content Include="easyui\plugins\jquery.datetimebox.js" />
+    <Content Include="easyui\plugins\jquery.dialog.js" />
+    <Content Include="easyui\plugins\jquery.draggable.js" />
+    <Content Include="easyui\plugins\jquery.droppable.js" />
+    <Content Include="easyui\plugins\jquery.form.js" />
+    <Content Include="easyui\plugins\jquery.layout.js" />
+    <Content Include="easyui\plugins\jquery.linkbutton.js" />
+    <Content Include="easyui\plugins\jquery.menu.js" />
+    <Content Include="easyui\plugins\jquery.menubutton.js" />
+    <Content Include="easyui\plugins\jquery.messager.js" />
+    <Content Include="easyui\plugins\jquery.numberbox.js" />
+    <Content Include="easyui\plugins\jquery.numberspinner.js" />
+    <Content Include="easyui\plugins\jquery.pagination.js" />
+    <Content Include="easyui\plugins\jquery.panel.js" />
+    <Content Include="easyui\plugins\jquery.parser.js" />
+    <Content Include="easyui\plugins\jquery.propertygrid.js" />
+    <Content Include="easyui\plugins\jquery.resizable.js" />
+    <Content Include="easyui\plugins\jquery.spinner.js" />
+    <Content Include="easyui\plugins\jquery.splitbutton.js" />
+    <Content Include="easyui\plugins\jquery.tabs.js" />
+    <Content Include="easyui\plugins\jquery.timespinner.js" />
+    <Content Include="easyui\plugins\jquery.tree.js" />
+    <Content Include="easyui\plugins\jquery.treegrid.js" />
+    <Content Include="easyui\plugins\jquery.validatebox.js" />
+    <Content Include="easyui\plugins\jquery.window.js" />
+    <Content Include="easyui\themes\default\accordion.css" />
+    <Content Include="easyui\themes\default\calendar.css" />
+    <Content Include="easyui\themes\default\combo.css" />
+    <Content Include="easyui\themes\default\combobox.css" />
+    <Content Include="easyui\themes\default\datagrid.css" />
+    <Content Include="easyui\themes\default\datebox.css" />
+    <Content Include="easyui\themes\default\dialog.css" />
+    <Content Include="easyui\themes\default\easyui.css" />
+    <Content Include="easyui\themes\default\images\accordion_collapse.png" />
+    <Content Include="easyui\themes\default\images\accordion_expand.png" />
+    <Content Include="easyui\themes\default\images\button_a_bg.gif" />
+    <Content Include="easyui\themes\default\images\button_plain_hover.png" />
+    <Content Include="easyui\themes\default\images\button_span_bg.gif" />
+    <Content Include="easyui\themes\default\images\calendar_nextmonth.gif" />
+    <Content Include="easyui\themes\default\images\calendar_nextyear.gif" />
+    <Content Include="easyui\themes\default\images\calendar_prevmonth.gif" />
+    <Content Include="easyui\themes\default\images\calendar_prevyear.gif" />
+    <Content Include="easyui\themes\default\images\combo_arrow.gif" />
+    <Content Include="easyui\themes\default\images\datagrid_header_bg.gif" />
+    <Content Include="easyui\themes\default\images\datagrid_row_collapse.gif" />
+    <Content Include="easyui\themes\default\images\datagrid_row_expand.gif" />
+    <Content Include="easyui\themes\default\images\datagrid_sort_asc.gif" />
+    <Content Include="easyui\themes\default\images\datagrid_sort_desc.gif" />
+    <Content Include="easyui\themes\default\images\datagrid_title_bg.png" />
+    <Content Include="easyui\themes\default\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\default\images\layout_button_down.gif" />
+    <Content Include="easyui\themes\default\images\layout_button_left.gif" />
+    <Content Include="easyui\themes\default\images\layout_button_right.gif" />
+    <Content Include="easyui\themes\default\images\layout_button_up.gif" />
+    <Content Include="easyui\themes\default\images\menu.gif" />
+    <Content Include="easyui\themes\default\images\menu_downarrow.png" />
+    <Content Include="easyui\themes\default\images\menu_rightarrow.png" />
+    <Content Include="easyui\themes\default\images\menu_sep.png" />
+    <Content Include="easyui\themes\default\images\menu_split_downarrow.png" />
+    <Content Include="easyui\themes\default\images\messager_error.gif" />
+    <Content Include="easyui\themes\default\images\messager_info.gif" />
+    <Content Include="easyui\themes\default\images\messager_question.gif" />
+    <Content Include="easyui\themes\default\images\messager_warning.gif" />
+    <Content Include="easyui\themes\default\images\pagination_first.gif" />
+    <Content Include="easyui\themes\default\images\pagination_last.gif" />
+    <Content Include="easyui\themes\default\images\pagination_load.png" />
+    <Content Include="easyui\themes\default\images\pagination_loading.gif" />
+    <Content Include="easyui\themes\default\images\pagination_next.gif" />
+    <Content Include="easyui\themes\default\images\pagination_prev.gif" />
+    <Content Include="easyui\themes\default\images\panel_loading.gif" />
+    <Content Include="easyui\themes\default\images\panel_title.png" />
+    <Content Include="easyui\themes\default\images\panel_tools.gif" />
+    <Content Include="easyui\themes\default\images\panel_tool_collapse.gif" />
+    <Content Include="easyui\themes\default\images\panel_tool_expand.gif" />
+    <Content Include="easyui\themes\default\images\spinner_arrow_down.gif" />
+    <Content Include="easyui\themes\default\images\spinner_arrow_up.gif" />
+    <Content Include="easyui\themes\default\images\tabs_active.png" />
+    <Content Include="easyui\themes\default\images\tabs_close.gif" />
+    <Content Include="easyui\themes\default\images\tabs_enabled.png" />
+    <Content Include="easyui\themes\default\images\tabs_leftarrow.png" />
+    <Content Include="easyui\themes\default\images\tabs_rightarrow.png" />
+    <Content Include="easyui\themes\default\images\tree_arrows.gif" />
+    <Content Include="easyui\themes\default\images\tree_checkbox_0.gif" />
+    <Content Include="easyui\themes\default\images\tree_checkbox_1.gif" />
+    <Content Include="easyui\themes\default\images\tree_checkbox_2.gif" />
+    <Content Include="easyui\themes\default\images\tree_dnd_no.png" />
+    <Content Include="easyui\themes\default\images\tree_dnd_yes.png" />
+    <Content Include="easyui\themes\default\images\tree_file.gif" />
+    <Content Include="easyui\themes\default\images\tree_folder.gif" />
+    <Content Include="easyui\themes\default\images\tree_folder_open.gif" />
+    <Content Include="easyui\themes\default\images\tree_loading.gif" />
+    <Content Include="easyui\themes\default\images\validatebox_pointer.gif" />
+    <Content Include="easyui\themes\default\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\default\layout.css" />
+    <Content Include="easyui\themes\default\linkbutton.css" />
+    <Content Include="easyui\themes\default\menu.css" />
+    <Content Include="easyui\themes\default\menubutton.css" />
+    <Content Include="easyui\themes\default\messager.css" />
+    <Content Include="easyui\themes\default\pagination.css" />
+    <Content Include="easyui\themes\default\panel.css" />
+    <Content Include="easyui\themes\default\propertygrid.css" />
+    <Content Include="easyui\themes\default\spinner.css" />
+    <Content Include="easyui\themes\default\splitbutton.css" />
+    <Content Include="easyui\themes\default\tabs.css" />
+    <Content Include="easyui\themes\default\tree.css" />
+    <Content Include="easyui\themes\default\validatebox.css" />
+    <Content Include="easyui\themes\default\window.css" />
+    <Content Include="easyui\themes\gray\accordion.css" />
+    <Content Include="easyui\themes\gray\calendar.css" />
+    <Content Include="easyui\themes\gray\combo.css" />
+    <Content Include="easyui\themes\gray\combobox.css" />
+    <Content Include="easyui\themes\gray\datagrid.css" />
+    <Content Include="easyui\themes\gray\datebox.css" />
+    <Content Include="easyui\themes\gray\dialog.css" />
+    <Content Include="easyui\themes\gray\easyui.css" />
+    <Content Include="easyui\themes\gray\images\accordion_collapse.png" />
+    <Content Include="easyui\themes\gray\images\accordion_expand.png" />
+    <Content Include="easyui\themes\gray\images\button_a_bg.gif" />
+    <Content Include="easyui\themes\gray\images\button_plain_hover.png" />
+    <Content Include="easyui\themes\gray\images\button_span_bg.gif" />
+    <Content Include="easyui\themes\gray\images\calendar_nextmonth.gif" />
+    <Content Include="easyui\themes\gray\images\calendar_nextyear.gif" />
+    <Content Include="easyui\themes\gray\images\calendar_prevmonth.gif" />
+    <Content Include="easyui\themes\gray\images\calendar_prevyear.gif" />
+    <Content Include="easyui\themes\gray\images\combo_arrow.gif" />
+    <Content Include="easyui\themes\gray\images\datagrid_header_bg.gif" />
+    <Content Include="easyui\themes\gray\images\datagrid_row_collapse.gif" />
+    <Content Include="easyui\themes\gray\images\datagrid_row_expand.gif" />
+    <Content Include="easyui\themes\gray\images\datagrid_sort_asc.gif" />
+    <Content Include="easyui\themes\gray\images\datagrid_sort_desc.gif" />
+    <Content Include="easyui\themes\gray\images\datagrid_title_bg.gif" />
+    <Content Include="easyui\themes\gray\images\datebox_arrow.png" />
+    <Content Include="easyui\themes\gray\images\layout_button_down.gif" />
+    <Content Include="easyui\themes\gray\images\layout_button_left.gif" />
+    <Content Include="easyui\themes\gray\images\layout_button_right.gif" />
+    <Content Include="easyui\themes\gray\images\layout_button_up.gif" />
+    <Content Include="easyui\themes\gray\images\menu.gif" />
+    <Content Include="easyui\themes\gray\images\menu_downarrow.png" />
+    <Content Include="easyui\themes\gray\images\menu_rightarrow.png" />
+    <Content Include="easyui\themes\gray\images\menu_sep.png" />
+    <Content Include="easyui\themes\gray\images\menu_split_downarrow.png" />
+    <Content Include="easyui\themes\gray\images\messager_error.gif" />
+    <Content Include="easyui\themes\gray\images\messager_info.gif" />
+    <Content Include="easyui\themes\gray\images\messager_question.gif" />
+    <Content Include="easyui\themes\gray\images\messager_warning.gif" />
+    <Content Include="easyui\themes\gray\images\pagination_first.gif" />
+    <Content Include="easyui\themes\gray\images\pagination_last.gif" />
+    <Content Include="easyui\themes\gray\images\pagination_load.png" />
+    <Content Include="easyui\themes\gray\images\pagination_loading.gif" />
+    <Content Include="easyui\themes\gray\images\pagination_next.gif" />
+    <Content Include="easyui\themes\gray\images\pagination_prev.gif" />
+    <Content Include="easyui\themes\gray\images\panel_loading.gif" />
+    <Content Include="easyui\themes\gray\images\panel_title.gif" />
+    <Content Include="easyui\themes\gray\images\panel_tools.gif" />
+    <Content Include="easyui\themes\gray\images\panel_tool_collapse.gif" />
+    <Content Include="easyui\themes\gray\images\panel_tool_expand.gif" />
+    <Content Include="easyui\themes\gray\images\spinner_arrow_down.gif" />
+    <Content Include="easyui\themes\gray\images\spinner_arrow_up.gif" />
+    <Content Include="easyui\themes\gray\images\tabs_close.gif" />
+    <Content Include="easyui\themes\gray\images\tabs_enabled.gif" />
+    <Content Include="easyui\themes\gray\images\tabs_leftarrow.png" />
+    <Content Include="easyui\themes\gray\images\tabs_rightarrow.png" />
+    <Content Include="easyui\themes\gray\images\tree_arrows.gif" />
+    <Content Include="easyui\themes\gray\images\tree_checkbox_0.gif" />
+    <Content Include="easyui\themes\gray\images\tree_checkbox_1.gif" />
+    <Content Include="easyui\themes\gray\images\tree_checkbox_2.gif" />
+    <Content Include="easyui\themes\gray\images\tree_dnd_no.png" />
+    <Content Include="easyui\themes\gray\images\tree_dnd_yes.png" />
+    <Content Include="easyui\themes\gray\images\tree_file.gif" />
+    <Content Include="easyui\themes\gray\images\tree_folder.gif" />
+    <Content Include="easyui\themes\gray\images\tree_folder_open.gif" />
+    <Content Include="easyui\themes\gray\images\tree_loading.gif" />
+    <Content Include="easyui\themes\gray\images\validatebox_pointer.gif" />
+    <Content Include="easyui\themes\gray\images\validatebox_warning.png" />
+    <Content Include="easyui\themes\gray\layout.css" />
+    <Content Include="easyui\themes\gray\linkbutton.css" />
+    <Content Include="easyui\themes\gray\menu.css" />
+    <Content Include="easyui\themes\gray\menubutton.css" />
+    <Content Include="easyui\themes\gray\messager.css" />
+    <Content Include="easyui\themes\gray\pagination.css" />
+    <Content Include="easyui\themes\gray\panel.css" />
+    <Content Include="easyui\themes\gray\propertygrid.css" />
+    <Content Include="easyui\themes\gray\spinner.css" />
+    <Content Include="easyui\themes\gray\splitbutton.css" />
+    <Content Include="easyui\themes\gray\tabs.css" />
+    <Content Include="easyui\themes\gray\tree.css" />
+    <Content Include="easyui\themes\gray\validatebox.css" />
+    <Content Include="easyui\themes\gray\window.css" />
+    <Content Include="easyui\themes\icon.css" />
+    <Content Include="easyui\themes\icons\back.png" />
+    <Content Include="easyui\themes\icons\blank.gif" />
+    <Content Include="easyui\themes\icons\cancel.png" />
+    <Content Include="easyui\themes\icons\cut.png" />
+    <Content Include="easyui\themes\icons\edit_add.png" />
+    <Content Include="easyui\themes\icons\edit_remove.png" />
+    <Content Include="easyui\themes\icons\filesave.png" />
+    <Content Include="easyui\themes\icons\help.png" />
+    <Content Include="easyui\themes\icons\no.png" />
+    <Content Include="easyui\themes\icons\ok.png" />
+    <Content Include="easyui\themes\icons\pencil.png" />
+    <Content Include="easyui\themes\icons\print.png" />
+    <Content Include="easyui\themes\icons\redo.png" />
+    <Content Include="easyui\themes\icons\reload.png" />
+    <Content Include="easyui\themes\icons\search.png" />
+    <Content Include="easyui\themes\icons\sum.png" />
+    <Content Include="easyui\themes\icons\undo.png" />
+    <Content Include="fckeditor2.3.6\editor\css\behaviors\disablehandles.htc" />
+    <Content Include="fckeditor2.3.6\editor\css\behaviors\showtableborders.htc" />
+    <Content Include="fckeditor2.3.6\editor\css\fck_editorarea.css" />
+    <Content Include="fckeditor2.3.6\editor\css\fck_internal.css" />
+    <Content Include="fckeditor2.3.6\editor\css\fck_showtableborders_gecko.css" />
+    <Content Include="fckeditor2.3.6\editor\css\images\block_address.png" />
+    <Content Include="fckeditor2.3.6\editor\css\images\block_blockquote.png" />
+    <Content Include="fckeditor2.3.6\editor\css\images\block_div.png" />
+    <Content Include="fckeditor2.3.6\editor\css\images\block_h1.png" />
+    <Content Include="fckeditor2.3.6\editor\css\images\block_h2.png" />
+    <Content Include="fckeditor2.3.6\editor\css\images\block_h3.png" />
+    <Content Include="fckeditor2.3.6\editor\css\images\block_h4.png" />
+    <Content Include="fckeditor2.3.6\editor\css\images\block_h5.png" />
+    <Content Include="fckeditor2.3.6\editor\css\images\block_h6.png" />
+    <Content Include="fckeditor2.3.6\editor\css\images\block_p.png" />
+    <Content Include="fckeditor2.3.6\editor\css\images\block_pre.png" />
+    <Content Include="fckeditor2.3.6\editor\css\images\fck_anchor.gif" />
+    <Content Include="fckeditor2.3.6\editor\css\images\fck_flashlogo.gif" />
+    <Content Include="fckeditor2.3.6\editor\css\images\fck_hiddenfield.gif" />
+    <Content Include="fckeditor2.3.6\editor\css\images\fck_pagebreak.gif" />
+    <Content Include="fckeditor2.3.6\editor\css\images\fck_plugin.gif" />
+    <Content Include="fckeditor2.3.6\editor\dialog\common\fck_dialog_common.css" />
+    <Content Include="fckeditor2.3.6\editor\dialog\common\fck_dialog_common.js" />
+    <Content Include="fckeditor2.3.6\editor\dialog\common\images\locked.gif" />
+    <Content Include="fckeditor2.3.6\editor\dialog\common\images\reset.gif" />
+    <Content Include="fckeditor2.3.6\editor\dialog\common\images\unlocked.gif" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_about.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_about\logo_fckeditor.gif" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_about\logo_fredck.gif" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_about\sponsors\spellchecker_net.gif" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_anchor.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_button.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_checkbox.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_colorselector.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_div.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_docprops.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_docprops\fck_document_preview.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_flash.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_flash\fck_flash.js" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_flash\fck_flash_preview.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_form.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_hiddenfield.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_image.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_image\fck_image.js" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_image\fck_image_preview.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_link.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_link\fck_link.js" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_listprop.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_paste.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_radiobutton.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_replace.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_select.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_select\fck_select.js" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_smiley.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_source.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_specialchar.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages\spellerpages\blank.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages\spellerpages\controls.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages\spellerpages\controlWindow.js" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages\spellerpages\spellchecker.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages\spellerpages\spellChecker.js" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages\spellerpages\spellerStyle.css" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages\spellerpages\wordWindow.js" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_table.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_tablecell.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_template.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_template\images\template1.gif" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_template\images\template2.gif" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_template\images\template3.gif" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_textarea.html" />
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_textfield.html" />
+    <Content Include="fckeditor2.3.6\editor\dtd\fck_dtd_test.html" />
+    <Content Include="fckeditor2.3.6\editor\dtd\fck_xhtml10strict.js" />
+    <Content Include="fckeditor2.3.6\editor\dtd\fck_xhtml10transitional.js" />
+    <Content Include="fckeditor2.3.6\editor\fckdebug.html" />
+    <Content Include="fckeditor2.3.6\editor\fckdialog.html" />
+    <Content Include="fckeditor2.3.6\editor\fckeditor.html" />
+    <Content Include="fckeditor2.3.6\editor\fckeditor.original.html" />
+    <Content Include="fckeditor2.3.6\editor\images\anchor.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\arrow_ltr.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\arrow_rtl.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\angel_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\angry_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\broken_heart.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\cake.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\confused_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\cry_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\devil_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\embaressed_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\envelope.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\heart.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\kiss.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\lightbulb.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\omg_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\regular_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\sad_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\shades_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\teeth_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\thumbs_down.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\thumbs_up.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\tounge_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\whatchutalkingabout_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\smiley\msn\wink_smile.gif" />
+    <Content Include="fckeditor2.3.6\editor\images\spacer.gif" />
+    <Content Include="fckeditor2.3.6\editor\js\fckadobeair.js" />
+    <Content Include="fckeditor2.3.6\editor\js\fckeditorcode_gecko.js" />
+    <Content Include="fckeditor2.3.6\editor\js\fckeditorcode_ie.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\af.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\ar.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\bg.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\bn.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\bs.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\ca.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\cs.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\da.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\de.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\el.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\en-au.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\en-ca.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\en-uk.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\en.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\eo.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\es.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\et.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\eu.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\fa.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\fi.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\fo.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\fr-ca.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\fr.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\gl.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\gu.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\he.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\hi.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\hr.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\hu.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\it.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\ja.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\km.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\ko.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\lt.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\lv.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\mn.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\ms.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\nb.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\nl.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\no.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\pl.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\pt-br.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\pt.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\ro.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\ru.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\sk.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\sl.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\sr-latn.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\sr.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\sv.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\th.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\tr.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\uk.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\vi.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\zh-cn.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\zh.js" />
+    <Content Include="fckeditor2.3.6\editor\lang\_translationstatus.txt" />
+    <Content Include="fckeditor2.3.6\editor\plugins\autogrow\fckplugin.js" />
+    <Content Include="fckeditor2.3.6\editor\plugins\bbcode\fckplugin.js" />
+    <Content Include="fckeditor2.3.6\editor\plugins\bbcode\_sample\sample.config.js" />
+    <Content Include="fckeditor2.3.6\editor\plugins\bbcode\_sample\sample.html" />
+    <Content Include="fckeditor2.3.6\editor\plugins\dragresizetable\fckplugin.js" />
+    <Content Include="fckeditor2.3.6\editor\plugins\placeholder\fckplugin.js" />
+    <Content Include="fckeditor2.3.6\editor\plugins\placeholder\fck_placeholder.html" />
+    <Content Include="fckeditor2.3.6\editor\plugins\placeholder\lang\de.js" />
+    <Content Include="fckeditor2.3.6\editor\plugins\placeholder\lang\en.js" />
+    <Content Include="fckeditor2.3.6\editor\plugins\placeholder\lang\es.js" />
+    <Content Include="fckeditor2.3.6\editor\plugins\placeholder\lang\fr.js" />
+    <Content Include="fckeditor2.3.6\editor\plugins\placeholder\lang\it.js" />
+    <Content Include="fckeditor2.3.6\editor\plugins\placeholder\lang\pl.js" />
+    <Content Include="fckeditor2.3.6\editor\plugins\placeholder\placeholder.gif" />
+    <Content Include="fckeditor2.3.6\editor\plugins\simplecommands\fckplugin.js" />
+    <Content Include="fckeditor2.3.6\editor\plugins\tablecommands\fckplugin.js" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\fck_dialog.css" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\fck_dialog_ie6.js" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\fck_editor.css" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\fck_strip.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\images\dialog.sides.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\images\dialog.sides.png" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\images\dialog.sides.rtl.png" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\images\sprites.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\images\sprites.png" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\images\toolbar.arrowright.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\images\toolbar.buttonarrow.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\images\toolbar.collapse.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\images\toolbar.end.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\images\toolbar.expand.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\images\toolbar.separator.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\default\images\toolbar.start.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\fck_dialog.css" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\fck_dialog_ie6.js" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\fck_editor.css" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\fck_strip.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\dialog.sides.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\dialog.sides.png" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\dialog.sides.rtl.png" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\sprites.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\sprites.png" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\toolbar.arrowright.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\toolbar.bg.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\toolbar.buttonarrow.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\toolbar.collapse.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\toolbar.end.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\toolbar.expand.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\toolbar.separator.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\office2003\images\toolbar.start.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\fck_dialog.css" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\fck_dialog_ie6.js" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\fck_editor.css" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\fck_strip.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\dialog.sides.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\dialog.sides.png" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\dialog.sides.rtl.png" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\sprites.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\sprites.png" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\toolbar.arrowright.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\toolbar.buttonarrow.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\toolbar.buttonbg.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\toolbar.collapse.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\toolbar.end.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\toolbar.expand.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\toolbar.separator.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\silver\images\toolbar.start.gif" />
+    <Content Include="fckeditor2.3.6\editor\skins\_fckviewstrips.html" />
+    <Content Include="fckeditor2.3.6\fckconfig.js" />
+    <Content Include="fckeditor2.3.6\fckeditor.js" />
+    <Content Include="fckeditor2.3.6\fckpackager.xml" />
+    <Content Include="fckeditor2.3.6\fckstyles.xml" />
+    <Content Include="fckeditor2.3.6\fcktemplates.xml" />
+    <Content Include="fckeditor2.3.6\filethumbnails\bmp-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\bmp.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\cpp-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\cpp.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\cs-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\cs.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\doc-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\doc.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\exe-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\exe.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\fla.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\gif-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\gif.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\java-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\java.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\jpeg-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\jpeg.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\jpg-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\jpg.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\mdb-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\mdb.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\msi-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\msi.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\one-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\one.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\pdf-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\pdf.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\png-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\png.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\ppt-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\ppt.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\pub-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\pub.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\swf.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\unknown-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\unknown.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\vb-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\vb.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\xls-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\xls.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\zip-small.gif" />
+    <Content Include="fckeditor2.3.6\filethumbnails\zip.gif" />
+    <Content Include="fckeditor2.3.6\Folder.jpg" />
+    <Content Include="fckeditor2.3.6\Up.jpg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\0001-1.jpg" />
+    <Content Include="Images\0001-2.jpg" />
+    <Content Include="Images\0001-3.jpg" />
+    <Content Include="Images\0001-4.jpg" />
+    <Content Include="Images\0001-5.jpg" />
+    <Content Include="Images\53ec8815e02b6.png" />
+    <Content Include="Images\arrow-next.png" />
+    <Content Include="Images\arrow-prev.png" />
+    <Content Include="Images\arrow.png" />
+    <Content Include="Images\arrows.png" />
+    <Content Include="Images\art.png" />
+    <Content Include="Images\bg1.jpg" />
+    <Content Include="Images\bg2.jpg" />
+    <Content Include="Images\bg3.jpg" />
+    <Content Include="Images\bg_bottom.gif" />
+    <Content Include="Images\bg_bottom.jpg" />
+    <Content Include="Images\bg_left.jpg" />
+    <Content Include="Images\c-arrows.png" />
+    <Content Include="Images\c1.jpg" />
+    <Content Include="Images\c2.jpg" />
+    <Content Include="Images\c3.jpg" />
+    <Content Include="Images\China.png" />
+    <Content Include="Images\close.png" />
+    <Content Include="Images\contentlist1.gif" />
+    <Content Include="Images\delivery.png" />
+    <Content Include="Images\det_pic.jpg" />
+    <Content Include="Images\det_pic1.jpg" />
+    <Content Include="Images\det_pic2.jpg" />
+    <Content Include="Images\det_pic3.jpg" />
+    <Content Include="Images\down_arrow.png" />
+    <Content Include="Images\dsh.jpg" />
+    <Content Include="Images\English.png" />
+    <Content Include="Images\EN_user_botton.png" />
+    <Content Include="Images\facebook.png" />
+    <Content Include="Images\Favorites.png" />
+    <Content Include="Images\flashbg1.swf" />
+    <Content Include="Images\flashbg2.swf" />
+    <Content Include="Images\gpluse.png" />
+    <Content Include="Images\grid.png" />
+    <Content Include="Images\gs.jpg" />
+    <Content Include="Images\icon1.png" />
+    <Content Include="Images\icon2.png" />
+    <Content Include="Images\icon3.png" />
+    <Content Include="Images\icon4.png" />
+    <Content Include="Images\icon5.png" />
+    <Content Include="Images\icon6.png" />
+    <Content Include="Images\index.jpg" />
+    <Content Include="Images\indexen.jpg" />
+    <Content Include="Images\language.png" />
+    <Content Include="Images\large\0001-1.jpg" />
+    <Content Include="Images\large\0001-2.jpg" />
+    <Content Include="Images\large\0001-3.jpg" />
+    <Content Include="Images\large\0001-4.jpg" />
+    <Content Include="Images\large\0001-5.jpg" />
+    <Content Include="Images\light_toast.png" />
+    <Content Include="Images\list1.jpg" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\logo.jpg" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\logoen.jpg" />
+    <Content Include="Images\logo_small.jpg" />
+    <Content Include="Images\look.gif" />
+    <Content Include="Images\menuBg1.gif" />
+    <Content Include="Images\menulist1.jpg" />
+    <Content Include="Images\menulist2.jpg" />
+    <Content Include="Images\nav_icon.png" />
+    <Content Include="Images\pic1.jpg" />
+    <Content Include="Images\pic2.jpg" />
+    <Content Include="Images\pic3.jpg" />
+    <Content Include="Images\pic4.jpg" />
+    <Content Include="Images\pic5.jpg" />
+    <Content Include="Images\pic6.jpg" />
+    <Content Include="Images\rss.png" />
+    <Content Include="Images\sale_pic1.jpg" />
+    <Content Include="Images\sale_pic10.jpg" />
+    <Content Include="Images\sale_pic11.jpg" />
+    <Content Include="Images\sale_pic12.jpg" />
+    <Content Include="Images\sale_pic2.jpg" />
+    <Content Include="Images\sale_pic3.jpg" />
+    <Content Include="Images\sale_pic4.jpg" />
+    <Content Include="Images\sale_pic5.jpg" />
+    <Content Include="Images\sale_pic6.jpg" />
+    <Content Include="Images\sale_pic7.jpg" />
+    <Content Include="Images\sale_pic8.jpg" />
+    <Content Include="Images\sale_pic9.jpg" />
+    <Content Include="Images\search.png" />
+    <Content Include="Images\search_h.png" />
+    <Content Include="Images\shoe_pic1.jpg" />
+    <Content Include="Images\shoe_pic2.jpg" />
+    <Content Include="Images\shoe_pic3.jpg" />
+    <Content Include="Images\shoe_pic4.jpg" />
+    <Content Include="Images\shoe_pic5.jpg" />
+    <Content Include="Images\shoe_pic6.jpg" />
+    <Content Include="Images\slider1.png" />
+    <Content Include="Images\slider2.png" />
+    <Content Include="Images\slider3.png" />
+    <Content Include="Images\slider4.png" />
+    <Content Include="Images\slider5.png" />
+    <Content Include="Images\slider_bg.jpg" />
+    <Content Include="Images\small\0001-1.jpg" />
+    <Content Include="Images\small\0001-2.jpg" />
+    <Content Include="Images\small\0001-3.jpg" />
+    <Content Include="Images\small\0001-4.jpg" />
+    <Content Include="Images\small\0001-5.jpg" />
+    <Content Include="Images\topbackground.gif" />
+    <Content Include="Images\top_move.png" />
+    <Content Include="Images\twitter.png" />
+    <Content Include="Images\up_arrow.png" />
+    <Content Include="Images\user_all_bg.gif" />
+    <Content Include="Images\user_bottom_c.bak.gif" />
+    <Content Include="Images\user_bottom_c.gif" />
+    <Content Include="Images\user_bottom_l.gif" />
+    <Content Include="Images\user_bottom_r.gif" />
+    <Content Include="Images\user_botton.gif" />
+    <Content Include="Images\user_login_name.gif" />
+    <Content Include="Images\user_login_password.gif" />
+    <Content Include="Images\user_login_validatecode.gif" />
+    <Content Include="Images\user_main_c.gif" />
+    <Content Include="Images\user_main_l.gif" />
+    <Content Include="Images\user_main_r.gif" />
+    <Content Include="Images\user_top_c.en.gif" />
+    <Content Include="Images\user_top_c.gif" />
+    <Content Include="Images\user_top_l.en.gif" />
+    <Content Include="Images\user_top_l.gif" />
+    <Content Include="Images\user_top_r.gif" />
+    <Content Include="Images\w_pic1.jpg" />
+    <Content Include="Images\w_pic2.jpg" />
+    <Content Include="Images\w_pic3.jpg" />
+    <Content Include="Images\w_pic4.jpg" />
+    <Content Include="Images\w_pic5.jpg" />
+    <Content Include="Images\w_pic6.jpg" />
+    <Content Include="Scripts\cloud-zoom.1.0.3.min.js" />
+    <Content Include="Scripts\easing.js" />
+    <Content Include="Scripts\fliplightbox.min.js" />
+    <Content Include="Scripts\jquery.cslider.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
+    <Content Include="Scripts\jquery.fancybox-buttons.js" />
+    <Content Include="Scripts\jquery.fancybox-thumbs.js" />
+    <Content Include="Scripts\jquery.fancybox.pack.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.mixitup.min.js" />
+    <Content Include="Scripts\modernizr.custom.28468.js" />
+    <Content Include="Scripts\move-top.js" />
+    <Content Include="Scripts\owl.carousel.js" />
+    <Content Include="Scripts\productviewgallery.js" />
+    <Content Include="Scripts\responsive.menu.js" />
+    <Content Include="UserFiles\60cb6b01-42b5-4cda-b0ce-0e08592f1fe9\1204720678.jpg" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <EmbeddedResource Include="Resource\en-US.resx" />
+    <EmbeddedResource Include="Resource\zh-CN.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\skin\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\fonts\Amble-Regular-webfont.ttf" />
+    <Content Include="Content\fonts\BebasNeue-webfont.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Forum\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Forum\Product.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Category\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Article\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Article\Product.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Contact.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Category\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.cfm" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\large\Thumbs.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\small\Thumbs.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Thumbs.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Logs\Log.log" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{b3f29715-e925-4e56-9248-580f06c3bc11}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dao\Dao.csproj">
+      <Project>{dc017e1a-8853-4267-932e-30cb3bcf8cf5}</Project>
+      <Name>Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{a42d287a-8ef4-48f6-b14c-7f9ca834f786}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.csproj">
+      <Project>{bafcd632-06a1-4edc-9b14-0897e001572a}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_LayoutMg.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Article\Admin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Article\View.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Category\View.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Forum\View.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Admin.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\LogOn.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Review\View.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Review\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserInfo\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\UserInfo\View.cshtml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:13506/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

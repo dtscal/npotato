@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">
+
+  <class name="Article" table="T_Article">
+    <cache usage="read-write"/>
+    <id name="ID" type="Guid">
+      <column name="ArticleID" index="PK_Article"/>
+      <generator class="assigned" />
+    </id>
+
+
+    <!--建立日期-->
+    <property name="CreateDate" type="DateTime">
+      <column name="CreateDate" not-null="true"/>
+    </property>
+
+    <!--修改日期-->
+    <property name="UpdateDate" type="DateTime">
+      <column name="UpdateDate" not-null="true"/>
+    </property>
+
+    <!--中文名-->
+    <property name="Name" type="string">
+      <column name="Name" length="50" not-null="true"/>
+    </property>
+
+    <!--英文名-->
+    <property name="NameEn" type="string">
+      <column name="NameEn" length="50" not-null="true"/>
+    </property>
+
+    <!--中文内容-->
+    <property name="Content" type="string">
+      <column name="Content" length="5000" not-null="false"/>
+    </property>
+
+    <!--英文内容-->
+    <property name="ContentEn" type="string">
+      <column name="ContentEn" length="5000" not-null="false"/>
+    </property>
+
+    <!--中文关键字-->
+    <property name="Keyword" type="string">
+      <column name="Keyword" length="100" not-null="false"/>
+    </property>
+
+    <!--英文关键字-->
+    <property name="KeywordEn" type="string">
+      <column name="KeywordEn" length="100" not-null="false"/>
+    </property>
+
+    <!--中文描述-->
+    <property name="Description" type="string">
+      <column name="Description" length="500" not-null="false"/>
+    </property>
+
+    <!--英文描述-->
+    <property name="DescriptionEn" type="string">
+      <column name="DescriptionEn" length="500" not-null="false"/>
+    </property>
+    
+    <!--启用-->
+    <property name="IsEnabled" type="bool">
+      <column name="IsEnabled" not-null="true"/>
+    </property>
+
+    <!--置顶-->
+    <property name="IsFirst" type="bool">
+      <column name="IsFirst" not-null="true"/>
+    </property>
+
+    <!--来源-->
+    <property name="From" type="string">
+      <column name="`From`" length="50" not-null="true"/>
+    </property>
+
+    <!--主图地址-->
+    <property name="PImagea" type="string">
+      <column name="PImagea" not-null="false" length="128"/>
+    </property>
+
+    <property name="PImageb" type="string">
+      <column name="PImageb" not-null="false" length="128"/>
+    </property>
+      
+    <property name="PImagec" type="string">
+      <column name="PImagec" not-null="false" length="128"/>
+    </property>
+      
+    <property name="PImaged" type="string">
+      <column name="PImaged" not-null="false" length="128"/>
+    </property>
+    
+    <property name="PImagee" type="string">
+      <column name="PImagee" not-null="false" length="128"/>
+    </property>
+    
+    <!--购买链接-->
+    <property name="BuyLink" type="string">
+      <column name="BuyLink" not-null="false" length="256"/>
+    </property>
+
+    <!--浏览次数-->
+    <property name="ViewCount" type="int">
+      <column name="ViewCount" not-null="true"/>
+    </property>
+    
+    <!--版块-->
+    <many-to-one name="Category" column="CategoryID" class="Category" not-null="true"
+                  cascade="save-update" foreign-key="FK_Article_Category"/>
+    
+    <!--评论-->
+    <bag name="ReviewList" generic="true" inverse="true" cascade="all-delete-orphan" table="T_Review">
+      <key column="ArticleID" foreign-key="FK_Review_Airticle"/>
+      <one-to-many class="Review"/>
+    </bag>
+  </class>
+
+</hibernate-mapping>

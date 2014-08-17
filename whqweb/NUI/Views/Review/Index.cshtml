@@ -1,0 +1,205 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMg.cshtml";
+}
+@section mg{
+<script type="text/javascript" language="javascript">
+        $(function () {
+            $('#grid').datagrid({
+                title: '留言信息',
+                iconCls: 'icon-save',
+                nowrap: false,
+                striped: true,
+                url: '/Review/LoadAllByPage/',
+                sortName: 'ReviewDate',
+                sortOrder: 'desc',
+                remoteSort: true,
+                fitColumns: true,
+                fit: true,
+                idField: 'ID',
+                queryParams: { isEnabled: false, isReply: true },
+                frozenColumns: [[
+	                { field: 'ID', checkbox: true }
+                ]],
+
+                columns: [[
+                    
+                    { field: 'AName', title: '文章或商品名称', width: 80 },
+                    { field: 'Name', title: '客户姓名', width: 50, align: 'right' },
+                    { field: 'Email', title: '邮件', width: 70, align: 'right' },
+                    { field: 'Rating', title: '评分', width: 40, align: 'right' },
+                    { field: 'Content', title: '内容', width: 170, align: 'right' },
+                    {
+                        field: 'IsEnabled', title: '是否显示', width: 80, align: 'right',
+                        formatter: function (value, rec) {
+                            return value ? '显示' : '隐藏';
+                        }
+                    },
+                    {
+                        field: 'ReviewDate', title: '提出日期', width: 80,
+                        formatter: function (value, rec) {
+                            return eval("new " + value.substr(1, value.length - 2)).toLocaleDateString();
+                        }
+                    }
+                ]],
+                pagination: true,
+                rownumbers: true,
+                toolbar: ['-', {
+                    id: 'btnView',
+                    text: '查看',
+                    iconCls: 'icon-add',
+                    handler: function () {
+                        var row = $('#grid').datagrid('getSelected');
+                        if (row) {
+
+                            function setv(t,v) {
+                                document.getElementById(t).innerHTML = v;
+                            }
+
+                            setv('aname', row.AName);
+                            setv('name', row.Name);
+                            setv('email', row.Email);
+                            setv('rating', row.Rating);
+                            setv('content', row.Content);
+                            setv('reviewdate', row.ReviewDate);
+                            setv('show', row.IsEnabled);
+                            //setv('reply', row.Reply);
+                            //setv('replydate', row.ReplyDate);
+                            
+                            $('#win').dialog({
+                                collapsible: false,
+                                minimizable: false,
+                                maximizable: false,
+                                width: 600,
+                                height: 400,
+                                buttons: [{
+                                    text: '确定',
+                                    iconCls: 'icon-ok',
+                                    handler: function () {
+                                        $('#win').dialog('close');
+                                    }
+                                }, {
+                                    text: '取消',
+                                    handler: function () {
+                                        $('#win').dialog('close');
+                                    }
+                                }]
+                            });
+                        } else {
+                            $.messager.alert('提示', '请选择要修改的数据');
+                            return;
+                        }
+                    }
+                }, '-', {
+                    id: 'btnUpdate',
+                    text: '回复',
+                    iconCls: 'icon-save',
+                    handler: function () {
+                        var row = $('#grid').datagrid('getSelected');
+                        if (row) {
+                            window.location.href = "/Review/View/" + row.ID;
+                        }
+                        else {
+                            $.messager.alert('提示', '请选择要修改的数据');
+                            return;
+                        }
+
+                    }
+                }, '-', {
+                    id: 'btnWhf',
+                    text: '未回复',
+                    disabled: false,
+                    iconCls: 'icon-cut',
+                    handler: function () {
+
+                        $('#grid').datagrid('load', {
+                            isEnabled: false, isReply: false
+                        });
+                    }
+                }, {
+                    id: 'btnAll',
+                    text: '所有',
+                    disabled: false,
+                    iconCls: 'icon-cut',
+                    handler: function () {
+                        $('#grid').datagrid('load', {
+                            isEnabled: false, isReply: true
+                        });
+                    }
+                }, '-']
+            });
+        });
+    </script>
+}
+<div region="center" style="padding: 5px;" border="false">
+        <table id="grid">
+        </table>
+    </div>
+    <div id="win" iconcls="icon-save" title="查看留言" style="padding: 5px; width: 400px; height: 200px;">
+        <table style="width: 100%">
+            <tr>
+                <td style="text-align: right; width: 120px;">商品或文章标题：
+                </td>
+                <td>
+                    <label id="aname"></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 120px;">昵称：
+                </td>
+                <td>
+                    <label id="name"></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 120px;">回复邮件：
+                </td>
+                <td>
+                    <label id="email"></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 120px;">显示(<font color="red">*</font>)：
+                </td>
+                <td>
+                    <label id="show"></label>
+                </td>
+
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 120px;">评分：
+                </td>
+                <td>
+                    <label id="rating"></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 120px;">内容：
+                </td>
+                <td>
+                    <label id="content"></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 120px;">留言时间：
+                </td>
+                <td>
+                    <label id="reviewdate"></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 120px;">回复：
+                </td>
+                <td>
+                    <label id="reply"></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; width: 120px;">回复日期：
+                </td>
+                <td>
+                    <label id="repydate"></label>
+                </td>
+            </tr>
+        </table>
+    </div>

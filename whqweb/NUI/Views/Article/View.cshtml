@@ -1,0 +1,314 @@
+﻿@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_LayoutMg.cshtml";
+}
+@section mg{
+<script type="text/javascript" src="@Url("~/fckeditor2.3.6/fckeditor.js")"></script>
+    <script language="javascript" type="text/javascript">
+
+        function submit() {
+            $('#form').form('submit', {
+                onSubmit: function () {
+                    return $(this).form('validate');
+                },
+                success: function (msg) {
+                    $.messager.alert('提示', "保存成功", 'info', function () {
+                        window.location.href = "/Article/Admin/<%= ((Domain.Category)this.ViewData["Category"]).ID %>/";
+                    });
+                }
+            });
+        }
+
+        var oFCKeditor = null;
+        window.onload = function () {
+            var sBasePath = '<%= Url.Content("~/fckeditor2.3.6/") %>';
+            oFCKeditor = new FCKeditor('entity.Content');
+            oFCKeditor.BasePath = sBasePath;
+            oFCKeditor.Width = '100%';
+            oFCKeditor.Height = 400;
+            oFCKeditor.ReplaceTextarea();
+
+
+            document.getElementsByName("entity.PImagea").value = 'sdfsdfd';
+            var pFCKeditor = new FCKeditor('entity.ContentEn');
+            pFCKeditor.BasePath = sBasePath;
+            pFCKeditor.Width = '100%';
+            pFCKeditor.Height = 400;
+            pFCKeditor.ReplaceTextarea();
+        }
+
+
+
+        function FCK_ExecuteCommand(commandName, target) {
+            var f = FCKeditorAPI.GetInstance('entity.Content');
+            if (!f) return;
+
+            f._callback = function (value) {
+                if (this.CommandName == "Image") {
+                    var target = GetE(this.CommandTarget);
+                    var v = document.getElementsByName("entity.PImage" + this.CommandTarget);
+                    if (target) {
+                        target.src = value;
+                        v[0].value = value;
+                    }
+                }
+                this.CommandName = null;
+            }
+
+            function GetE(el) {
+                return typeof (el) == "string" ? document.getElementById(el) : el;
+            }
+
+            f.CommandName = commandName;
+            f.CommandTarget = target;
+            f.Commands.GetCommand(commandName).Execute();
+        }
+
+        function removeImage(el) {
+            var target = document.getElementById(el);
+            var v = document.getElementsByName("entity.PImage" + el);
+            target.src = '';
+            v.value = '';
+        }
+
+    </script>
+}
+<div region="center" border="false" fit="true">
+        <div region="north" border="false" class="title" style="text-align: center; height: 40px; line-height: 40px; font-size: x-large;">
+            <%= ((Domain.Category)this.ViewData["Category"]).Name%>
+        </div>
+        <form region="center" border="false" fit="true" id="form" method="post" action="/Article/Save/"
+            enctype="application/x-www-form-urlencoded">
+            <div title="主要信息">
+                <div class="title" style="text-align: center; height: 20px; line-height: 20px; font-size: large; color: White; background-color: #6699FF">
+                    主要信息
+                </div>
+                <input type="hidden" id="id" name="entity.ID" value="<%= ((Domain.Article)this.ViewData["entity"]).ID %>" />
+                <input type="hidden" name="categoryID" value="<%= ((Domain.Category)this.ViewData["Category"]).ID %>" />
+                <table>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">
+                            <% if (((Domain.Category)this.ViewData["Category"]).Forum.IsProuduct == true)
+                               {%>
+                        中文商品名称(<font color="red">*</font>)：
+                        <%}
+                               else
+                               { %>
+                        中文标题(<font color="red">*</font>)：
+                        <%} %>
+                        </td>
+                        <td>
+                            <input type="text" class="easyui-validatebox" required="true" name="entity.Name"
+                                value="<%= ((Domain.Article)this.ViewData["entity"]).Name %>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">
+                            <% if (((Domain.Category)this.ViewData["Category"]).Forum.IsProuduct == true)
+                               {%>
+                        英文商品名称(<font color="red">*</font>)：
+                        <%}
+                               else
+                               { %>
+                        英文标题(<font color="red">*</font>)：
+                        <%} %>
+                        </td>
+                        <td>
+                            <input type="text" class="easyui-validatebox" required="true" name="entity.NameEn"
+                                value="<%= ((Domain.Article)this.ViewData["entity"]).NameEn %>" />
+                        </td>
+                    </tr>
+                    <% if (((Domain.Category)this.ViewData["Category"]).Forum.IsProuduct == true)
+                       {%>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">商品主图：</td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <img alt="主图1" id="a" src="<%=((Domain.Article)this.ViewData["entity"]).PImagea %>" style="height: 200px; width: 200px;" />
+                                        <input type="hidden" id="entity.PImagea" name="entity.PImagea" value="<%=((Domain.Article)this.ViewData["entity"]).PImagea %>" />
+                                    </td>
+                                    <td>
+                                        <img alt="主图2" id="b" src="<%=((Domain.Article)this.ViewData["entity"]).PImageb  %>" style="height: 200px; width: 200px;" />
+                                        <input type="hidden" name="entity.PImageb" value="<%=((Domain.Article)this.ViewData["entity"]).PImageb %>" />
+                                    </td>
+                                    <td>
+                                        <img alt="主图3" id="c" src="<%=((Domain.Article)this.ViewData["entity"]).PImagec  %>" style="height: 200px; width: 200px;" />
+                                        <input type="hidden" name="entity.PImagec" value="<%=((Domain.Article)this.ViewData["entity"]).PImagec %>" />
+                                    </td>
+                                    <td>
+                                        <img alt="主图4" id="d" src="<%=((Domain.Article)this.ViewData["entity"]).PImaged  %>" style="height: 200px; width: 200px;" />
+                                        <input type="hidden" name="entity.PImaged" value="<%=((Domain.Article)this.ViewData["entity"]).PImaged %>" />
+                                    </td>
+                                    <td>
+                                        <img alt="主图5" id="e" src="<%=((Domain.Article)this.ViewData["entity"]).PImagee  %>" style="height: 200px; width: 200px;" />
+                                        <input type="hidden" name="entity.PImagee" value="<%=((Domain.Article)this.ViewData["entity"]).PImagee %>" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'a');" >浏览</a>
+                                        <a href="#" class="easyui-linkbutton" onclick="removeImage('a');" >删除</a>
+                                    </td>
+                                    <td align="center">
+                                        <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'b');" >浏览</a>
+                                        <a href="#" class="easyui-linkbutton" onclick="removeImage('b');" >删除</a>
+                                    </td>
+                                    <td align="center">
+                                        <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'c');" >浏览</a>
+                                        <a href="#" class="easyui-linkbutton" onclick="removeImage('c');" >删除</a>
+                                    </td>
+                                    <td align="center">
+                                        <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'd');" >浏览</a>
+                                        <a href="#" class="easyui-linkbutton" onclick="removeImage('d');" >删除</a>
+                                    </td>
+                                    <td align="center"> 
+                                        <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'e');" >浏览</a>
+                                        <a href="#" class="easyui-linkbutton" onclick="removeImage('e');" >删除</a>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                           
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">宝贝销售地址：</td>
+                        <td>
+                            <input type="text" class="easyui-validatebox" required="true" name="entity.BuyLink"
+                                value="<%= ((Domain.Article)this.ViewData["entity"]).BuyLink %>" /></td>
+                    </tr>
+                    <%}%>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">置顶(<font color="red">*</font>)：
+                        </td>
+                        <td>
+                            <input type="checkbox" name="entity.IsFirst" <%= ((Domain.Article)this.ViewData["entity"]).IsFirst?"checked=\"checked\"":string.Empty
+                                %>
+                                value="<%= ((Domain.Article)this.ViewData["entity"]).IsFirst %>" onclick="this.value = checked == 'checked' || 'true';" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">显示(<font color="red">*</font>)：
+                        </td>
+                        <td>
+                            <input type="checkbox" name="entity.IsEnabled" <%= ((Domain.Article)this.ViewData["entity"]).IsEnabled?"checked=\"checked\"":string.Empty
+                                %>
+                                value="<%= ((Domain.Article)this.ViewData["entity"]).IsEnabled %>" onclick="this.value = checked == 'checked' || 'true';" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">来源(<font color="red">*</font>)：
+                        </td>
+                        <td>
+                            <input type="text" class="easyui-validatebox" required="true" name="entity.From"
+                                value="<%= ((Domain.Article)this.ViewData["entity"]).From %>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">浏览次数：
+                        </td>
+                        <td>
+                            <%= ((Domain.Article)this.ViewData["entity"]).ViewCount %>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div title="中文信息">
+                <div class="title" style="text-align: center; height: 20px; line-height: 20px; font-size: large; color: White; background-color: #6699FF">
+                    中文信息
+                </div>
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: right; width: 120px;">关键字：
+                        </td>
+                        <td>
+                            <input type="text" style="width: 300px;" class="easyui-validatebox" name="entity.Keyword"
+                                value="<%= ((Domain.Article)this.ViewData["entity"]).Keyword %>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">描述：
+                        </td>
+                        <td>
+                            <textarea style="width: 300px;" class="easyui-validatebox" name="entity.Description"><%= ((Domain.Article)this.ViewData["entity"]).Description%></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align: center; width: 120px;">内容：
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+
+                            <textarea name="entity.Content"><%=string.IsNullOrEmpty(((Domain.Article)this.ViewData["entity"]).Content) ?
+                                                        string.Empty : ((Domain.Article)this.ViewData["entity"]).Content.Replace("\r", string.Empty).Replace("\n", string.Empty).Replace("'", "\\'") %></textarea>
+                            <%--<%=Html.FckEditor("entity.Content", string.IsNullOrEmpty(((Domain.Article)this.ViewData["entity"]).Content) ?
+                                                        string.Empty : ((Domain.Article)this.ViewData["entity"]).Content.Replace("\r", string.Empty).Replace("\n", string.Empty).Replace("'", "\\'"), 
+        new FckConfig { Width="100%", Height="400", Skin= FckSkin.Office2003, ToolbarSet= FckToolbarSet.Default })%>--%>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div title="英文信息">
+                <div class="title" style="text-align: center; height: 20px; line-height: 20px; font-size: large; color: White; background-color: #6699FF">
+                    英文信息
+                </div>
+                <table style="width: 100%;">
+                    <tr>
+                        <td style="text-align: right; width: 120px;">关键字：
+                        </td>
+                        <td>
+                            <input type="text" style="width: 300px;" class="easyui-validatebox" name="entity.KeywordEn"
+                                value="<%= ((Domain.Article)this.ViewData["entity"]).KeywordEn %>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: right; width: 120px;">描述：
+                        </td>
+                        <td>
+                            <textarea style="width: 300px;" class="easyui-validatebox" name="entity.DescriptionEn"><%= ((Domain.Article)this.ViewData["entity"]).DescriptionEn%></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: center; width: 120px;" colspan="2">内容：
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <textarea name="entity.ContentEn"><%=string.IsNullOrEmpty(((Domain.Article)this.ViewData["entity"]).ContentEn) ?
+                                                        string.Empty : ((Domain.Article)this.ViewData["entity"]).ContentEn.Replace("\r", string.Empty).Replace("\n", string.Empty).Replace("'", "\\'") %></textarea>
+                            <%--<%=Html.FckEditor("entity.ContentEn", string.IsNullOrEmpty(((Domain.Article)this.ViewData["entity"]).ContentEn) ?
+                                                        string.Empty : ((Domain.Article)this.ViewData["entity"]).ContentEn.Replace("\r", string.Empty).Replace("\n", string.Empty).Replace("'", "\\'"), 
+        new FckConfig { Width="100%", Height="400", Skin= FckSkin.Office2003, ToolbarSet= FckToolbarSet.Default })%>--%>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+        <div region="south" border="false" style="text-align: right; height: 40px; line-height: 30px; background-color: #f7f7f7;">
+            <table style="width: 100%">
+                <tr>
+                    <td></td>
+                    <td style="text-align: right">
+                        <a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit();">提交</a>
+                        <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="location.href = document.referrer;">返回</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
