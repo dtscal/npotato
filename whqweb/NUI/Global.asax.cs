@@ -25,15 +25,53 @@ namespace NUI
             filters.Add(new HandleErrorAttribute());
         }
 
-        public static void RegisterRoutes(RouteCollection routes)
+        protected override void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            var guidRegx = @"^\w{8}-(\w{4}-){3}\w{12}$";
 
-//            routes.MapRoute(
-//                "Default", // Route name
-//                "{controller}/{action}/{id}", // URL with parameters
-//                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-//            );
+            routes.MapRoute(
+                "Admin", // 路由名称
+                "Admin", // 带有参数的 URL
+                new { controller = "Home", action = "Admin" } // 参数默认值
+            );
+
+            routes.MapRoute(
+                "LogOn", // 路由名称
+                "LogOn", // 带有参数的 URL
+                new { controller = "Home", action = "LogOn" } // 参数默认值
+            );
+
+            routes.MapRoute(
+                "CategoryById", // 路由名称
+                "{forumId}/{id}/Category.html", // 带有参数的 URL
+                new { controller = "Category", action = "List", id = UrlParameter.Optional }, // 参数默认值
+                new { forumId = guidRegx, id = guidRegx }
+            );
+
+            routes.MapRoute(
+                "Category", // 路由名称
+                "{forumId}/Category.html", // 带有参数的 URL
+                new { controller = "Category", action = "List" }, // 参数默认值
+                new { forumId = guidRegx }
+            );
+
+            routes.MapRoute(
+                "Article", // 路由名称
+                "Article/{id}.html", // 带有参数的 URL
+                new { controller = "Article", action = "Get" }, // 参数默认值
+                new { id = guidRegx }
+            );
+
+            routes.MapRoute(
+                "Index", // 路由名称
+                "Index.html", // 带有参数的 URL
+                new { controller = "Home", action = "Index" } // 参数默认值
+            );
+
+
+
+            base.RegisterRoutes(routes);
 
         }
 
@@ -47,15 +85,6 @@ namespace NUI
             base.Application_Start(sender, e);
 
             this.SetInitAccount();
-
-
-            AreaRegistration.RegisterAllAreas();
-
-            // Use LocalDB for Entity Framework by default
-            Database.DefaultConnectionFactory = new SqlConnectionFactory(@"Data Source=(localdb)\v11.0; Integrated Security=True; MultipleActiveResultSets=True");
-
-            RegisterGlobalFilters(GlobalFilters.Filters);
-            RegisterRoutes(RouteTable.Routes);
         }
 
         /// <summary>
