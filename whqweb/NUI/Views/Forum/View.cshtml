@@ -1,7 +1,7 @@
-﻿@model dynamic
-@{
+﻿@{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_LayoutMg.cshtml";
+    var f = (Domain.Forum)this.ViewData["entity"];
 }
 @section mg{
     <script language="javascript" type="text/javascript">
@@ -28,14 +28,14 @@
         <div region="center">
 
             <form id="form" method="post" action="/Forum/Save/" enctype="application/x-www-form-urlencoded">
-                <input type="hidden" id="id" name="entity.ID" value="@((dynamic)this.ViewData["entity"]).ID" />
+                <input type="hidden" id="id" name="entity.ID" value="@f.ID" />
                 <table style="width: 100%">
                     <tr>
                         <td style="text-align: right; width: 120px;">排序顺序(<font color="red">*</font>)：
                         </td>
                         <td>
                             <input type="text" class="easyui-validatebox" required="true" name="entity.OrderNo"
-                                value="@((dynamic)this.ViewData["entity"]).OrderNo" />
+                                value="@f.OrderNo" />
                         </td>
                     </tr>
                     <tr>
@@ -43,7 +43,7 @@
                         </td>
                         <td>
                             <input type="text" class="easyui-validatebox" required="true" name="entity.Name"
-                                value="@((dynamic)this.ViewData["entity"]).Name" />
+                                value="@f.Name" />
                         </td>
                     </tr>
                     <tr>
@@ -51,7 +51,7 @@
                         </td>
                         <td>
                             <input type="text" class="easyui-validatebox" required="true" name="entity.NameEn"
-                                value="@((dynamic)this.ViewData["entity"]).NameEn" />
+                                value="@f.NameEn" />
                         </td>
                     </tr>
                     <tr>
@@ -59,10 +59,18 @@
                         </td>
 
                         <td>
-                            <input type="checkbox" name="entity.IsEnabled" 
-                                @((dynamic) this.ViewData["entity"]).IsEnabled ? "checked=\"checked\"" : string.Empty
-                                value="@((dynamic)this.ViewData["entity"]).IsEnabled" 
-                                onclick="this.value = checked == 'checked' || 'true';" />
+                            @{
+                                if (f.IsEnabled)
+                                {
+                                    <input type="checkbox" name="entity.IsEnabled" checked="checked" value="@f.IsEnabled" 
+                                           onclick=" this.value = checked == 'checked' || 'true'; " />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="entity.IsEnabled" value="@f.IsEnabled" 
+                                           onclick=" this.value = checked == 'checked' || 'true'; " />
+                                }
+                            }
                         </td>
 
                     </tr>
@@ -70,10 +78,17 @@
                         <td style="text-align: right; width: 120px;">商品板块(<font color="red">*</font>)：
                         </td>
                         <td>
-                            <input type="checkbox" name="entity.IsProuduct" 
-                                @((dynamic) this.ViewData["entity"]).isProduct ? "checked=\"checked\"" : string.Empty
-                                value="@((dynamic)this.ViewData["entity"]).IsProuduct" 
-                                onclick="this.value = checked == 'checked' || 'true';" />
+                            @{
+                                if (f.IsProuduct)
+                                {
+                                    <input type="checkbox" name="entity.IsProuduct" checked="checked" value="@f.IsProuduct" onclick="this.value = checked == 'checked' || 'true';" />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="entity.IsProuduct" value="@f.IsProuduct" onclick="this.value = checked == 'checked' || 'true';" />
+                                }
+                            }
+                            
                         </td>
                     </tr>
                 </table>

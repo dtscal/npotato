@@ -1,8 +1,12 @@
-﻿@model dynamic
+﻿@{
+                             Domain.UserInfo user = (Domain.UserInfo) this.ViewData["User"];
+                         }
+
 @{
     ViewBag.Title = "Admin";
     Layout = "~/Views/Shared/_LayoutMg.cshtml";
 }
+
 @section mg{
 <style type="text/css">
         td.amrow
@@ -121,6 +125,7 @@
 
     </script>
 }
+
     <div region="north" border="false" style="height: 100px; background-color: #E0ECFF;">
         <div style="height: 80px; clear: both;">
             <div style="width: 150px;">
@@ -131,7 +136,9 @@
         </div>
         <div style="height: 20px;text-align:right">
         <div>
-        登陆用户：<a href="#" onclick="">@((dynamic)ViewData["User"]).Name</a>&nbsp;&nbsp;
+        登陆用户：<a href="#">
+            @user.Name
+             </a>&nbsp;&nbsp;
                 <a href="#" onclick="showChangePasswordWin();">修改密码</a>&nbsp;&nbsp; <a href="/Home/LogOut/">
                     退出系统</a>
                     &nbsp;&nbsp;<a href="http://member.webweb.com/" target="_blank">空间管理</a>&nbsp;&nbsp;
@@ -162,14 +169,14 @@
                     <div title="@item.Key.Name" style="overflow: auto;">
                         <table border="0" cellspacing="1" cellpadding="1" align="center">
                             @{
-                                foreach (var value in item)
-                                {
+                    foreach (var value in item)
+                    {
                                     <tr>
                                         <td height="23">
                                             <a href="#" onclick=" showArticle('@value.ID', $(this).html()); ">@value.Name</a>
                                         </td>
                                     </tr>
-                                }
+                    }
                             }
                         </table>
                     </div>
@@ -242,8 +249,7 @@
                         </tr>
                         <tr bgcolor="#f9fbf0">
                             <td width="50%">
-                                &nbsp;<b>开机运行时长</b>：@(System.Environment.TickCount/3600000).ToString("N2")
-                                小时
+                                &nbsp;<b>开机运行时长</b>：@(System.Environment.TickCount / 3600000)小时
                             </td>
                             <td width="50%">
                                 <b>&nbsp;服务器时间：</b>@DateTime.Now.ToString()
