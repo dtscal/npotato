@@ -84,16 +84,13 @@ namespace NUI.Controllers
             return Json(new { IsSuccess = true, Message = "删除成功" });
         }
 
-        public ActionResult Product()
-        {
-            return View();
-        }
+        
 
         [ChildActionOnly]
         public ActionResult Menu()
         {
-            //var f = ForumManager.LoadAllEnable().ToList();
-            return PartialView();
+            var f = ForumManager.LoadAllEnable().ToList();
+            return PartialView(f);
         }
     }
 }
