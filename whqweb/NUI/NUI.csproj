@@ -871,7 +871,7 @@
     <Content Include="Views\Forum\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Forum\Product.cshtml" />
+    <Content Include="Views\Category\Product.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Category\Index.cshtml" />

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Drawing.Imaging;
+using System.Collections;
 
 namespace NUI.Controllers
 {
@@ -20,10 +21,26 @@ namespace NUI.Controllers
 
         public IForumManager ForumManager { get; set; }
 
+        public IArticleManager ArticleManager { get; set; }
+        
+        [OutputCache(Duration = 1800)]
         public ActionResult Index()
         {
-            var list = this.ForumManager.LoadAllEnable();
-            this.ViewData["ForumList"] = list;
+            //各种5条最新商品
+            var f1 = ForumManager.LoadAllEnable().Where(f=>f.IsProuduct==true);
+            
+            var alist = new List<Domain.Article>();
+            foreach (var forum in f1)
+            {
+                var c1 = forum.CategoryList.Where(c=>c.IsEnabled==true);
+                foreach (var category in c1)
+                {
+                    var p = ArticleManager.LoadAllEnable(category.ID).Take(5).ToList();
+                    p.ForEach(alist.Add);
+                }
+            }
+
+            ViewData["topar"] = alist;
 
             return View();
         }
@@ -43,6 +60,7 @@ namespace NUI.Controllers
 
             var list = this.CategoryManager.LoadAllEnable().Where(w => w.CategoryType == "列表");
             this.ViewData["CategoryList"] = list.ToList();
+            
             return View();
         }
 

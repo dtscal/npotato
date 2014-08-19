@@ -5,6 +5,7 @@
     <property name="UserInfoManager" ref="Manager.UserInfo"/>
     <property name="CategoryManager" ref="Manager.Category"/>
     <property name="ForumManager" ref="Manager.Forum"/>
+    <property name="ArticleManager" ref="Manager.Article"/>
   </object>
 
   <object type="NUI.Controllers.UserInfoController, NUI" singleton="false" >

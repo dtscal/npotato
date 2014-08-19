@@ -57,6 +57,13 @@ namespace NUI
             );
 
             routes.MapRoute(
+                "ProductList",
+                "{forumId}/PList.html",
+                new { controller = "Category", action = "Product"},
+                new {forumId = guidRegx}
+            );
+
+            routes.MapRoute(
                 "Article", // 路由名称
                 "Article/{id}.html", // 带有参数的 URL
                 new { controller = "Article", action = "Get" }, // 参数默认值

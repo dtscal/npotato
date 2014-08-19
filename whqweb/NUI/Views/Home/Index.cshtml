@@ -1,7 +1,9 @@
 ﻿@{
-    ViewBag.Title = "java";
-    
+    ViewBag.Title = "大平";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var language = HttpContext.Current.Session["isCN"];
+    var isCN = language == null || language.ToString() != false.ToString();
+    
 }
 @section home{
     <!-- start slider -->
@@ -121,50 +123,25 @@
     <div class="main_bg1">
         <div class="wrap">
             <div class="main1">
-                <h2>最新产品</h2>
+                <h2>@(isCN?"最新产品":"Latest Product")</h2>
             </div>
         </div>
     </div>
     
     <!--start-cursual-->
     <div class="wrap">
-        <!--start-img-cursual-->
+        <!--最后发布的商品的前10件商品的第一张主图和商品地址-->
         <div id="owl-demo" class="owl-carousel">
-            <div class="item" onclick="location.href='details.html';">
-                <div class="cau_left">
-                    <img class="lazyOwl" data-src="images/c1.jpg" alt="Lazy Owl Image">
-                </div>
-            </div>
-            <div class="item" onclick="location.href='details.html';">
-                <div class="cau_left">
-                    <img class="lazyOwl" data-src="images/c2.jpg" alt="Lazy Owl Image">
-                </div>
-            </div>
-            <div class="item" onclick="location.href='details.html';">
-                <div class="cau_left">
-                    <img class="lazyOwl" data-src="images/c3.jpg" alt="Lazy Owl Image">
-                </div>
-            </div>
-            <div class="item" onclick="location.href='details.html';">
-                <div class="cau_left">
-                    <img class="lazyOwl" data-src="images/c2.jpg" alt="Lazy Owl Image">
-                </div>
-            </div>
-            <div class="item" onclick="location.href='details.html';">
-                <div class="cau_left">
-                    <img class="lazyOwl" data-src="images/c1.jpg" alt="Lazy Owl Image">
-                </div>
-            </div>
-            <div class="item" onclick="location.href='details.html';">
-                <div class="cau_left">
-                    <img class="lazyOwl" data-src="images/c2.jpg" alt="Lazy Owl Image">
-                </div>
-            </div>
-            <div class="item" onclick="location.href='details.html';">
-                <div class="cau_left">
-                    <img class="lazyOwl" data-src="images/c3.jpg" alt="Lazy Owl Image">
-                </div>
-            </div>
+            @{
+                foreach (var p in (this.ViewData["topar"] as IList<Domain.Article>))
+                {
+                    <div class="item" onclick="location.href='@p.ID';">
+                        <div class="cau_left">
+                            <img class="lazyOwl" data-src="@p.PImagea" alt="@(isCN?p.Keyword:p.KeywordEn)">
+                        </div>
+                    </div>
+                }
+            }
         </div>
         <!--//End-img-cursual-->
     </div>

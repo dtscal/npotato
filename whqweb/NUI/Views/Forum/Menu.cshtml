@@ -1,28 +1,46 @@
 ﻿@model IEnumerable<Domain.Forum>  
 <ul>
-    <li class="active"><a href="">主页</a></li>
-@*    @{*@
-@*        foreach (var f in Model)*@
-@*        {*@
-@*            <li>*@
-@*                <a href="@f.ID/Category.html">@f.Name</a>*@
-@*                @{*@
-@*                    var categorys = f.CategoryList.Where(w => w.CategoryType == "列表");*@
-@*                    if (categorys.Any())*@
-@*                    {*@
-@*                        <ul style="display: none;" class="sub_menu">*@
-@*                        <li class="arrow_top"></li>*@
-@*                        @{*@
-@*                            foreach (var c in categorys)*@
-@*                            {*@
-@*                               <li><a href="@c.ID">@c.Name</a></li>*@
-@*                            }*@
-@*                        }*@
-@*                        </ul>*@
-@*                    }*@
-@*                }*@
-@*            </li>*@
-@*        }*@
-@*    }*@
-    <li><a href="@Url.Action("Contact","Home")">联系我们</a></li>
+    @{
+        var language = HttpContext.Current.Session["isCN"];
+        var isCN = language == null || language.ToString() != false.ToString();
+    }
+    <li class="active"><a href="/Home/Index">@(isCN?"主页":"Home")</a></li>
+    @{
+        foreach (var f in Model)
+        {
+            <li>
+                @{
+                    if (f.IsProuduct)
+                    {
+                        <a href="/@f.ID/PList.html">@(isCN ? f.Name : f.NameEn)</a>
+                    }
+                    else
+                    {
+                        <a href="/@f.ID/Category.html">@(isCN ? f.Name : f.NameEn)</a>
+                    }
+                    var categorys = f.CategoryList.Where(w => w.CategoryType == "列表");
+                    if (categorys.Any())
+                    {
+                        <ul style="display: none;" class="sub_menu">
+                            <li class="arrow_top"></li>
+                            @{
+                                foreach (var c in categorys)
+                                {
+                                    if (c.Forum.IsProuduct)
+                                    {
+                                        <li><a href="/@c.ID/PList.html">@(isCN ? c.Name : c.NameEn)</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a href="/@c.ID/Category.html">@(isCN?c.Name:c.NameEn)</a></li>
+                                    }
+                                }
+                            }
+                        </ul>
+                    }
+                }
+            </li>
+        }
+    }
+    <li><a href="/Home/Contact">@(isCN?"联系我们":"Contact")</a></li>
 </ul>
