@@ -89,5 +89,11 @@ namespace NUI.Controllers
             return View();
         }
 
+        [ChildActionOnly]
+        public ActionResult Menu()
+        {
+            //var f = ForumManager.LoadAllEnable().ToList();
+            return PartialView();
+        }
     }
 }

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Domain.Forum>  
+<ul>
+    <li class="active"><a href="">主页</a></li>
+@*    @{*@
+@*        foreach (var f in Model)*@
+@*        {*@
+@*            <li>*@
+@*                <a href="@f.ID/Category.html">@f.Name</a>*@
+@*                @{*@
+@*                    var categorys = f.CategoryList.Where(w => w.CategoryType == "列表");*@
+@*                    if (categorys.Any())*@
+@*                    {*@
+@*                        <ul style="display: none;" class="sub_menu">*@
+@*                        <li class="arrow_top"></li>*@
+@*                        @{*@
+@*                            foreach (var c in categorys)*@
+@*                            {*@
+@*                               <li><a href="@c.ID">@c.Name</a></li>*@
+@*                            }*@
+@*                        }*@
+@*                        </ul>*@
+@*                    }*@
+@*                }*@
+@*            </li>*@
+@*        }*@
+@*    }*@
+    <li><a href="@Url.Action("Contact","Home")">联系我们</a></li>
+</ul>
