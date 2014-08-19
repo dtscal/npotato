@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_LayoutMg.cshtml";
+    var u = (Domain.UserInfo) this.ViewData["entity"];
 }
 @section mg{
 <script language="javascript" type="text/javascript">
@@ -48,17 +49,27 @@
             用户信息
         </div>
         <div region="center">
-            <% var isInsert = ((dynamic)this.ViewData["entity"]).ID == Guid.Empty; %>
+            @{
+                var isInsert = u.ID == Guid.Empty;
+            }
             <form id="form" method="post" action="/UserInfo/Save/" enctype="application/x-www-form-urlencoded">
-            <input type="hidden" id="id" name="entity.ID" value="<%= ((dynamic)this.ViewData["entity"]).ID %>" />
+            <input type="hidden" id="id" name="entity.ID" value="@u.ID" />
             <table style="width: 100%">
                 <tr>
                     <td style="text-align: right; width: 120px;">
                         账号(<font color="red">*</font>)：
                     </td>
                     <td>
-                        <input id="iptAccount" type="text" class="easyui-validatebox" required="true" name="entity.Account"
-                            <%= isInsert?string.Empty:"readonly=\"readonly\""  %> value="<%= ((dynamic)this.ViewData["entity"]).Account %>" />
+                        @{
+                            if (isInsert)
+                            {
+                                <input id="iptAccount" type="text" class="easyui-validatebox" required="true" name="entity.Account" value="@u.Account" />
+                            }
+                            else
+                            {
+                                <input id="iptAccount" readonly="readonly" type="text" class="easyui-validatebox" required="true" name="entity.Account" value="@u.Account" />
+                            }
+                        }
                     </td>
                 </tr>
                 <tr>
@@ -67,7 +78,7 @@
                     </td>
                     <td>
                         <input type="text" class="easyui-validatebox" required="true" name="entity.Name"
-                            value="<%= ((dynamic)this.ViewData["entity"]).Name %>" />
+                            value="@u.Name" />
                     </td>
                 </tr>
                 <tr>
@@ -76,30 +87,33 @@
                     </td>
                     <td>
                         <select name="entity.IsEnabled">
-                            <% if (((dynamic)this.ViewData["entity"]).IsEnabled)
-                               { %>
-                            <option selected="selected" value="true">激活</option>
-                            <option value="false">禁用</option>
-                            <% }
-                               else
-                               {%>
-                            <option value="true">激活</option>
-                            <option selected="selected" value="false">禁用</option>
-                            <%  } %>
+                            @{
+                                if (u.IsEnabled)
+                                {
+                                    <option selected="selected" value="true">激活</option>
+                                    <option value="false">禁用</option>
+                                }
+                                else
+                                {
+                                     <option value="true">激活</option>
+                                     <option selected="selected" value="false">禁用</option>
+                                }
+                            }
                         </select>
                     </td>
                 </tr>
-                <% if (!isInsert)
-                   { %>
-                <tr>
+                @{
+                    if (!isInsert)
+                    {<tr>
                     <td style="text-align: right; width: 120px;">
                         创建时间：
                     </td>
                     <td>
-                        <%=  ((dynamic)this.ViewData["entity"]).CreateTime.ToString("yyyy-MM-dd")%>
+                        @u.CreateTime.ToString("yyyy-MM-dd")%>
                     </td>
                 </tr>
-                <% } %>
+                    }
+                }
             </table>
             </form>
         </div>

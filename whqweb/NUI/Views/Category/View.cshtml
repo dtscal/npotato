@@ -1,11 +1,13 @@
 ﻿@{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_LayoutMg.cshtml";
+    var c = (Domain.Category) this.ViewData["entity"];
+    var forumList = (System.Collections.Generic.IList<Domain.Forum>)this.ViewData["ForumList"];
 }
 @section mg{
     <script type="text/javascript" src="@Url.Content("~/fckeditor2.3.6/fckeditor.js")"></script>
     <script language="javascript" type="text/javascript">
-
+        
         function submit() {
             $('#form').form('submit', {
                 onSubmit: function () {
@@ -19,6 +21,21 @@
             });
         }
 
+        window.onload = function() {
+            var sBasePath = '@Url.Content("~/fckeditor2.3.6/")';
+            oFCKeditor = new FCKeditor('entity.Content');
+            oFCKeditor.BasePath = sBasePath;
+            oFCKeditor.Width = '100%';
+            oFCKeditor.Height = 400;
+            oFCKeditor.ReplaceTextarea();
+
+            var pFCKeditor = new FCKeditor('entity.ContentEn');
+            pFCKeditor.BasePath = sBasePath;
+            pFCKeditor.Width = '100%';
+            pFCKeditor.Height = 400;
+            pFCKeditor.ReplaceTextarea();
+        };
+        
     </script>
 }
 <div region="center" border="false" fit="true">
@@ -33,7 +50,7 @@
                 line-height: 20px; font-size: large;color: White;background-color:#6699FF">
                 主要信息
             </div>
-            <input type="hidden" id="id" name="entity.ID" value="<%= ((Domain.Category)this.ViewData["entity"]).ID %>" />
+            <input type="hidden" id="id" name="entity.ID" value="@c.ID" />
             <table>
                 <tr>
                     <td style="text-align: right; width: 120px;">
@@ -41,7 +58,7 @@
                     </td>
                     <td>
                         <input type="text" class="easyui-validatebox" required="true" name="entity.OrderNo"
-                            value="<%= ((Domain.Category)this.ViewData["entity"]).OrderNo %>" />
+                            value="@c.OrderNo" />
                     </td>
                 </tr>
                 <tr>
@@ -50,7 +67,7 @@
                     </td>
                     <td>
                         <input type="text" class="easyui-validatebox" required="true" name="entity.Name"
-                            value="<%= ((Domain.Category)this.ViewData["entity"]).Name %>" />
+                            value="@c.Name" />
                     </td>
                 </tr>
                 <tr>
@@ -59,7 +76,7 @@
                     </td>
                     <td>
                         <input type="text" class="easyui-validatebox" required="true" name="entity.NameEn"
-                            value="<%= ((Domain.Category)this.ViewData["entity"]).NameEn %>" />
+                            value="@c.NameEn" />
                     </td>
                 </tr>
                 <tr>
@@ -68,18 +85,19 @@
                     </td>
                     <td>
                         <select name="entity.CategoryType" class="easyui-combobox" required="true">
-                            <%  if (string.IsNullOrEmpty(((Domain.Category)this.ViewData["entity"]).CategoryType)
-                                        || ((Domain.Category)this.ViewData["entity"]).CategoryType == "内容"
-                                       || ((Domain.Category)this.ViewData["entity"]).CategoryType != "列表")
-                                { %>
-                            <option value="内容" selected="selected">内容</option>
-                            <option value="列表">列表</option>
-                            <% }
+                            @{
+                                if (string.IsNullOrEmpty(c.CategoryType) || c.CategoryType == "内容" || c.CategoryType != "列表")
+                                {
+                                    <option value="内容" selected="selected">内容</option>
+                                    <option value="列表">列表</option>
+                                }
                                 else
-                                { %>
-                            <option value="内容">内容</option>
-                            <option value="列表" selected="selected">列表</option>
-                            <% } %>
+                                {
+                                    <option value="内容">内容</option>
+                                    <option value="列表" selected="selected">列表</option>
+                                }
+
+                            }
                         </select>
                     </td>
                 </tr>
@@ -89,12 +107,19 @@
                     </td>
                     <td>
                         <select id="cc" class="easyui-combobox" name="forumId" required="true">
-                            <% foreach (dynamic item in this.ViewData["ForumList"] as IEnumerable)
-                               {%>
-                            <option value="<%= item.ID %>" <%= (((dynamic)this.ViewData["entity"]).Forum==null 
-                                        || ((dynamic)this.ViewData["entity"]).Forum.Name!=item.Name )?string.Empty:"selected=\"selected\"" %>>
-                                <%= item.Name %></option>
-                            <% } %>
+                            @{
+                                foreach (var f in forumList)
+                                {
+                                    if (c.Forum == null || c.Forum.Name != f.Name)
+                                    {
+                                        <option value="@f.ID">@f.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@f.ID" selected="selected">@f.Name</option>
+                                    }
+                                }
+                            }
                         </select>
                     </td>
                 </tr>
@@ -103,9 +128,17 @@
                         显示(<font color="red">*</font>)：
                     </td>
                     <td>
-                        <input type="checkbox" name="entity.IsEnabled" <%= ((Domain.Category)this.ViewData["entity"]).IsEnabled?"checked=\"checked\"":string.Empty
-                                %> value="<%= ((Domain.Category)this.ViewData["entity"]).IsEnabled %>" onclick="this.value=checked=='checked'||'true';" />
-                    </td>
+                        @{
+                            if (c.IsEnabled)
+                            {
+                                <input type="checkbox" name="entity.IsEnabled" checked="checked" value="@c.IsEnabled" onclick="this.value = checked == 'checked' || 'true';" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" name="entity.IsEnabled" value="@c.IsEnabled" onclick="this.value = checked == 'checked' || 'true';" />
+                            }
+                        }
+                     </td>
                 </tr>
             </table>
         </div>
@@ -121,7 +154,7 @@
                     </td>
                     <td>
                         <input type="text" style="width: 300px;"
-                        class="easyui-validatebox" name="entity.Keyword" value="<%= ((Domain.Category)this.ViewData["entity"]).Keyword %>" />
+                        class="easyui-validatebox" name="entity.Keyword" value="@c.Keyword" />
                     </td>
                 </tr>
                 <tr>
@@ -130,7 +163,7 @@
                     </td>
                     <td>
                         <textarea style="width: 300px;"
-                        class="easyui-validatebox" name="entity.Description"><%= ((Domain.Category)this.ViewData["entity"]).Description %></textarea>
+                        class="easyui-validatebox" name="entity.Description">@c.Description</textarea>
                     </td>
                 </tr>
                 <tr>
@@ -140,9 +173,16 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <%=Html.FckEditor("entity.Content", string.IsNullOrEmpty(((Domain.Category)this.ViewData["entity"]).Content) ?
-                                                        string.Empty : ((Domain.Category)this.ViewData["entity"]).Content.Replace("\r", string.Empty).Replace("\n", string.Empty).Replace("'", "\\'"), 
-        new FckConfig { Width="100%", Height="400", Skin= FckSkin.Office2003, ToolbarSet= FckToolbarSet.Default })%>
+                        @{
+                            if (string.IsNullOrEmpty(c.Content))
+                            {
+                                <textarea name="entity.Content"></textarea>
+                            }
+                            else
+                            {
+                                <textarea name="entity.Content">@c.Content</textarea>
+                            }
+                        }
                     </td>
                 </tr>
             </table>
@@ -159,7 +199,7 @@
                     </td>
                     <td>
                         <input type="text" style="width: 300px;"
-                         class="easyui-validatebox" name="entity.KeywordEn" value="<%= ((Domain.Category)this.ViewData["entity"]).KeywordEn %>" />
+                         class="easyui-validatebox" name="entity.KeywordEn" value="@c.KeywordEn" />
                     </td>
                 </tr>
                 <tr>
@@ -168,7 +208,7 @@
                     </td>
                     <td>
                         <textarea style="width: 300px;"
-                        class="easyui-validatebox" name="entity.DescriptionEn"><%= ((Domain.Category)this.ViewData["entity"]).DescriptionEn %></textarea>
+                        class="easyui-validatebox" name="entity.DescriptionEn">@c.DescriptionEn</textarea>
                     </td>
                 </tr>
                 <tr>
@@ -178,15 +218,21 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <%=Html.FckEditor("entity.ContentEn", string.IsNullOrEmpty(((Domain.Category)this.ViewData["entity"]).ContentEn) ?
-                                                        string.Empty : ((Domain.Category)this.ViewData["entity"]).ContentEn.Replace("\r", string.Empty).Replace("\n", string.Empty).Replace("'", "\\'"), 
-        new FckConfig { Width="100%", Height="400", Skin= FckSkin.Office2003, ToolbarSet= FckToolbarSet.Default })%>
+                        @{
+                            if (string.IsNullOrEmpty(c.ContentEn))
+                            {
+                                <textarea name="entity.ContentEn"></textarea>
+                            }
+                            else
+                            {
+                                <textarea name="entity.ContentEn">@c.ContentEn</textarea>
+                            }
+                        }
                     </td>
                 </tr>
             </table>
         </div>
         </form>
-
         <div region="south" border="false" style="text-align: right; height: 40px; line-height: 30px;
             background-color: #f7f7f7;">
             <table style="width: 100%">
@@ -202,4 +248,4 @@
                 </tr>
             </table>
         </div>
-    </div>
+</div>

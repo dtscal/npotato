@@ -1,12 +1,13 @@
 ﻿@{
     ViewBag.Title = "Admin";
     Layout = "~/Views/Shared/_LayoutMg.cshtml";
+    var c = (Domain.Category) this.ViewData["entity"];
 }
 @section mg{
     <script type="text/javascript" language="javascript">
         $(function () {
             $('#grid').datagrid({
-                title: '<%= ((Domain.Category)this.ViewData["entity"]).Name %>信息',
+                title: '@c.Name-信息',
                 iconCls: 'icon-save',
                 nowrap: false,
                 striped: true,
@@ -17,7 +18,7 @@
                 fitColumns: true,
                 fit: true,
                 idField: 'ID',
-                queryParams: { categoryId: '<%= ((Domain.Category)this.ViewData["entity"]).ID %>' },
+                queryParams: { categoryId: '@c.ID' },
                 frozenColumns: [[
 	                { field: 'ID', checkbox: true }
 				]],
@@ -55,7 +56,7 @@
                     text: '添加',
                     iconCls: 'icon-add',
                     handler: function () {
-                        this.href = '/Article/View/?categoryId=<%= ((Domain.Category)this.ViewData["entity"]).ID %>';
+                        this.href = '/Article/View/?categoryId=@c.ID';
                     }
                 }, '-', {
                     id: 'btnUpdate',
@@ -65,7 +66,7 @@
 
                         var row = $('#grid').datagrid('getSelected');
                         if (row) {
-                            this.href = '/Article/View/' + row.ID + '/?categoryId=<%= ((Domain.Category)this.ViewData["entity"]).ID %>';
+                            this.href = '/Article/View/' + row.ID + '/?categoryId=@c.ID';
                         }
                         else {
                             $.messager.alert('提示', '请选择要修改的数据');

@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_LayoutMg.cshtml";
+    var r = (Domain.Review) this.ViewData["review"];
 }
 @section mg{
 <script language="javascript" type="text/javascript">
@@ -27,28 +28,28 @@
         <div region="center">
 
             <form id="form" method="post" action="/Review/Save/" enctype="application/x-www-form-urlencoded">
-                <input type="hidden" id="id" name="id" value="<%= ((dynamic)this.ViewData["review"]).ID %>" />
-                <input type="hidden" name="articleId" value="<%= ((dynamic)this.ViewData["review"]).Article.ID %>"/>
+                <input type="hidden" id="id" name="id" value="@r.ID" />
+                <input type="hidden" name="articleId" value="@r.Article.ID"/>
                 <table style="width: 100%">
                     <tr>
                         <td style="text-align: right; width: 120px;">商品或文章标题：
                         </td>
                         <td>
-                            <label><%= ((dynamic)this.ViewData["review"]).Article.Name %></label>
+                            <label>@r.Article.Name</label>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 120px;">昵称：
                         </td>
                         <td>
-                            <label><%= ((dynamic)this.ViewData["review"]).Name %></label>
+                            <label>@r.Name</label>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 120px;">回复邮件：
                         </td>
                         <td>
-                            <label><%= ((dynamic)this.ViewData["review"]).Email %></label>
+                            <label>@r.Email</label>
                         </td>
                     </tr>
                     <tr>
@@ -56,10 +57,16 @@
                         </td>
 
                         <td>
-                            <input type="checkbox" name="isEnabled" 
-                                <%= ((dynamic)this.ViewData["review"]).IsEnabled?"checked=\"checked\"":string.Empty%>
-                                value="<%= ((dynamic)this.ViewData["review"]).IsEnabled %>" 
-                                onclick="this.value = checked == 'checked' || 'true';" />
+                            @{
+                                if (r.IsEnabled)
+                                {
+                                    <input type="checkbox" name="isEnabled" checked="checked" value="@r.IsEnabled"  onclick="this.value = checked == 'checked' || 'true';" />
+                                }
+                                else
+                                {
+                                    <input type="checkbox" name="isEnabled" value="@r.IsEnabled"  onclick="this.value = checked == 'checked' || 'true';" />
+                                }
+                            }
                         </td>
 
                     </tr>
@@ -67,28 +74,37 @@
                         <td style="text-align: right; width: 120px;">评分：
                         </td>
                         <td>
-                            <label><%= ((dynamic)this.ViewData["review"]).Rating %></label>
+                            <label>@r.Rating </label>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 120px;">内容：
                         </td>
                         <td>
-                            <label><%= ((dynamic)this.ViewData["review"]).Content %></label>
+                            <label>@r.Content</label>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 120px;">留言时间：
                         </td>
                         <td>
-                            <label><%= ((dynamic)this.ViewData["review"]).ReviewDate %></label>
+                            <label>@r.ReviewDate</label>
                         </td>
                     </tr>
                     <tr>
                         <td style="text-align: right; width: 120px;">回复：(<font color="red">*</font>)：
                         </td>
                         <td>
-                            <textarea name="reply" rows="5" cols="1" style="height: 178px; width: 777px"></textarea>
+                            @{
+                                if (string.IsNullOrEmpty(r.Reply))
+                                {
+                                    <textarea name="reply" rows="5" cols="1" style="height: 178px; width: 777px"></textarea>
+                                }
+                                else
+                                {
+                                    <textarea name="reply" rows="5" cols="1" style="height: 178px; width: 777px">@r.Reply</textarea>
+                                }
+                            }
                         </td>
                     </tr>
                 </table>
