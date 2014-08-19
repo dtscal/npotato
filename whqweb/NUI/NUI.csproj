@@ -839,6 +839,7 @@
     <Content Include="Scripts\productviewgallery.js" />
     <Content Include="Scripts\responsive.menu.js" />
     <Content Include="UserFiles\60cb6b01-42b5-4cda-b0ce-0e08592f1fe9\1204720678.jpg" />
+    <Content Include="Views\FckEditor\Browser.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -961,6 +962,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\UserInfo\View.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Forum\Menu.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
