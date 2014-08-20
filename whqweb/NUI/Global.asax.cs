@@ -1,12 +1,9 @@
-﻿using Service;
+﻿using Domain;
+using Service;
 using Spring.Context;
 using Spring.Context.Support;
 using Spring.Web.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -92,6 +89,7 @@ namespace NUI
             base.Application_Start(sender, e);
 
             this.SetInitAccount();
+            this.InitHomeSetter();
         }
 
         /// <summary>
@@ -116,6 +114,72 @@ namespace NUI
                 };
 
                 manger.Save(user);
+            }
+        }
+
+        /// <summary>
+        /// 初始化首页配置项
+        /// </summary>
+        private void InitHomeSetter()
+        {
+            IApplicationContext cxt = ContextRegistry.GetContext();
+            ISetterManager SetterManager = (ISetterManager)cxt.GetObject("Manager.Setter");
+
+            //四张海报轮播
+            const string lba = "home_key_slider_a";
+            const string lbb = "home_key_slider_b";
+            const string lbc = "home_key_slider_c";
+            const string lbd = "home_key_slider_d";
+
+            var slidera = SetterManager.Get(lba);
+            var sliderb = SetterManager.Get(lbb);
+            var sliderc = SetterManager.Get(lbc);
+            var sliderd = SetterManager.Get(lbd);
+
+            if (slidera == null)
+            {
+                 slidera = new Setter{NKey = lba,ID = Guid.NewGuid()};
+                SetterManager.Save(slidera);
+            }
+            if (sliderb == null)
+            {
+                 sliderb = new Setter{NKey = lbb,ID = Guid.NewGuid()};
+                SetterManager.Save(sliderb);
+            }
+            if (sliderc == null)
+            {
+                sliderc = new Setter { NKey = lbc, ID = Guid.NewGuid() };
+                SetterManager.Save(sliderc);
+            }
+            if (sliderd == null)
+            {
+                sliderd = new Setter { NKey = lbd, ID = Guid.NewGuid() };
+                SetterManager.Save(sliderd);
+            }
+
+            //三张类别图片
+            const string ctga = "home_key_category_a";
+            const string ctgb = "home_key_category_b";
+            const string ctgc = "home_key_category_c";
+
+            var categorya = SetterManager.Get(ctga);
+            var categoryb = SetterManager.Get(ctgb);
+            var categoryc = SetterManager.Get(ctgc);
+
+            if (categorya == null)
+            {
+                categorya = new Setter { NKey = ctga, ID = Guid.NewGuid() };
+                SetterManager.Save(categorya);
+            }
+            if (categoryb == null)
+            {
+                categoryb = new Setter { NKey = ctgb, ID = Guid.NewGuid() };
+                SetterManager.Save(categoryb);
+            }
+            if (categoryc == null)
+            {
+                categoryc = new Setter { NKey = ctgc, ID = Guid.NewGuid() };
+                SetterManager.Save(categoryc);
             }
         }
 

@@ -68,12 +68,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implement\ReviewRepository.cs" />
+    <Compile Include="Implement\SetterRepository.cs" />
     <Compile Include="Implement\UserInfoRepository.cs" />
     <Compile Include="Implement\ForumRepository.cs" />
     <Compile Include="Implement\ArticleRepository.cs" />
     <Compile Include="Implement\CategoryRepository.cs" />
     <Compile Include="IRepository`1.cs" />
     <Compile Include="IReviewRepository.cs" />
+    <Compile Include="ISetterRepository.cs" />
     <Compile Include="IUserInfoRepository.cs" />
     <Compile Include="RepositoryBase`1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

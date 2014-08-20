@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Domain"
+                   namespace="Domain">
+
+  <class name="Setter" table="T_Setter">
+    <cache usage="read-write"/>
+    <id name="ID" type="Guid">
+      <column name="SetterID" index="PK_Setter"/>
+      <generator class="assigned" />
+    </id>
+
+    <!--键-->
+    <property name="NKey" type="string">
+      <column name="NKey" length="50" not-null="true"/>
+    </property>
+
+    <!--第一个值-->
+    <property name="Valuea" type="string">
+      <column name="Valuea" length="128" not-null="false"/>
+    </property>
+
+    <!--第二个值-->
+    <property name="Valueb" type="string">
+      <column name="Valueb" length="256" not-null="false"/>
+    </property>
+
+    <!--第三个值-->
+    <property name="Valuec" type="string">
+      <column name="Valuec" length="512" not-null="false"/>
+    </property>
+    
+    <!--第四个值-->
+    <property name="Valued" type="string">
+      <column name="Valued" length="512" not-null="false"/>
+    </property>
+
+    <!--第五个值-->
+    <property name="Valuee" type="string">
+      <column name="Valuee" length="512" not-null="false"/>
+    </property>
+    
+  </class>
+
+</hibernate-mapping>

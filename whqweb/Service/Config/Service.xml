@@ -40,6 +40,14 @@
       </object>
     </property>
   </object>
+
+  <object id="Manager.Setter" parent="BaseTransactionManager">
+    <property name="Target">
+      <object type="Service.Implement.SetterManager, Service">
+        <property name="CurrentRepository" ref="Repository.Setter"/>
+      </object>
+    </property>
+  </object>
   
 </objects>
 

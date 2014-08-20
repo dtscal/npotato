@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using System.IO;
 using System.Web.Security;
+using Domain;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -22,13 +23,14 @@ namespace NUI.Controllers
         public IForumManager ForumManager { get; set; }
 
         public IArticleManager ArticleManager { get; set; }
-        
-        [OutputCache(Duration = 1800)]
+
+        public ISetterManager SetterManager { get; set; }
+
+        [OutputCache(Duration = 20)]
         public ActionResult Index()
         {
             //各种5条最新商品
             var f1 = ForumManager.LoadAllEnable().Where(f=>f.IsProuduct==true);
-            
             var alist = new List<Domain.Article>();
             foreach (var forum in f1)
             {
@@ -40,7 +42,15 @@ namespace NUI.Controllers
                 }
             }
 
+            //轮播图片
+            var slider = SetterManager.GetLike("home_key_slider_");
+        
+            //分类图片
+            var categoryImg = SetterManager.GetLike("home_key_category_");
+
             ViewData["topar"] = alist;
+            ViewData["slider"] = slider;
+            ViewData["categoryImg"] = categoryImg;
 
             return View();
         }

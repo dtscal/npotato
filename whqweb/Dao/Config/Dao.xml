@@ -20,5 +20,9 @@
   <object id="Repository.Review" type="Dao.Implement.ReviewRepository, Dao">
     <property name="HibernateTemplate" ref="HibernateTemplate"/>
   </object>
+
+  <object id="Repository.Setter" type="Dao.Implement.SetterRepository, Dao">
+    <property name="HibernateTemplate" ref="HibernateTemplate"/>
+  </object>
 </objects>
 

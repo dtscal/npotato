@@ -6,6 +6,7 @@
     <property name="CategoryManager" ref="Manager.Category"/>
     <property name="ForumManager" ref="Manager.Forum"/>
     <property name="ArticleManager" ref="Manager.Article"/>
+    <property name="SetterManager" ref="Manager.Setter"/>
   </object>
 
   <object type="NUI.Controllers.UserInfoController, NUI" singleton="false" >
@@ -32,6 +33,10 @@
   <object type="NUI.Controllers.ReviewController, NUI" singleton="false" >
     <property name="ReviewManager" ref="Manager.Review"/>
     <property name="ArticleManager" ref="Manager.Article"/>
+  </object>
+
+  <object type="NUI.Controllers.SetterController, NUI" singleton="false" >
+    <property name="SetterManager" ref="Manager.Setter"/>
   </object>
 
   <object type="MvcFckEditor.Controllers.FckEditorController, MvcFckEditor" singleton="false" />

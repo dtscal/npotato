@@ -44,11 +44,13 @@
     <Compile Include="GenericManagerBase`1.cs" />
     <Compile Include="IGenericManager`1.cs" />
     <Compile Include="Implement\ReviewManager.cs" />
+    <Compile Include="Implement\SetterManager.cs" />
     <Compile Include="Implement\UserInfoManager.cs" />
     <Compile Include="Implement\ForumManager.cs" />
     <Compile Include="Implement\CategoryManager.cs" />
     <Compile Include="Implement\ArticleManager.cs" />
     <Compile Include="IReviewManager.cs" />
+    <Compile Include="ISetterManager.cs" />
     <Compile Include="IUserInfoManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IForumManager.cs" />
