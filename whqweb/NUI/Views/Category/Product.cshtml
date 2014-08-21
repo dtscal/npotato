@@ -1,6 +1,9 @@
 ﻿@{
     ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var language = HttpContext.Current.Session["isCN"];
+    var isCN = language == null || language.ToString() != false.ToString();
+    
 }
 @section home{
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.easing.min.js")"></script>
@@ -50,183 +53,42 @@
                 <div class="gallery1">
                     <div class="container">
                         <ul id="filters" class="clearfix">
-                            <li><span class="filter active" data-filter="app card icon logo web">All</span></li>
-                            <li><span class="filter" data-filter="app card web">men</span></li>
-                            <li><span class="filter" data-filter="icon web card">women</span></li>
-                            <li><span class="filter" data-filter="web app icon card">Watches</span></li>
-                            <li><span class="filter" data-filter="icon app web logo">Accessories</span></li>
+                            @{
+                                var al = "";
+                                foreach (var c in (this.ViewData["CategoryList"] as IList<Domain.Category>))
+                                {
+                                    al += " " + c.NameEn;
+                                }
+                                <li><span class="filter active" data-filter="@al">@(isCN?"全部":"All")</span></li>
+                            }
+                            @{
+                                foreach (var c in (this.ViewData["CategoryList"] as IList<Domain.Category>))
+                                {
+                                    <li><span class="filter" data-filter="@c.NameEn">@(isCN?c.Name:c.NameEn)</span></li>
+                                }
+                            }
                         </ul>
                         <div id="portfoliolist">
-                            <div class="portfolio logo1" data-cat="logo">
-                                <div class="portfolio-wrapper">
-                                    <a href="details.html">
-                                        <img src="images/sale_pic1.jpg" alt="Image 2" />
-                                    </a>
-                                    <div class="label">
-                                        <div class="label-text">
-                                            <a class="text-title">ethnic fashion guide: sarees</a>
-                                            <span class="text-category">indulge</span>
+                            @{
+                                foreach (var article in (this.ViewData["ArticleList"] as IList<Domain.Article>))
+                                {
+                                    <div class="portfolio @article.Category.NameEn" data-cat="@article.Category.NameEn">
+                                        <div class="portfolio-wrapper">
+                                            <a href="@article.ID">
+                                                <img src="@article.PImagea" alt="@(isCN?article.Description:article.DescriptionEn)" />
+                                            </a>
+                                            <div class="label">
+                                                <div class="label-text">
+                                                    <a class="text-title">@(isCN?article.Name:article.NameEn)</a>
+                                                    <span class="text-category">@(isCN?article.Category.Name:article.Category.NameEn)</span>
+                                                </div>
+                                                <div class="label-bg"></div>
+                                            </div>
                                         </div>
-                                        <div class="label-bg"></div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="portfolio app" data-cat="app">
-                                <div class="portfolio-wrapper">
-                                    <a href="details.html">
-                                        <img src="images/sale_pic2.jpg" alt="Image 2" />
-                                    </a>
-                                    <div class="label">
-                                        <div class="label-text">
-                                            <a class="text-title">fasttrack: watches</a>
-                                            <span class="text-category">indulge</span>
-                                        </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio web" data-cat="web">
-                                <div class="portfolio-wrapper">
-                                    <a href="details.html">
-                                        <img src="images/sale_pic3.jpg" alt="Image 2" />
-                                    </a>
-                                    <div class="label">
-                                        <div class="label-text">
-                                            <a class="text-title">ethnic fashion guide: dresses</a>
-                                            <span class="text-category">indulge</span>
-                                        </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio card" data-cat="card">
-                                <div class="portfolio-wrapper">
-                                    <a href="details.html">
-                                        <img src="images/sale_pic4.jpg" alt="Image 2" />
-                                    </a>
-                                    <div class="label">
-                                        <div class="label-text">
-                                            <a class="text-title">ethnic fashion guide: tees</a>
-                                            <span class="text-category">indulge</span>
-                                        </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio app" data-cat="app">
-                                <div class="portfolio-wrapper">
-                                    <a href="details.html">
-                                        <img src="images/sale_pic5.jpg" alt="Image 2" />
-                                    </a>
-                                    <div class="label">
-                                        <div class="label-text">
-                                            <a class="text-title">ethnic fashion guide: tees</a>
-                                            <span class="text-category">indulge</span>
-                                        </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio card" data-cat="card">
-                                <div class="portfolio-wrapper">
-                                    <a href="details.html">
-                                        <img src="images/sale_pic6.jpg" alt="Image 2" />
-                                    </a>
-                                    <div class="label">
-                                        <div class="label-text">
-                                            <a class="text-title">fasttrack: watches</a>
-                                            <span class="text-category">indulge</span>
-                                        </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio web" data-cat="web">
-                                <div class="portfolio-wrapper">
-                                    <a href="details.html">
-                                        <img src="images/sale_pic7.jpg" alt="Image 2" />
-                                    </a>
-                                    <div class="label">
-                                        <div class="label-text">
-                                            <a class="text-title">Sonor's Design</a>
-                                            <span class="text-category">indulge</span>
-                                        </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio card" data-cat="card">
-                                <div class="portfolio-wrapper">
-                                    <a href="details.html">
-                                        <img src="images/sale_pic8.jpg" alt="Image 2" />
-                                    </a>
-                                    <div class="label">
-                                        <div class="label-text">
-                                            <a class="text-title">Typography Company</a>
-                                            <span class="text-category">indulge</span>
-                                        </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio app" data-cat="app">
-                                <div class="portfolio-wrapper">
-                                    <a href="details.html">
-                                        <img src="images/sale_pic9.jpg" alt="Image 2" />
-                                    </a>
-                                    <div class="label">
-                                        <div class="label-text">
-                                            <a class="text-title">Weatherette</a>
-                                            <span class="text-category">indulge</span>
-                                        </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="portfolio card" data-cat="card">
-                                <div class="portfolio-wrapper">
-                                    <a href="details.html">
-                                        <img src="images/sale_pic10.jpg" alt="Image 2" />
-                                    </a>
-                                    <div class="label">
-                                        <div class="label-text">
-                                            <a class="text-title">BMF</a>
-                                            <span class="text-category">indulge</span>
-                                        </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="portfolio card" data-cat="card">
-                                <div class="portfolio-wrapper">
-                                    <a href="details.html">
-                                        <img src="images/sale_pic11.jpg" alt="Image 2" />
-                                    </a>
-                                    <div class="label">
-                                        <div class="label-text">
-                                            <a class="text-title">Techlion</a>
-                                            <span class="text-category">indulge</span>
-                                        </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="portfolio logo1" data-cat="logo">
-                                <div class="portfolio-wrapper">
-                                    <a href="details.html">
-                                        <img src="images/sale_pic12.jpg" alt="Image 2" />
-                                    </a>
-                                    <div class="label">
-                                        <div class="label-text">
-                                            <a class="text-title">KittyPic</a>
-                                            <span class="text-category">indulge</span>
-                                        </div>
-                                        <div class="label-bg"></div>
-                                    </div>
-                                </div>
-                            </div>
+                                }
+                            }
+                            
                         </div>
                     </div>
                     <!-- container -->
