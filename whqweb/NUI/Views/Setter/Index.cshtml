@@ -14,8 +14,8 @@
     <script type="text/javascript" src="@Url.Content("~/fckeditor2.3.6/fckeditor.js")"></script>
     <script language="javascript" type="text/javascript">
 
-        function submit() {
-            $('#form').form('submit', {
+        function submit(d) {
+            $('#'+d).form('submit', {
                 onSubmit: function () {
                     return $(this).form('validate');
                 },
@@ -221,88 +221,80 @@
             </table>
         </form>
 
-        <form id="ca">
+        <form id="ca" method="post" action="/Setter/SaveCate/" enctype="application/x-www-form-urlencoded">
             <table style="width: 100%">
                 <tr>
-                    <td colspan="8">中间第一张图片</td>
+                    <td colspan="8"><h3>中间第一张图片</h3></td>
                 </tr>
                 <tr>
                     <td>中文名称</td>
                     <td>
-                        <input name="name" /></td>
+                        <input type="hidden" name="entity.ID" value="@categorya.ID"/>
+                        <input name="entity.Name" value="@categorya.Valuea.Split('|')[0]"/>
+                    </td>
                     <td>英文名称</td>
                     <td>
-                        <input name="nameen" /></td>
+                        <input name="entity.NameEn" value="@categorya.Valuea.Split('|')[1]"/></td>
                     <td>图片地址</td>
                     <td>
-                        <input name="image" /></td>
+                        <input name="entity.Valued" id="entity.Valued.e" value="@categorya.Valued"/> <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'e');" >浏览</a></td>
                     <td>链接地址</td>
                     <td>
-                        <input name="l" /></td>
-                    <td rowspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit();">提交</a></td>
+                        <input name="entity.Valuec" value="@categorya.Valuec"/></td>
+                    <td rowspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit('ca');">提交</a></td>
                 </tr>
-
             </table>
         </form>
 
-        <form id="ca">
+        <form id="cb" method="post" action="/Setter/SaveCate/" enctype="application/x-www-form-urlencoded">
             <table style="width: 100%">
                 <tr>
-                    <td colspan="8">中间第一张图片</td>
+                    <td colspan="8"><h3>中间第二张图片</h3></td>
                 </tr>
                 <tr>
                     <td>中文名称</td>
                     <td>
-                        <input name="name" /></td>
+                        <input type="hidden" name="entity.ID" value="@categoryb.ID"/>
+                        <input name="entity.Name" value="@categorya.Valuea.Split('|')[0]"/>
+                    </td>
                     <td>英文名称</td>
                     <td>
-                        <input name="nameen" /></td>
+                        <input name="entity.NameEn" value="@categorya.Valuea.Split('|')[1]"/></td>
                     <td>图片地址</td>
                     <td>
-                        <input name="image" /></td>
+                        <input name="entity.Valued" id="entity.Valued.f" value="@categoryb.Valued"/> <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'f');" >浏览</a></td>
                     <td>链接地址</td>
                     <td>
-                        <input name="l" /></td>
-                    <td rowspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit();">提交</a></td>
+                        <input name="entity.Valuec" value="@categoryb.Valuec"/></td>
+                    <td rowspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit('cb');">提交</a></td>
                 </tr>
-
             </table>
         </form>
 
-        <form id="ca">
+        <form id="cc" method="post" action="/Setter/SaveCate/" enctype="application/x-www-form-urlencoded">
             <table style="width: 100%">
                 <tr>
-                    <td colspan="8">中间第一张图片</td>
+                    <td colspan="8"><h3>中间第三张图片</h3></td>
                 </tr>
                 <tr>
                     <td>中文名称</td>
                     <td>
-                        <input name="name" /></td>
+                        <input type="hidden" name="entity.ID" value="@categorya.ID"/>
+                        <input name="entity.Name" value="@categorya.Valuea.Split('|')[0]"/>
+                    </td>
                     <td>英文名称</td>
                     <td>
-                        <input name="nameen" /></td>
+                        <input name="entity.NameEn" value="@categorya.Valuea.Split('|')[1]"/></td>
                     <td>图片地址</td>
                     <td>
-                        <input name="image" /></td>
+                        <input name="entity.Valued" id="entity.Valued.g" value="@categoryc.Valued"/> <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'g');" >浏览</a></td>
                     <td>链接地址</td>
                     <td>
-                        <input name="l" /></td>
-                    <td rowspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit();">提交</a></td>
+                        <input name="entity.Valuec" value="@categoryc.Valuec"/></td>
+                    <td rowspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit('cc');">提交</a></td>
                 </tr>
-
             </table>
         </form>
     </div>
     <div style="display: none;"><textarea name="entity.Valuee" tabindex="1000"></textarea></div>
 </div>
-@*    <div region="south" border="true" style="text-align: right; height: 40px; line-height: 30px; background-color: #f7f7f7;">*@
-@*        <table style="width: 100%">*@
-@*            <tr>*@
-@*                <td></td>*@
-@*                <td style="text-align: right">*@
-@*                    <a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit();">提交</a>*@
-@*                    <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="location.href = document.referrer;">返回</a>*@
-@*                </td>*@
-@*            </tr>*@
-@*        </table>*@
-@*    </div>*@

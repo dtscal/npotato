@@ -148,8 +148,37 @@ namespace NUI.Controllers
             return View();
         }
 
-        public ActionResult Product()
+        public ActionResult Product(Guid forumId, Guid? id)
         {
+            var forum = this.ForumManager.Get(forumId);
+            if (forum == null)
+            {
+                return Redirect("/Home/Index/");
+            }
+
+            Category entity = null;
+            if (id.HasValue && id != Guid.Empty)
+            {
+                entity = this.CategoryManager.Get(id);
+            }
+            else
+            {
+                entity = forum.CategoryList.OrderByDescending(o => o.OrderNo).FirstOrDefault(f => f.IsEnabled);
+            }
+            if (entity == null)
+            {
+                return Redirect("/Home/Index/");
+            }
+
+            var list = this.ForumManager.LoadAllEnable();
+            var categoryList = this.CategoryManager.LoadAllEnable(forum.ID);
+            var articleList = this.ArticleManager.LoadAllEnable(entity.ID);
+
+            this.ViewData["entity"] = entity;
+            this.ViewData["forum"] = forum;
+            this.ViewData["CategoryList"] = categoryList;
+            this.ViewData["ArticleList"] = articleList;
+            this.ViewData["ForumList"] = list;
             return View();
         }
     }

@@ -59,5 +59,27 @@ namespace NUI.Controllers
             return Json(new { IsSuccess = true, Message = "修改成功" },
                                 "text/x-json", JsonRequestBehavior.AllowGet);
         }
+
+        [Authorize]
+        [ValidateInput(false)]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult SaveCate(USetter entity)
+        {
+            if (entity == null)
+            {
+                return Json(new { IsSuccess = true, Message = "修改失败" },
+                                "text/x-json", JsonRequestBehavior.AllowGet);
+            }
+            var setter = SetterManager.Get(entity.ID);
+            setter.Valuea = entity.Name + "|" + entity.NameEn;
+            setter.Valuec = entity.Valuec;
+            setter.Valued = entity.Valued;
+            setter.Valuee = "";
+
+            SetterManager.Update(setter);
+
+            return Json(new { IsSuccess = true, Message = "修改成功" },
+                                "text/x-json", JsonRequestBehavior.AllowGet);
+        }
     }
 }
