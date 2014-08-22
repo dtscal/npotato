@@ -1,4 +1,8 @@
 ﻿<!DOCTYPE html>
+@{
+    var language = HttpContext.Current.Session["isCN"];
+    var isCN = language == null || language.ToString() != false.ToString();
+}
 <html>
 <head>
     <title>@ViewBag.Title</title>
@@ -55,11 +59,11 @@
                 </div>
                 <div class="h_icon">
                     <ul>
-                        <li><a class="active-icon" href="/Home/ChangeLanguage/?language=zh-CN">中文</a>
+                        <li><a class="active-icon" style="margin-left: 7px;" href="/Home/ChangeLanguage/?language=zh-CN">中文</a>
                         </li>
                         <li><a class="active-icon" href="/Home/ChangeLanguage/?language=en-US">English</a>
                         </li>
-                        <li><a class="active-icon" href="#"></a>
+                        <li><a class="active-icon" style="margin-left: 7px;" href="javascript:window.external.AddFavorite('http://www.dtscal.cn/','大平')">@(isCN?"收藏":"collect")</a>
                         </li>
                     </ul>
                 </div>

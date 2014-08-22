@@ -12,6 +12,8 @@ namespace Service
 
         IList<Article> LoadAllEnable(Guid categoryId);
 
+        IList<Article> LoadHotProducts(); 
+
         void ViewsAdd(Guid id);
     }
 }

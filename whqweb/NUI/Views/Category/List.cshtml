@@ -1,6 +1,9 @@
 ﻿@{
     ViewBag.Title = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var language = HttpContext.Current.Session["isCN"];
+    var isCN = language == null || language.ToString() != false.ToString();
+    var f = (Domain.Forum)this.ViewData["forum"];
 }
 <!-- start main -->
     <div class="main_bg">
@@ -9,89 +12,66 @@
                 <!-- start service -->
                 <div class="service">
                     <div class="ser-main">
-                        <h4>Our Services</h4>
-                        <p class="para">2014-12-23 &nbsp;&nbsp;来源：123&nbsp;</p>
+                        <h4>@(isCN?f.Name:f.NameEn)</h4>
                         <p class="para"></p>
                         <hr/>
+                        @{
+                            int i = 0;
+                            foreach (var a in (this.ViewData["ArticleList"] as IEnumerable<Domain.Article>))
+                            {
+                                if (i%3 == 0)
+                                {
+                                    <div class="ser-grid">
+                                }
+                                        
+                                <div class="ser-grid-list">
+                                    <a href="details.html">
+                                        <img src="images/icon1.png" alt=""></a>
+                                    <h5><a href="details.html">24/7 customer support</a></h5>
+                                    <p class="para">It is a long established fact that a reader will be distracted by the page when looking at its layout.</p>
+                                </div>   
+                                if(i%3==0){
+                                    </div>
+                                }
+                                i++;
+                            }
+                             
+                        }
                         
-                        <div class="ser-grid">
-                            <div class="ser-grid-list">
-                                <a href="details.html">
-                                    <img src="images/icon1.png" alt=""></a>
-                                <h5><a href="details.html">24/7 customer support</a></h5>
-                                <p class="para">It is a long established fact that a reader will be distracted by the page when looking at its layout.</p>
-                            </div>
-                            <div class="ser-grid-list">
-                                <a href="details.html">
-                                    <img src="images/icon2.png" alt=""></a>
-                                <h5><a href="details.html">hygienic branded</a></h5>
-                                <p class="para">The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
-                            </div>
-                            <div class="ser-grid-list">
-                                <a href="details.html">
-                                    <img src="images/icon3.png" alt=""></a>
-                                <h5><a href="details.html">safely dispatch</a></h5>
-                                <p class="para">It is a long established fact that a reader will be distracted by the page when looking at its layout.</p>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                        <div class="ser-grid">
-                            <div class="ser-grid-list">
-                                <a href="details.html">
-                                    <img src="images/icon4.png" alt=""></a>
-                                <h5><a href="details.html">100% look book</a></h5>
-                                <p class="para">It is a long established fact that a reader will be distracted by the page when looking at its layout.</p>
-                            </div>
-                            <div class="ser-grid-list">
-                                <a href="details.html">
-                                    <img src="images/icon5.png" alt=""></a>
-                                <h5><a href="details.html">authentic products</a></h5>
-                                <p class="para">The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
-                            </div>
-                            <div class="ser-grid-list">
-                                <a href="details.html">
-                                    <img src="images/icon6.png" alt=""></a>
-                                <h5><a href="details.html">100% guarantee</a></h5>
-                                <p class="para">It is a long established fact that a reader will be distracted by the page when looking at its layout.</p>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
                     </div>
                     <div class="left_sidebar">
                         <div class="sellers">
-                            <h4>关于我们</h4>
-                            <div class="single-nav">
-                                <ul>
-                                    <li><a href="#">内容</a></li>
-                                </ul>
-                            </div>
+                            <h4>@(isCN?f.Name:f.NameEn)</h4>
+                            @{
+                                if ((this.ViewData["CategoryList"] as IEnumerable<Domain.Category>).Count() > 0)
+                                {
+                                    <div class="single-nav">
+                                        <ul>
+                                            @{
+                                    foreach (var c in this.ViewData["CategoryList"] as IEnumerable<Domain.Category>)
+                                                {
+                                                    <li><a href="">@(isCN?c.Name:c.NameEn)</a></li>
+                                                }        
+                                            }
+                                        </ul>
+                                    </div>        
+                                }
+                            }
+                            
                         </div>
                         <div class="brands" style="border: solid 1px #dddddd">
-                                <h1>热销产品</h1>
+                            <h1>@(isCN?"热销产品":"Hot Products")</h1>
+                            @{
+                                foreach (var p in (this.ViewData["hotp"] as IEnumerable<Domain.Article>))
+                                {
                                 <div class="field">
-                                    <a href="details.html">
-                                        <img src="images/pic1.jpg" alt="" />
-                                        <h3>branded shoes</h3>
+                                    <a href="@p.ID">
+                                        <img src="@p.PImagea" alt="" />
+                                        <h3>@(isCN?p.Name:p.NameEn)</h3>
                                     </a>
                                 </div>
-                                <div class="field">
-                                    <a href="details.html">
-                                        <img src="images/pic1.jpg" alt="" />
-                                        <h3>branded shoes</h3>
-                                    </a>
-                                </div>
-                                <div class="field">
-                                    <a href="details.html">
-                                        <img src="images/pic1.jpg" alt="" />
-                                        <h3>branded shoes</h3>
-                                    </a>
-                                </div>
-                                <div class="field">
-                                    <a href="details.html">
-                                        <img src="images/pic1.jpg" alt="" />
-                                        <h3>branded shoes</h3>
-                                    </a>
-                                </div>
+                                }
+                            }
                             </div>
                         <div class="banner-wrap bottom_banner color_link">
                                 <a href="#" class="main_link">

@@ -14,6 +14,13 @@ namespace Service.Implement
                 .LoadAllByPage(out total, categoryId, page, rows, order, sort).ToList();
         }
 
+        public IList<Article> LoadHotProducts()
+        {
+            var repository = (Dao.IArticleRepository)this.CurrentRepository;
+            var q=repository.LoadAll().Where(a => a.IsEnabled == true && a.Category.Forum.IsProuduct == true).OrderBy(f=>f.ViewCount).Take(5);
+            return q.ToList();
+        }
+
         public void ViewsAdd(Guid id)
         {
             var repository = (Dao.IArticleRepository)this.CurrentRepository;

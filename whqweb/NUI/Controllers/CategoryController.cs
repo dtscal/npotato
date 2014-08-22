@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Domain;
+using NHibernate.Hql.Ast.ANTLR;
+using NHibernate.Linq;
 using Service;
+using Spring.Web.UI.Controls;
 
 namespace NUI.Controllers
 {
@@ -120,7 +124,7 @@ namespace NUI.Controllers
             {
                 return Redirect("/Home/Index/");
             }
-
+            
             Category entity = null;
             if (id.HasValue && id != Guid.Empty)
             {
@@ -138,13 +142,12 @@ namespace NUI.Controllers
             var list = this.ForumManager.LoadAllEnable();
             var categoryList = this.CategoryManager.LoadAllEnable(forum.ID);
             var articleList = this.ArticleManager.LoadAllEnable(entity.ID);
-
-            this.ViewData["entity"] = entity;
+            
+            this.ViewData["hotp"] = ArticleManager.LoadHotProducts();
             this.ViewData["forum"] = forum;
             this.ViewData["CategoryList"] = categoryList;
             this.ViewData["ArticleList"] = articleList;
             this.ViewData["ForumList"] = list;
-
             return View();
         }
 
@@ -172,7 +175,12 @@ namespace NUI.Controllers
 
             var list = this.ForumManager.LoadAllEnable();
             var categoryList = this.CategoryManager.LoadAllEnable(forum.ID);
-            var articleList = this.ArticleManager.LoadAllEnable(entity.ID);
+
+            var articleList = new List<Domain.Article>();
+            foreach (var c in categoryList)
+            {
+                ArticleManager.LoadAllEnable(c.ID).ForEach(articleList.Add);
+            }
 
             this.ViewData["entity"] = entity;
             this.ViewData["forum"] = forum;

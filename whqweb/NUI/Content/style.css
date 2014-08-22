@@ -370,8 +370,8 @@ body {
 }
 .h_icon ul li{
     float: left;
-    margin: 0 0.1%;
-    width: 29.5%;
+    margin: 0px;
+    width: 36px;
     height: 32px;
 }
 
@@ -384,8 +384,7 @@ body {
     font-size: 11px;
     color: #ffffff;
     height: 11px;
-    margin-top: 28px;
-    margin-left: 7px;
+    padding-top: 28px;
 }
 .active-icon{
 	display: block;
