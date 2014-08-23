@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var language = HttpContext.Current.Session["isCN"];
     var isCN = language == null || language.ToString() != false.ToString();
-    
+    var f = (Domain.Forum)this.ViewData["forum"];
 }
 @section home{
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.easing.min.js")"></script>
@@ -18,7 +18,7 @@
                         filterSelector: '.filter',
                         effects: ['fade'],
                         easing: 'snap',
-                        // call the hover effect
+                        // call the hover effect<a href="Product.cshtml">Product.cshtml</a>
                         onMixEnd: filterList.hoverEffect()
                     });
 
@@ -54,18 +54,32 @@
                     <div class="container">
                         <ul id="filters" class="clearfix">
                              @{
-                                var al = "";
-                                foreach (var c in (this.ViewData["CategoryList"] as IList<Domain.Category>))
-                                {
-                                    al += " " + c.NameEn;
-                                }
-                                <li><span class="filter active" data-filter="@al">@(isCN?"全部":"All")</span></li>
-                            }
-                            @{
-                                foreach (var c in (this.ViewData["CategoryList"] as IList<Domain.Category>))
-                                {
-                                    <li><span class="filter" data-filter="@c.NameEn">@(isCN?c.Name:c.NameEn)</span></li>
-                                }
+                                 var al = "";
+                                 foreach (var c in (this.ViewData["CategoryList"] as IList<Domain.Category>))
+                                 {
+                                     al += " " + c.NameEn;
+                                 }
+                                 if (this.ViewData["cid"] == null)
+                                 {
+                                     <li><span class="filter active" data-filter="@al"><a href="/@f.ID/PList.html">@(isCN ? "全部" : "All")</a></span></li>
+                                 }
+                                 else
+                                 {
+                                     <li><span class="filter" data-filter="@al"><a href="/@f.ID/PList.html">@(isCN ? "全部" : "All")</a></span></li>    
+                                 }
+
+                                 foreach (var c in (this.ViewData["CategoryList"] as IList<Domain.Category>))
+                                 {
+                                     if (c.ID.Equals(this.ViewData["cid"]))
+                                     {
+                                        <li><span class="filter active" data-filter="@c.NameEn"><a href="/@f.ID/PList.html?cid=@c.ID">@(isCN ? c.Name : c.NameEn)</a></span></li>
+                                     }
+                                     else
+                                     {
+                                        <li><span class="filter" data-filter="@c.NameEn"><a href="/@f.ID/PList.html?cid=@c.ID">@(isCN ? c.Name : c.NameEn)</a></span></li> 
+                                     }
+                                    
+                                 }
                             }
                         </ul>
                         <div id="portfoliolist">
@@ -74,13 +88,13 @@
                                 {
                                     <div class="portfolio @article.Category.NameEn" data-cat="@article.Category.NameEn">
                                         <div class="portfolio-wrapper">
-                                            <a href="@article.ID">
-                                                <img src="@article.PImagea" alt="@(isCN?article.Description:article.DescriptionEn)" />
+                                            <a href="/Article/Product/@article.ID">
+                                                <img src="@article.PImagea" alt="@(isCN ? article.Description : article.DescriptionEn)" />
                                             </a>
                                             <div class="label">
                                                 <div class="label-text">
-                                                    <a class="text-title">@(isCN?article.Name:article.NameEn)</a>
-                                                    <span class="text-category">@(isCN?article.Category.Name:article.Category.NameEn)</span>
+                                                    <a class="text-title" href="/Article/Product/@article.ID">@(isCN ? article.Name : article.NameEn)</a>
+                                                    <span class="text-category">@(isCN ? article.Category.Name : article.Category.NameEn)</span>
                                                 </div>
                                                 <div class="label-bg"></div>
                                             </div>

@@ -28,11 +28,11 @@
                                 {
                                     if (c.Forum.IsProuduct)
                                     {
-                                        <li><a href="/@c.ID/PList.html">@(isCN ? c.Name : c.NameEn)</a></li>
+                                        <li><a href="/@f.ID/PList.html?cid=@c.ID">@(isCN ? c.Name : c.NameEn)</a></li>
                                     }
                                     else
                                     {
-                                        <li><a href="/@c.ID/Category.html">@(isCN?c.Name:c.NameEn)</a></li>
+                                        <li><a href="/@f.ID/@c.ID/Category.html">@(isCN?c.Name:c.NameEn)</a></li>
                                     }
                                 }
                             }

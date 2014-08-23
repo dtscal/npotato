@@ -144,6 +144,7 @@ namespace NUI.Controllers
             var articleList = this.ArticleManager.LoadAllEnable(entity.ID);
             
             this.ViewData["hotp"] = ArticleManager.LoadHotProducts();
+            this.ViewData["entity"] = entity;
             this.ViewData["forum"] = forum;
             this.ViewData["CategoryList"] = categoryList;
             this.ViewData["ArticleList"] = articleList;
@@ -151,42 +152,41 @@ namespace NUI.Controllers
             return View();
         }
 
-        public ActionResult Product(Guid forumId, Guid? id)
+        public ActionResult Product(Guid forumId, Guid? cid)
         {
             var forum = this.ForumManager.Get(forumId);
+
             if (forum == null)
             {
                 return Redirect("/Home/Index/");
             }
 
             Category entity = null;
-            if (id.HasValue && id != Guid.Empty)
+
+            var articleList = new List<Domain.Article>();
+            var categoryList = this.CategoryManager.LoadAllEnable(forum.ID);
+
+            if (cid.HasValue && cid != Guid.Empty)
             {
-                entity = this.CategoryManager.Get(id);
+                entity = this.CategoryManager.Get(cid);
+                this.ArticleManager.LoadAllEnable(entity.ID).ForEach(articleList.Add);
             }
             else
             {
                 entity = forum.CategoryList.OrderByDescending(o => o.OrderNo).FirstOrDefault(f => f.IsEnabled);
+                foreach (var c in categoryList)
+                {
+                    ArticleManager.LoadAllEnable(c.ID).ForEach(articleList.Add);
+                }
             }
             if (entity == null)
             {
                 return Redirect("/Home/Index/");
             }
-
-            var list = this.ForumManager.LoadAllEnable();
-            var categoryList = this.CategoryManager.LoadAllEnable(forum.ID);
-
-            var articleList = new List<Domain.Article>();
-            foreach (var c in categoryList)
-            {
-                ArticleManager.LoadAllEnable(c.ID).ForEach(articleList.Add);
-            }
-
-            this.ViewData["entity"] = entity;
+            this.ViewData["cid"] = cid;
             this.ViewData["forum"] = forum;
             this.ViewData["CategoryList"] = categoryList;
             this.ViewData["ArticleList"] = articleList;
-            this.ViewData["ForumList"] = list;
             return View();
         }
     }

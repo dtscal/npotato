@@ -1,6 +1,9 @@
 ﻿@{
     ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var language = HttpContext.Current.Session["isCN"];
+    var isCN = language == null || language.ToString() != false.ToString();
+    var a = (Domain.Article) this.ViewData["entity"];
 }
 @section home{
     <!-- start details -->
@@ -70,33 +73,14 @@
                                                 showTitle:true,
                                                 titleOpacity:0.5" 
                                                 data-fancybox-group="thumb" 
-                                                href="/content/images/0001-2.jpg" 
-                                                title="Women Shorts" 
-                                                alt="Women Shorts">
-                                                <img src="/content/images/0001-2.jpg" alt="Women Shorts" title="Women Shorts" />
+                                                href="@a.PImagea" 
+                                                title="@a.Name" 
+                                                alt="@a.Description">
+                                                <img src="@a.PImagea" alt="@a.Name" title="@a.Description" />
                                             </a>
                                         </div>
                                         <script type="text/javascript">
-                                            var prodGallery = jQblvg.parseJSON('{"prod_1":' +
-                                                    '{"main":' +
-                                                    '{"orig":"/content/images/0001-2.jpg",' +
-                                                    '"main":"/content/images/large/0001-2.jpg",' +
-                                                    '"thumb":"/content/images/small/0001-2.jpg","label":""},' +
-                                                    '"gallery":{"item_0":{"orig":"/content/images/0001-2.jpg",' +
-                                                    '"main":"/content/images/large/0001-2.jpg",' +
-                                                    '"thumb":"/content/images/small/0001-2.jpg","label":""},' +
-                                                    '"item_1":{"orig":"/content/images/0001-1.jpg","main":"/content/images/large/0001-1.jpg",' +
-                                                    '"thumb":"/content/images/small/0001-1.jpg","label":""},' +
-                                                    '"item_2":{"orig":"/content/images/0001-5.jpg",' +
-                                                    '"main":"/content/images/large/0001-5.jpg",' +
-                                                    '"thumb":"/content/images/small/0001-5.jpg","label":""},' +
-                                                    '"item_3":{"orig":"/content/images/0001-3.jpg",' +
-                                                    '"main":"/content/images/large/0001-3.jpg",' +
-                                                    '"thumb":"/content/images/small/0001-3.jpg","label":""},' +
-                                                    '"item_4":{"orig":"/content/images/0001-4.jpg",' +
-                                                    '"main":"/content/images/large/0001-4.jpg",' +
-                                                    '"thumb":"/content/images/small/0001-4.jpg","label":""}},' +
-                                                    '"type":"simple","video":false}}'),
+                                            var prodGallery = jQblvg.parseJSON(""),
                                                 gallery_elmnt = jQblvg('.product-img-box'),
                                                 galleryObj = new Object(),
                                                 gallery_conf = new Object();
@@ -136,30 +120,30 @@
                         <!-- start span1_of_1 -->
                         <div class="span1_of_1_des">
                             <div class="desc1">
-                                <h3>IPAD1206074</h3>
-                                <p>全网唯一敏锐智能带休眠ipad air金属壳【散热快】【有效延长机器使用奉命】采用航空铝+高档超细纤维蚕丝纹材质，绿色环保无毒无异味！安全耐用。</p>
+                                <h3>@(isCN?a.Name:a.NameEn)</h3>
+                                <p>@(isCN?a.Description:a.DescriptionEn)</p>
                                 <h5></h5>
                                 <div class="available">
                                     <h4></h4>
                                     <div class="btn_form">
-                                        <form action="http://detail.tmall.com/item.htm?spm=a230r.1.14.10.WMxRYX&id=37125246228&ad_id=&am_id=&cm_id=140105335569ed55e27b&pm_id=">
-                                            <input type="submit" value="去购" title="" />
+                                        <form action="@a.BuyLink">
+                                            <input type="submit" value="@(isCN?"去购":"Go Buy")"/>
                                         </form>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
                                 <div class="share-desc">
                                     <div class="share">
-                                        <h4>精品宝贝要分享 :</h4>
+                                        <h4>@(isCN?"精品宝贝要分享":"Share")</h4>
                                         <ul class="share_nav">
                                             <li><a href="#">
-                                                <img src="/content/images/facebook.png" title="facebook"></a></li>
+                                                <img src="/images/facebook.png" title="facebook"></a></li>
                                             <li><a href="#">
-                                                <img src="/content/images/twitter.png" title="Twiiter"></a></li>
+                                                <img src="/images/twitter.png" title="Twiiter"></a></li>
                                             <li><a href="#">
-                                                <img src="/content/images/rss.png" title="Rss"></a></li>
+                                                <img src="/images/rss.png" title="Rss"></a></li>
                                             <li><a href="#">
-                                                <img src="/content/images/gpluse.png" title="Google+"></a></li>
+                                                <img src="/images/gpluse.png" title="Google+"></a></li>
                                         </ul>
                                     </div>
                                     <div class="clear"></div>
@@ -171,13 +155,13 @@
                         <div class="tab">
                             <div class="tab_menu">
                                 <ul>
-                                    <li class="selected">宝贝详情</li>
-                                    <li >商品留言</li>
+                                    <li class="selected">@(isCN?"宝贝详情":"Detail")</li>
+                                    <li >@(isCN?"商品留言":"Leave word")</li>
                                 </ul>
                             </div>
                             <div class="tab_box">
                                 <div>
-                                   
+                                   @(isCN?Html.Raw(a.Content):Html.Raw(a.ContentEn))
                                 </div>
                                 <div class="hide">
                                     <div class="contact-form" style="padding: 5%;">
@@ -221,41 +205,30 @@
                     <!-- start sidebar -->
                     <div class="left_sidebar">
                         <div class="sellers">
-                            <h4>平板系列</h4>
+                            <h4>@(isCN?a.Category.Forum.Name:a.Category.Forum.NameEn)</h4>
                             <div class="single-nav">
                                 <ul>
-                                    <li><a href="#">iPhone</a></li>
-                                    <li><a href="#">三星</a></li>
-                                    <li><a href="#">华为</a></li>
-                                    <li><a href="#">NOKIA</a></li>
+                                    @{
+                                        foreach (var c in (this.ViewData["CategoryList"] as IEnumerable<Domain.Category>))
+                                        {
+                                            <li><a href="/@a.Category.Forum.ID/PList.html?cid=@c.ID">@(isCN?c.Name:c.NameEn)</a></li>
+                                        }
+                                    }
                                 </ul>
                             </div>
                             <div class="brands">
-                                <h1>看了又看</h1>
+                                <h1>@(isCN?"热点商品":"Hot Products")</h1>
+                                @{
+                                foreach (var p in (this.ViewData["hotp"] as IEnumerable<Domain.Article>))
+                                {
                                 <div class="field">
-                                    <a href="details.html">
-                                        <img src="/content/images/pic1.jpg" alt="" />
-                                        <h3>branded shoes</h3>
+                                    <a href="/Article/Product/@p.ID">
+                                        <img src="@p.PImagea" alt="" />
+                                        <h3>@(isCN?p.Name:p.NameEn)</h3>
                                     </a>
                                 </div>
-                                <div class="field">
-                                    <a href="details.html">
-                                        <img src="/content/images/pic1.jpg" alt="" />
-                                        <h3>branded shoes</h3>
-                                    </a>
-                                </div>
-                                <div class="field">
-                                    <a href="details.html">
-                                        <img src="/content/images/pic1.jpg" alt="" />
-                                        <h3>branded shoes</h3>
-                                    </a>
-                                </div>
-                                <div class="field">
-                                    <a href="details.html">
-                                        <img src="/content/images/pic1.jpg" alt="" />
-                                        <h3>branded shoes</h3>
-                                    </a>
-                                </div>
+                                }
+                            }
                             </div>
                             <div class="banner-wrap bottom_banner color_link">
                                 <a href="#" class="main_link">

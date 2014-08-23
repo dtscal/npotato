@@ -1,56 +1,22 @@
 ﻿@{
-    ViewBag.Title = "List";
+    ViewBag.Title = "Get";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var entity = (Domain.Article) this.ViewData["entity"];
     var language = HttpContext.Current.Session["isCN"];
     var isCN = language == null || language.ToString() != false.ToString();
-    var f = (Domain.Forum)this.ViewData["forum"];
-    var entity = (Domain.Category)this.ViewData["entity"];
 }
-<!-- start main -->
-    <div class="main_bg">
+<div class="main_bg">
         <div class="wrap">
             <div class="main">
                 <!-- start service -->
                 <div class="service">
                     <div class="ser-main">
                         <h4>@(isCN?entity.Name:entity.NameEn)</h4>
-                        <p class="para"></p>
+                        <p class="para">@entity.CreateDate.ToShortDateString()&nbsp;&nbsp;@entity.ViewCount</p>
                         <hr/>
-                        @{
-                            if (entity.CategoryType == "内容")
-                            {
-                                @(isCN ? Html.Raw(entity.Content) : Html.Raw(entity.ContentEn))
-                            }
-                            else
-                            {
-                                int i = 0;
-                                foreach (var a in (this.ViewData["ArticleList"] as IEnumerable<Domain.Article>))
-                                {
-                                    <h5><a href="/Article/@a.ID/html">@a.Name</a></h5>
-                                }
-                            }
-                        }
+                              @(isCN ? Html.Raw(entity.Content) : Html.Raw(entity.ContentEn))
                         </div>
                     <div class="left_sidebar">
-                        <div class="sellers">
-                            <h4>@(isCN?f.Name:f.NameEn)</h4>
-                            @{
-                                if ((this.ViewData["CategoryList"] as IEnumerable<Domain.Category>).Count() > 0)
-                                {
-                                    <div class="single-nav">
-                                        <ul>
-                                            @{
-                                    foreach (var c in this.ViewData["CategoryList"] as IEnumerable<Domain.Category>)
-                                                {
-                                                    <li><a href="/@c.Forum.ID/@c.ID/Category.html">@(isCN?c.Name:c.NameEn)</a></li>
-                                                }        
-                                            }
-                                        </ul>
-                                    </div>        
-                                }
-                            }
-                            
-                        </div>
                         <div class="brands" style="border: solid 1px #dddddd">
                             <h1>@(isCN?"热销产品":"Hot Products")</h1>
                             @{

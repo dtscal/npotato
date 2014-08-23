@@ -1,4 +1,5 @@
 ﻿using Domain;
+using NUI.Models;
 using Service;
 using System;
 using System.Collections.Generic;
@@ -20,6 +21,7 @@ namespace NUI.Controllers
 
         public ActionResult Index()
         {
+            
             return View();
         }
 
@@ -123,7 +125,7 @@ namespace NUI.Controllers
                 Name = string.Empty,
                 NameEn = string.Empty,
             };
-
+            
             this.ViewData["entity"] = entity;
             return View();
         }
@@ -137,28 +139,14 @@ namespace NUI.Controllers
 
         public ActionResult Get(Guid id)
         {
-
+            var entity = this.ArticleManager.Get(id);
+            if (entity == null)
             {
-                var entity = this.ArticleManager.Get(id);
-                if (entity == null)
-                {
-                    return Redirect(this.Request.UrlReferrer.ToString());
-                }
-
-                var list = this.ForumManager.LoadAllEnable();
-                var categoryList = this.CategoryManager.LoadAllEnable(entity.Category.Forum.ID);
-                long total = 0;
-                var reviews = this.ReviewManager.LoadAllWithPage(out total, entity.ID, 1, 5, true, "desc", "ReviewDate");
-
-                this.ViewData["entity"] = entity;
-                this.ViewData["reviews"] = reviews;
-                this.ViewData["ForumList"] = list;
-                this.ViewData["CategoryList"] = categoryList;
-
-                this.ArticleManager.ViewsAdd(id);
-
-                return this.View();
+                return Redirect(this.Request.UrlReferrer.ToString());
             }
+            this.ViewData["entity"] = entity;
+            this.ViewData["hotp"] = ArticleManager.LoadHotProducts();
+            return this.View();
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
@@ -175,9 +163,86 @@ namespace NUI.Controllers
             return RedirectToAction("get", "Article", new { id = articleId });
         }
 
-        public ActionResult Product()
+        public ActionResult Product(Guid id)
         {
-            return View();
+            var entity = this.ArticleManager.Get(id);
+            if (entity == null)
+            {
+                return Redirect(this.Request.UrlReferrer.ToString());
+            }
+
+            
+            var categoryList = this.CategoryManager.LoadAllEnable(entity.Category.Forum.ID);
+            long total = 0;
+
+            var reviews = this.ReviewManager.LoadAllWithPage(out total, entity.ID, 1, 5, true, "desc", "ReviewDate");
+
+            this.ViewData["entity"] = entity;
+            this.ViewData["reviews"] = reviews;
+            this.ViewData["hotp"] = ArticleManager.LoadHotProducts();
+            this.ViewData["CategoryList"] = categoryList;
+
+            this.ArticleManager.ViewsAdd(id);
+
+            return this.View();
+
+        }
+
+        private JsonResult PImages(Domain.Article article)
+        {
+            var item_0 = string.IsNullOrEmpty(article.PImagea) ? null : new ImgItem
+            {
+                orig = article.PImagea,
+                main = article.PImagea + "?width=110&height=120",
+                thumb = article.PImagea + "?width=120&height=140",
+                label = ""
+            };
+                
+            return Json(new {
+                prod_1=new
+                {
+                    main=new
+                        {
+                            orig=article.PImagea,
+                            main=article.PImagea+"?width=110&height=120",
+                            thumb=article.PImagea+"?width=120&height=140",
+                            label=""
+                        },
+                    gallery=new
+                        {
+                            item_0,
+                            item_1 = new
+                            {
+                                orig = article.PImagea,
+                                main = article.PImagea + "?width=110&height=120",
+                                thumb = article.PImagea + "?width=110&height=120",
+                                label = ""
+                            },
+                            item_2 = new
+                            {
+                                orig = article.PImagea,
+                                main = article.PImagea + "?width=110&height=120",
+                                thumb = article.PImagea + "?width=110&height=120",
+                                label = ""
+                            },
+                            item_3 = new
+                            {
+                                orig = article.PImagea,
+                                main = article.PImagea + "?width=110&height=120",
+                                thumb = article.PImagea + "?width=110&height=120",
+                                label = ""
+                            },
+                            item_4 = new
+                            {
+                                orig = article.PImagea,
+                                main = article.PImagea + "?width=110&height=120",
+                                thumb = article.PImagea + "?width=110&height=120",
+                                label = ""
+                            },
+                        },
+                    type = "simple",
+                    video=false
+                }}, "text/json", JsonRequestBehavior.AllowGet);
         }
     }
 }
