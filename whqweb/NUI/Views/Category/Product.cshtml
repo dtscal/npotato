@@ -89,7 +89,8 @@
                                     <div class="portfolio @article.Category.NameEn" data-cat="@article.Category.NameEn">
                                         <div class="portfolio-wrapper">
                                             <a href="/Article/Product/@article.ID">
-                                                <img src="@article.PImagea" alt="@(isCN ? article.Description : article.DescriptionEn)" />
+                                                
+                                                <img src="@article.PImagea?height=324&width=298" alt="@(isCN ? article.Description : article.DescriptionEn)" />
                                             </a>
                                             <div class="label">
                                                 <div class="label-text">

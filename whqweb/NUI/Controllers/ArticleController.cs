@@ -1,4 +1,5 @@
-﻿using Domain;
+﻿using System.Text;
+using Domain;
 using NUI.Models;
 using Service;
 using System;
@@ -181,68 +182,52 @@ namespace NUI.Controllers
             this.ViewData["reviews"] = reviews;
             this.ViewData["hotp"] = ArticleManager.LoadHotProducts();
             this.ViewData["CategoryList"] = categoryList;
-
+            this.ViewData["pimages"] = this.PImages(entity);
             this.ArticleManager.ViewsAdd(id);
 
             return this.View();
 
         }
 
-        private JsonResult PImages(Domain.Article article)
+        private String PImages(Domain.Article article)
         {
-            var item_0 = string.IsNullOrEmpty(article.PImagea) ? null : new ImgItem
+            StringBuilder sb = new StringBuilder("{\"prod_1\":{\"main\":{\"orig\":");
+            sb.Append("\""+article.PImagea+"\"").Append(",\"main\":").Append("\""+article.PImagea).Append("?width=180&height=180\"");
+            sb.Append(",\"thumb\":").Append("\"" + article.PImagea).Append("?width=100&height=100\"");
+            sb.Append(",\"label\":\"\"},\"gallery\":{\"item_0\":{\"orig\":");
+            sb.Append("\"" + article.PImagea + "\"").Append(",\"main\":").Append("\"" + article.PImagea).Append("?width=180&height=180\"");
+            sb.Append(",\"thumb\":").Append("\"" + article.PImagea).Append("?width=100&height=100\"");
+            sb.Append(",\"label\":\"\"}");
+            if (!String.IsNullOrEmpty(article.PImageb))
             {
-                orig = article.PImagea,
-                main = article.PImagea + "?width=110&height=120",
-                thumb = article.PImagea + "?width=120&height=140",
-                label = ""
-            };
-                
-            return Json(new {
-                prod_1=new
-                {
-                    main=new
-                        {
-                            orig=article.PImagea,
-                            main=article.PImagea+"?width=110&height=120",
-                            thumb=article.PImagea+"?width=120&height=140",
-                            label=""
-                        },
-                    gallery=new
-                        {
-                            item_0,
-                            item_1 = new
-                            {
-                                orig = article.PImagea,
-                                main = article.PImagea + "?width=110&height=120",
-                                thumb = article.PImagea + "?width=110&height=120",
-                                label = ""
-                            },
-                            item_2 = new
-                            {
-                                orig = article.PImagea,
-                                main = article.PImagea + "?width=110&height=120",
-                                thumb = article.PImagea + "?width=110&height=120",
-                                label = ""
-                            },
-                            item_3 = new
-                            {
-                                orig = article.PImagea,
-                                main = article.PImagea + "?width=110&height=120",
-                                thumb = article.PImagea + "?width=110&height=120",
-                                label = ""
-                            },
-                            item_4 = new
-                            {
-                                orig = article.PImagea,
-                                main = article.PImagea + "?width=110&height=120",
-                                thumb = article.PImagea + "?width=110&height=120",
-                                label = ""
-                            },
-                        },
-                    type = "simple",
-                    video=false
-                }}, "text/json", JsonRequestBehavior.AllowGet);
+                sb.Append(",\"item_1\":{\"orig\":");
+                sb.Append("\"" + article.PImageb + "\"").Append(",\"main\":").Append("\"" + article.PImageb).Append("?width=180&height=180\"");
+                sb.Append(",\"thumb\":").Append("\"" + article.PImageb).Append("?width=100&height=100\"");
+                sb.Append(",\"label\":\"\"}");
+            }if(!String.IsNullOrEmpty(article.PImagec))
+            {
+                sb.Append(",\"item_2\":{\"orig\":");
+                sb.Append("\"" + article.PImagec + "\"").Append(",\"main\":").Append("\"" + article.PImagec ).Append("?width=180&height=180\"");
+                sb.Append(",\"thumb\":").Append("\"" + article.PImagec).Append("?width=100&height=100\"");
+                sb.Append(",\"label\":\"\"}");
+            }
+            if (!String.IsNullOrEmpty(article.PImaged))
+            {
+                sb.Append(",\"item_3\":{\"orig\":");
+                sb.Append("\"" + article.PImaged + "\"").Append(",\"main\":").Append("\"" + article.PImaged).Append("?width=180&height=180\"");
+                sb.Append(",\"thumb\":").Append("\"" + article.PImaged).Append("?width=100&height=100\"");
+                sb.Append(",\"label\":\"\"}");
+            }
+            if (!String.IsNullOrEmpty(article.PImagee))
+            {
+                sb.Append(",\"item_4\":{\"orig\":");
+                sb.Append("\"" + article.PImagee + "\"").Append(",\"main\":").Append("\"" + article.PImagee).Append("?width=180&height=180\"");
+                sb.Append(",\"thumb\":").Append("\"" + article.PImagee).Append("?width=100&height=100\"");
+                sb.Append(",\"label\":\"\"}"); 
+            }
+            sb.Append("},\"type\":").Append("\"").Append("simple").Append("\"").Append(",\"video\":false}}");
+            var s = sb.ToString();
+            return s;
         }
     }
 }

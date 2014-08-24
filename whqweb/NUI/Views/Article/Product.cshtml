@@ -80,7 +80,7 @@
                                             </a>
                                         </div>
                                         <script type="text/javascript">
-                                            var prodGallery = jQblvg.parseJSON(""),
+                                            var prodGallery = jQblvg.parseJSON('@Html.Raw(this.ViewData["pimages"].ToString())'),
                                                 gallery_elmnt = jQblvg('.product-img-box'),
                                                 galleryObj = new Object(),
                                                 gallery_conf = new Object();
@@ -233,7 +233,7 @@
                             <div class="banner-wrap bottom_banner color_link">
                                 <a href="#" class="main_link">
                                     <figure>
-                                        <img src="/content/images/delivery.png" alt="">
+                                        <img src="/images/delivery.png" alt="">
                                     </figure>
                                     <h5><span>Free Shipping</span><br>
                                         on orders over $99.</h5>
