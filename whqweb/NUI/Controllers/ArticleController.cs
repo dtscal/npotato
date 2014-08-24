@@ -192,36 +192,36 @@ namespace NUI.Controllers
         private String PImages(Domain.Article article)
         {
             StringBuilder sb = new StringBuilder("{\"prod_1\":{\"main\":{\"orig\":");
-            sb.Append("\""+article.PImagea+"\"").Append(",\"main\":").Append("\""+article.PImagea).Append("?width=180&height=180\"");
+            sb.Append("\""+article.PImagea+"\"").Append(",\"main\":").Append("\""+article.PImagea).Append("?width=380&height=450\"");
             sb.Append(",\"thumb\":").Append("\"" + article.PImagea).Append("?width=100&height=100\"");
             sb.Append(",\"label\":\"\"},\"gallery\":{\"item_0\":{\"orig\":");
-            sb.Append("\"" + article.PImagea + "\"").Append(",\"main\":").Append("\"" + article.PImagea).Append("?width=180&height=180\"");
+            sb.Append("\"" + article.PImagea + "\"").Append(",\"main\":").Append("\"" + article.PImagea).Append("?width=380&height=450\"");
             sb.Append(",\"thumb\":").Append("\"" + article.PImagea).Append("?width=100&height=100\"");
             sb.Append(",\"label\":\"\"}");
             if (!String.IsNullOrEmpty(article.PImageb))
             {
                 sb.Append(",\"item_1\":{\"orig\":");
-                sb.Append("\"" + article.PImageb + "\"").Append(",\"main\":").Append("\"" + article.PImageb).Append("?width=180&height=180\"");
+                sb.Append("\"" + article.PImageb + "\"").Append(",\"main\":").Append("\"" + article.PImageb).Append("?width=380&height=450\"");
                 sb.Append(",\"thumb\":").Append("\"" + article.PImageb).Append("?width=100&height=100\"");
                 sb.Append(",\"label\":\"\"}");
             }if(!String.IsNullOrEmpty(article.PImagec))
             {
                 sb.Append(",\"item_2\":{\"orig\":");
-                sb.Append("\"" + article.PImagec + "\"").Append(",\"main\":").Append("\"" + article.PImagec ).Append("?width=180&height=180\"");
+                sb.Append("\"" + article.PImagec + "\"").Append(",\"main\":").Append("\"" + article.PImagec).Append("?width=380&height=450\"");
                 sb.Append(",\"thumb\":").Append("\"" + article.PImagec).Append("?width=100&height=100\"");
                 sb.Append(",\"label\":\"\"}");
             }
             if (!String.IsNullOrEmpty(article.PImaged))
             {
                 sb.Append(",\"item_3\":{\"orig\":");
-                sb.Append("\"" + article.PImaged + "\"").Append(",\"main\":").Append("\"" + article.PImaged).Append("?width=180&height=180\"");
+                sb.Append("\"" + article.PImaged + "\"").Append(",\"main\":").Append("\"" + article.PImaged).Append("?width=380&height=450\"");
                 sb.Append(",\"thumb\":").Append("\"" + article.PImaged).Append("?width=100&height=100\"");
                 sb.Append(",\"label\":\"\"}");
             }
             if (!String.IsNullOrEmpty(article.PImagee))
             {
                 sb.Append(",\"item_4\":{\"orig\":");
-                sb.Append("\"" + article.PImagee + "\"").Append(",\"main\":").Append("\"" + article.PImagee).Append("?width=180&height=180\"");
+                sb.Append("\"" + article.PImagee + "\"").Append(",\"main\":").Append("\"" + article.PImagee).Append("?width=380&height=450\"");
                 sb.Append(",\"thumb\":").Append("\"" + article.PImagee).Append("?width=100&height=100\"");
                 sb.Append(",\"label\":\"\"}"); 
             }

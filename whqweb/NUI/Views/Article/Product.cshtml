@@ -3,31 +3,72 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     var language = HttpContext.Current.Session["isCN"];
     var isCN = language == null || language.ToString() != false.ToString();
-    var a = (Domain.Article) this.ViewData["entity"];
+    var a = (Domain.Article)this.ViewData["entity"];
 }
 @section home{
     <!-- start details -->
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/productviewgallery.css")" media="all" />
-    
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/pinfen.css")"/>
     <script type="text/javascript" src="@Url.Content("~/Scripts/cloud-zoom.1.0.3.min.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.fancybox.pack.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.fancybox-buttons.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.fancybox-thumbs.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/productviewgallery.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.form.js")"></script>
     <!-- start top_js_button -->
     <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
+
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event) {
                 event.preventDefault();
-                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1200);
+                $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 1200);
+            });
+            //通过修改样式来显示不同的星级
+            $("ul.rating li a").click(function() {
+                var title = $(this).attr("title");
+
+                $("input[name='entity.Rating']").attr("value", title);
+                var cl = $(this).parent().attr("class");
+                $(this).parent().parent().removeClass().addClass("rating " + cl + "star");
+                $(this).blur(); //去掉超链接的虚线框
+                return false;
+            });
+
+            $('#fReview').ajaxForm({
+                success: function(r, s) {
+                    alert('@(isCN?"提交成功！":"Success,Thank you!")');
+                },
+                beforeSubmit: function(formData, jqForm, options) {
+                    // fieldValue 是表单插件的一个方法，它能找出表单中的元素的值，返回一个集合。
+                    if ($("input[name='entity.Rating']").val() == '') {
+                        alert('@(isCN ? "请给商品评分" : "Please give goods")');
+                        jqForm.submit(function() { return false; });
+                        
+                    }
+                    if ($("input[name='entity.Name']").val() == '') {
+                        alert('@(isCN ? "请输入您的大名" : "Please enter your name")');
+                        jqForm.submit(function () { return false; });
+                    }
+                    if ($("input[name='entity.Email']").val() == '') {
+                        alert('@(isCN ? "请输入您的邮件" : "Please enter your email")');
+                        jqForm.submit(function () { return false; });
+                    }
+                    if ($("input[name='entity.Content']").val() == '') {
+                        alert('@(isCN ? "请输入您的评价" : "Please enter your content")');
+                        jqForm.submit(function () { return false; });
+                    }
+                    var queryString = $.param(formData); //组装数据
+                    return true;
+                } // 提交前，验证
             });
         });
+
     </script>
 }
 <!-- start main -->
     <div class="main_bg">
         <div class="wrap">
-            <div class="main">
+            <div class="main"
                 <!-- start content -->
                 <div class="single">
                     <!-- start span1_of_1 -->
@@ -87,22 +128,22 @@
                                                 gallery_conf.moreviewitem = '<a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt=""><img src="" src_main="" width="64" height="85" title="" alt="" /></a>';
                                                 gallery_conf.animspeed = 200;
                                                 jQblvg(document).ready(function () {
-                                                galleryObj[1] = new prodViewGalleryForm(prodGallery, 'prod_1', gallery_elmnt, gallery_conf, '.product-image', '.more-views', 'http:');
-                                                jQblvg('.product-image .cs-fancybox-thumbs').absoluteClick();
-                                                jQblvg('.cs-fancybox-thumbs').fancybox({
-                                                    prevEffect: 'none',
-                                                    nextEffect: 'none',
-                                                    closeBtn: true,
-                                                    arrows: true,
-                                                    nextClick: true,
-                                                    helpers: {
-                                                        thumbs: {
-                                                            width: 64,
-                                                            height: 85,
-                                                            position: 'bottom'
+                                                    galleryObj[1] = new prodViewGalleryForm(prodGallery, 'prod_1', gallery_elmnt, gallery_conf, '.product-image', '.more-views', 'http:');
+                                                    jQblvg('.product-image .cs-fancybox-thumbs').absoluteClick();
+                                                    jQblvg('.cs-fancybox-thumbs').fancybox({
+                                                        prevEffect: 'none',
+                                                        nextEffect: 'none',
+                                                        closeBtn: true,
+                                                        arrows: true,
+                                                        nextClick: true,
+                                                        helpers: {
+                                                            thumbs: {
+                                                                width: 64,
+                                                                height: 85,
+                                                                position: 'bottom'
+                                                            }
                                                         }
-                                                    }
-                                                });
+                                                    });
                                                 jQblvg('#wrap').css('z-index', '100');
                                                 jQblvg('.more-views-container').elScroll({ type: 'vertical', elqty: 4, btn_pos: 'border', scroll_speed: 400 });
 
@@ -160,42 +201,51 @@
                                 </ul>
                             </div>
                             <div class="tab_box">
-                                <div>
+                                <div  style="padding: 5%;">
                                    @(isCN?Html.Raw(a.Content):Html.Raw(a.ContentEn))
                                 </div>
                                 <div class="hide">
                                     <div class="contact-form" style="padding: 5%;">
-                                              <form method="post" action="contact-post.html">
-                                                  <div>
-                                                      <span>
-                                                          <label>Name</label></span>
-                                                      <span>
-                                                          <input name="userName" type="text" class="textbox"></span>
-                                                  </div>
-                                                  <div>
-                                                      <span>
-                                                          <label>E-mail</label></span>
-                                                      <span>
-                                                          <input name="userEmail" type="text" class="textbox"></span>
-                                                  </div>
-                                                  <div>
-                                                      <span>
-                                                          <label>Mobile</label></span>
-                                                      <span>
-                                                          <input name="userPhone" type="text" class="textbox"></span>
-                                                  </div>
-                                                  <div>
-                                                      <span>
-                                                          <label>Subject</label></span>
-                                                      <span>
-                                                          <textarea name="userMsg"> </textarea></span>
-                                                  </div>
-                                                  <div>
-                                                      <span>
-                                                          <input type="submit" class="" value="Submit us"></span>
-                                                  </div>
-                                              </form>
-                                          </div>
+                                        <form id="fReview" action="/Article/Review" method="post">
+                                            <div>
+                                                <span>
+                                                    <label>@(isCN?"给商品评分":"Grade")</label></span>
+                                                <span>
+                                                    <ul class="rating nostar">
+                                                        <li class="one"><a href="#" title="1">1</a></li>
+                                                        <li class="two"><a href="#" title="2">2</a></li>
+                                                        <li class="three"><a href="#" title="3">3</a></li>
+                                                        <li class="four"><a href="#" title="4">4</a></li>
+                                                        <li class="five"><a href="#" title="5">5</a></li>
+                                                    </ul>
+                                                    <input name="articleId" value="@a.ID" type="hidden"/>
+                                                    <input name="entity.Rating" type="hidden" />
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <span>
+                                                    <label>@(isCN?"昵称":"Name")</label></span>
+                                                <span>
+                                                    <input name="entity.Name" type="text" class="textbox"></span>
+                                            </div>
+                                            <div>
+                                                <span>
+                                                    <label>@(isCN?"电子邮件":"E-mail")</label></span>
+                                                <span>
+                                                    <input name="entity.Email" type="text" class="textbox"></span>
+                                            </div>
+                                            <div>
+                                                <span>
+                                                    <label>@(isCN?"内容":"Subject")</label></span>
+                                                <span>
+                                                    <textarea name="entity.Content"></textarea></span>
+                                            </div>
+                                            <div>
+                                                <span>
+                                                    <input type="submit" id="bbbb" class="" value="@(isCN?"感谢您":"Submit us")"></span>
+                                            </div>
+                                        </form>
+                                    </div>
                                     <div class="clear"></div>
                                 </div>
                             </div>

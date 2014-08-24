@@ -57,6 +57,12 @@
     <Reference Include="Iesi.Collections">
       <HintPath>..\lib\NHibernate\Iesi.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="ImageResizer">
+      <HintPath>..\packages\ImageResizer.3.2.4\lib\ImageResizer.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageResizer.Mvc">
+      <HintPath>..\packages\ImageResizer.Mvc.3.2.4\lib\ImageResizer.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="LinFu.DynamicProxy">
       <HintPath>..\lib\NHibernate\LinFu.DynamicProxy.dll</HintPath>
     </Reference>
@@ -182,6 +188,7 @@
     </Content>
     <Content Include="Content\Logon.css" />
     <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\pinfen.css" />
     <Content Include="Content\productviewgallery.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\slider.css" />
@@ -788,6 +795,8 @@
     <Content Include="Images\shoe_pic4.jpg" />
     <Content Include="Images\shoe_pic5.jpg" />
     <Content Include="Images\shoe_pic6.jpg" />
+    <Content Include="Images\star-matrix.gif" />
+    <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.pager.js" />
     <Content Include="UserFiles\slider1.png" />
     <Content Include="UserFiles\slider2.png" />
@@ -844,7 +853,9 @@
     <Content Include="Scripts\responsive.menu.js" />
     <Content Include="UserFiles\60cb6b01-42b5-4cda-b0ce-0e08592f1fe9\1204720678.jpg" />
     <Content Include="Views\FckEditor\Browser.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

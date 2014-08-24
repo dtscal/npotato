@@ -32,12 +32,13 @@
         $(document).ready(function () {
 
             $("#owl-demo").owlCarousel({
+                slideSpeed:1,
                 items: 4,
                 lazyLoad: true,
                 autoPlay: true,
                 navigation: true,
                 navigationText: ["", ""],
-                rewindNav: false,
+                rewindNav: true,
                 scrollPerPage: false,
                 pagination: false,
                 paginationNumbers: false,
@@ -76,7 +77,7 @@
                         {
                             <div class="grid1_of_3">
                                 <a href="@c.Valuec">
-                                    <img src="@c.Valued" alt="" />
+                                    <img src="@c.Valued?width=300&height=300" alt="" />
                                     <h3>@(isCN ? c.Valuea.Split('|')[0] : c.Valuea.Split('|')[1])</h3>
                                     <span class="b_btm"></span>
                                 </a>
@@ -106,9 +107,9 @@
             @{
                 foreach (var p in (this.ViewData["topar"] as IList<Domain.Article>))
                 {
-                    <div class="item" onclick="location.href='@p.ID';">
+                    <div class="item" onclick="location.href='/Article/Product/@p.ID';">
                         <div class="cau_left">
-                            <img class="lazyOwl" data-src="@p.PImagea" alt="@(isCN ? p.Keyword : p.KeywordEn)">
+                            <img class="lazyOwl" data-src="@p.PImagea?width=150&height=150" alt="@(isCN ? p.Keyword : p.KeywordEn)">
                         </div>
                     </div>
                 }
