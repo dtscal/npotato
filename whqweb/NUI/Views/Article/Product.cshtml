@@ -14,7 +14,6 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.fancybox-buttons.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.fancybox-thumbs.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/productviewgallery.js")"></script>
-    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.form.js")"></script>
     <!-- start top_js_button -->
     <script type="text/javascript">
 
@@ -23,44 +22,6 @@
                 event.preventDefault();
                 $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 1200);
             });
-            //通过修改样式来显示不同的星级
-            $("ul.rating li a").click(function() {
-                var title = $(this).attr("title");
-
-                $("input[name='entity.Rating']").attr("value", title);
-                var cl = $(this).parent().attr("class");
-                $(this).parent().parent().removeClass().addClass("rating " + cl + "star");
-                $(this).blur(); //去掉超链接的虚线框
-                return false;
-            });
-
-            $('#fReview').ajaxForm({
-                success: function(r, s) {
-                    alert('@(isCN?"提交成功！":"Success,Thank you!")');
-                },
-                beforeSubmit: function(formData, jqForm, options) {
-                    // fieldValue 是表单插件的一个方法，它能找出表单中的元素的值，返回一个集合。
-                    if ($("input[name='entity.Rating']").val() == '') {
-                        alert('@(isCN ? "请给商品评分" : "Please give goods")');
-                        jqForm.submit(function() { return false; });
-                        
-                    }
-                    if ($("input[name='entity.Name']").val() == '') {
-                        alert('@(isCN ? "请输入您的大名" : "Please enter your name")');
-                        jqForm.submit(function () { return false; });
-                    }
-                    if ($("input[name='entity.Email']").val() == '') {
-                        alert('@(isCN ? "请输入您的邮件" : "Please enter your email")');
-                        jqForm.submit(function () { return false; });
-                    }
-                    if ($("input[name='entity.Content']").val() == '') {
-                        alert('@(isCN ? "请输入您的评价" : "Please enter your content")');
-                        jqForm.submit(function () { return false; });
-                    }
-                    var queryString = $.param(formData); //组装数据
-                    return true;
-                } // 提交前，验证
-            });
         });
 
     </script>
@@ -68,7 +29,7 @@
 <!-- start main -->
     <div class="main_bg">
         <div class="wrap">
-            <div class="main"
+            <div class="main">
                 <!-- start content -->
                 <div class="single">
                     <!-- start span1_of_1 -->
@@ -197,57 +158,14 @@
                             <div class="tab_menu">
                                 <ul>
                                     <li class="selected">@(isCN?"宝贝详情":"Detail")</li>
-                                    <li >@(isCN?"商品留言":"Leave word")</li>
+                                    
                                 </ul>
                             </div>
                             <div class="tab_box">
                                 <div  style="padding: 5%;">
                                    @(isCN?Html.Raw(a.Content):Html.Raw(a.ContentEn))
                                 </div>
-                                <div class="hide">
-                                    <div class="contact-form" style="padding: 5%;">
-                                        <form id="fReview" action="/Article/Review" method="post">
-                                            <div>
-                                                <span>
-                                                    <label>@(isCN?"给商品评分":"Grade")</label></span>
-                                                <span>
-                                                    <ul class="rating nostar">
-                                                        <li class="one"><a href="#" title="1">1</a></li>
-                                                        <li class="two"><a href="#" title="2">2</a></li>
-                                                        <li class="three"><a href="#" title="3">3</a></li>
-                                                        <li class="four"><a href="#" title="4">4</a></li>
-                                                        <li class="five"><a href="#" title="5">5</a></li>
-                                                    </ul>
-                                                    <input name="articleId" value="@a.ID" type="hidden"/>
-                                                    <input name="entity.Rating" type="hidden" />
-                                                </span>
-                                            </div>
-                                            <div>
-                                                <span>
-                                                    <label>@(isCN?"昵称":"Name")</label></span>
-                                                <span>
-                                                    <input name="entity.Name" type="text" class="textbox"></span>
-                                            </div>
-                                            <div>
-                                                <span>
-                                                    <label>@(isCN?"电子邮件":"E-mail")</label></span>
-                                                <span>
-                                                    <input name="entity.Email" type="text" class="textbox"></span>
-                                            </div>
-                                            <div>
-                                                <span>
-                                                    <label>@(isCN?"内容":"Subject")</label></span>
-                                                <span>
-                                                    <textarea name="entity.Content"></textarea></span>
-                                            </div>
-                                            <div>
-                                                <span>
-                                                    <input type="submit" id="bbbb" class="" value="@(isCN?"感谢您":"Submit us")"></span>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
+                                
                             </div>
                         </div>
                         <!-- end tabs -->

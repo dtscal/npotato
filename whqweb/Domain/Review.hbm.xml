@@ -52,7 +52,7 @@
     
     
     <!--版块-->
-    <many-to-one name="Article" column="ArticleID" class="Article" not-null="true"
+    <many-to-one name="Article" column="ArticleID" class="Article" not-null="false"
                   cascade="save-update" foreign-key="FK_Review_Article"/>
   </class>
 
