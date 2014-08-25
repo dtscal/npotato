@@ -1,56 +1,77 @@
 ﻿@{
-    ViewBag.Title = "Contact";
+    var language = HttpContext.Current.Session["isCN"];
+    var isCN = language == null || language.ToString() != false.ToString();
+    ViewBag.Title = isCN ? "联系我们" : "Contact us";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
-
+@section home
+{
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.5&ak=uBsozQmzVkm70UPZsiuGDG51"></script>
+}
 <!-- start main -->
-    <div class="main_bg">
-        <div class="wrap">
-            <div class="main">
-                <div class="contact">
-                    <div class="contact_info">
-                        <h2>get in touch</h2>
-                        <div class="map">
-                            <iframe width="100%" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.in/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265&amp;output=embed"></iframe>
-                            <br>
-                            <small><a href="https://maps.google.co.in/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=Lighthouse+Point,+FL,+United+States&amp;aq=4&amp;oq=light&amp;sll=26.275636,-80.087265&amp;sspn=0.04941,0.104628&amp;ie=UTF8&amp;hq=&amp;hnear=Lighthouse+Point,+Broward,+Florida,+United+States&amp;t=m&amp;z=14&amp;ll=26.275636,-80.087265" style="color: #777777; text-align: left; font-size: 13px; font-family: 'Source Sans Pro', sans-serif;">View Larger Map</a></small>
-                        </div>
+<div class="main_bg">
+    <div class="wrap">
+        <div class="main">
+            <div class="contact">
+                <div class="contact_info">
+                    <h2>@(isCN ? "联系我们" : "Contact us")</h2>
+                    <div id="map" class="map" style="width: 98%; height: 320px">
                     </div>
-                    <div class="contact-form">
-                        <h2>Contact Us</h2>
-                        <form method="post" action="contact-post.html">
-                            <div>
-                                <span>
-                                    <label>Name</label></span>
-                                <span>
-                                    <input name="userName" type="text" class="textbox"></span>
-                            </div>
-                            <div>
-                                <span>
-                                    <label>E-mail</label></span>
-                                <span>
-                                    <input name="userEmail" type="text" class="textbox"></span>
-                            </div>
-                            <div>
-                                <span>
-                                    <label>Mobile</label></span>
-                                <span>
-                                    <input name="userPhone" type="text" class="textbox"></span>
-                            </div>
-                            <div>
-                                <span>
-                                    <label>Subject</label></span>
-                                <span>
-                                    <textarea name="userMsg"> </textarea></span>
-                            </div>
-                            <div>
-                                <span>
-                                    <input type="submit" class="" value="Submit us"></span>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="clear"></div>
+                    <script type="text/javascript">
+                        var map = new BMap.Map("map");
+                        var point = new BMap.Point(113.263488, 23.247425);
+                        map.centerAndZoom(point, 18);
+
+
+                        var marker = new BMap.Marker(point);  // 创建标注
+                        map.addOverlay(marker);               // 将标注添加到地图中
+                        marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+
+                        var opts = {
+                            position: point,    // 指定文本标注所在的地理位置
+                            offset: new BMap.Size(30, -30)    //设置文本偏移量
+                        }
+                        var label = new BMap.Label("广州洛讯皮具有限公司", { offset: new BMap.Size(20, -10) });
+                        marker.setLabel(label);
+
+                        var top_left_control = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_TOP_LEFT });// 左上角，添加比例尺
+                        var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
+                        var top_right_navigation = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL }); //右
+                        map.addControl(top_left_control);
+                        map.addControl(top_left_navigation);
+                        map.addControl(top_right_navigation);
+                    </script>
                 </div>
+                <div class="contact-form">
+                    <h2>@(isCN ? "留言" : "Contact us")</h2>
+                    <form method="post" action="contact-post.html">
+                        <div>
+                            <span>
+                                <label>@(isCN ? "昵称" : "Name")</label></span>
+                            <span>
+                                <input name="entity.Name" type="text" class="textbox"></span>
+                        </div>
+                        <div>
+                            <span>
+                                <label>@(isCN ? "电子邮件" : "E-mail")</label></span>
+                            <span>
+                                <input name="entity.Email" type="text" class="textbox"></span>
+                        </div>
+                        <div>
+                            <span>
+                                <label>@(isCN ? "内容" : "Subject")</label></span>
+                            <span>
+                                <textarea name="entity.Content"></textarea></span>
+                        </div>
+                        <div>
+                            <span>
+                                <input type="submit" id="bbbb" class="" value="@(isCN ? "感谢您" : "Submit us")"></span>
+                        </div>
+                    </form>
+                </div>
+                <div class="clear"></div>
             </div>
         </div>
     </div>
+</div>
