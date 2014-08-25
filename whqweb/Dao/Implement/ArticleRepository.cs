@@ -31,5 +31,14 @@ namespace Dao.Implement
                    orderby li.CreateDate descending
                    select li;
         }
+
+        public IQueryable<Article> SearchProduct(string name)
+        {
+            var result = this.LoadAll().Where(a => a.IsEnabled && a.Category.Forum.IsProuduct && a.Name.Contains(name));
+
+            result=result.OrderByDescending(a => a.CreateDate);
+
+            return result;
+        }
     }
 }

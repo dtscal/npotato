@@ -796,6 +796,11 @@
     <Content Include="Images\shoe_pic5.jpg" />
     <Content Include="Images\shoe_pic6.jpg" />
     <Content Include="Images\star-matrix.gif" />
+    <Content Include="Images\客户文件\DSC_0004.JPG" />
+    <Content Include="Images\客户文件\DSC_0007.JPG" />
+    <Content Include="Images\客户文件\DSC_0849.JPG" />
+    <Content Include="Images\客户文件\DSC_1151.JPG" />
+    <Content Include="Images\客户文件\S3蝴蝶版海报.jpg" />
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.pager.js" />
     <Content Include="UserFiles\slider1.png" />
@@ -985,6 +990,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Article\Get.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Article\SearchView.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

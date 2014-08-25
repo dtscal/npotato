@@ -11,5 +11,7 @@ namespace Dao
         IQueryable<Article> LoadAllByPage(out long total, Guid categoryId, int page, int rows, string order, string sort);
 
         IQueryable<Article> LoadAllEnable(Guid categoryId);
+
+        IQueryable<Article> SearchProduct(string name);
     }
 }

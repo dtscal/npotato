@@ -21,6 +21,13 @@ namespace Service.Implement
             return q.ToList();
         }
 
+        public IList<Article> SearchProducts(string name)
+        {
+            var repository = (Dao.IArticleRepository) this.CurrentRepository;
+            var q = repository.SearchProduct(name);
+            return q.ToList();
+        }
+
         public void ViewsAdd(Guid id)
         {
             var repository = (Dao.IArticleRepository)this.CurrentRepository;

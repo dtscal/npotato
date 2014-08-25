@@ -1,0 +1,128 @@
+﻿@{
+    ViewBag.Title = "SearchView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var language = HttpContext.Current.Session["isCN"];
+    var isCN = language == null || language.ToString() != false.ToString();
+}
+@section home{
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.easing.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.mixitup.min.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+            var filterList = {
+                init: function () {
+                    // MixItUp plugin
+                    $('#portfoliolist').mixitup({
+                        targetSelector: '.portfolio',
+                        filterSelector: '.filter',
+                        effects: ['fade'],
+                        easing: 'snap',
+                        // call the hover effect<a href="Product.cshtml">Product.cshtml</a>
+                        onMixEnd: filterList.hoverEffect()
+                    });
+
+                },
+
+                hoverEffect: function () {
+                    // Simple parallax effect
+                    $('#portfoliolist .portfolio').hover(
+                        function () {
+                            $(this).find('.label').stop().animate({ bottom: 0 }, 200, 'easeOutQuad');
+                            $(this).find('img').stop().animate({ top: -30 }, 500, 'easeOutQuad');
+                        },
+                        function () {
+                            $(this).find('.label').stop().animate({ bottom: -40 }, 200, 'easeInQuad');
+                            $(this).find('img').stop().animate({ top: 0 }, 300, 'easeOutQuad');
+                        }
+                    );
+
+                }
+
+            };
+            // Run the show!
+            filterList.init();
+        });
+    </script>
+}
+<!-- start main -->
+<div class="main_bg" style="min-height: 450px;">
+    <div class="wrap">
+        <div class="main">
+            <!-- start gallery_sale  -->
+            <div class="gallery1">
+                <div class="container">
+                    @{
+                        if ((this.ViewData["resultList"] as IList<Domain.Article>).Count > 0)
+                        {
+                        <div class="main_bg1">
+                            <div class="wrap">
+                                <div class="main1">
+                                    <h2>@(isCN ? "亲，有以下产品符合您的要求哦：" : "Result：")</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="portfoliolist">
+                            @{
+                            foreach (var article in (this.ViewData["resultList"] as IList<Domain.Article>))
+                            {
+                                <div class="portfolio @article.Category.NameEn" data-cat="@article.Category.NameEn">
+                                    <div class="portfolio-wrapper">
+                                        <a href="/Article/Product/@article.ID">
+                                            <img src="@article.PImagea?height=324&width=298" alt="@(isCN ? article.Description : article.DescriptionEn)" />
+                                        </a>
+                                        <div class="label">
+                                            <div class="label-text">
+                                                <a class="text-title" href="/Article/Product/@article.ID">@(isCN ? article.Name : article.NameEn)</a>
+                                                <span class="text-category">@(isCN ? article.Category.Name : article.Category.NameEn)</span>
+                                            </div>
+                                            <div class="label-bg"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            }
+                        </div>
+                        }
+                        else
+                        {
+                        <div class="main_bg1">
+                            <div class="wrap">
+                                <div class="main1">
+                                    <h2>@(isCN ? "您搜索的结果可能在火星，我们向您推荐：" : "No results found,We recommend to you：")</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="portfoliolist">
+                            @{
+                            foreach (var article in (this.ViewData["hotp"] as IList<Domain.Article>))
+                            {
+                                <div class="portfolio @article.Category.NameEn" data-cat="@article.Category.NameEn">
+                                    <div class="portfolio-wrapper">
+                                        <a href="/Article/Product/@article.ID">
+                                            <img src="@article.PImagea?height=324&width=298" alt="@(isCN ? article.Description : article.DescriptionEn)" />
+                                        </a>
+                                        <div class="label">
+                                            <div class="label-text">
+                                                <a class="text-title" href="/Article/Product/@article.ID">@(isCN ? article.Name : article.NameEn)</a>
+                                                <span class="text-category">@(isCN ? article.Category.Name : article.Category.NameEn)</span>
+                                            </div>
+                                            <div class="label-bg"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            }
+                        </div>
+                        }
+                    }
+
+                </div>
+                <!-- container -->
+                <script type="text/javascript" src="@Url.Content("~/Scripts/fliplightbox.min.js")"></script>
+                <script type="text/javascript">$('body').flipLightBox()</script>
+                <div class="clear"></div>
+            </div>
+            <!---End-gallery----->
+        </div>
+    </div>
+</div>

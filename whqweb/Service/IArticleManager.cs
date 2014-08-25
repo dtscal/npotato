@@ -12,7 +12,9 @@ namespace Service
 
         IList<Article> LoadAllEnable(Guid categoryId);
 
-        IList<Article> LoadHotProducts(); 
+        IList<Article> LoadHotProducts();
+
+        IList<Article> SearchProducts(string name); 
 
         void ViewsAdd(Guid id);
     }

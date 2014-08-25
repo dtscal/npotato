@@ -17,8 +17,8 @@
     <!-- start top_js_button -->
     <script type="text/javascript">
 
-        jQuery(document).ready(function($) {
-            $(".scroll").click(function(event) {
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
                 event.preventDefault();
                 $('html, body').animate({ scrollTop: $(this.hash).offset().top }, 1200);
             });
@@ -27,46 +27,46 @@
     </script>
 }
 <!-- start main -->
-    <div class="main_bg">
-        <div class="wrap">
-            <div class="main">
-                <!-- start content -->
-                <div class="single">
-                    <!-- start span1_of_1 -->
-                    <div class="left_content">
-                        <div class="span1_of_1">
-                            <!-- start product_slider -->
-                            <div class="product-view">
-                                <div class="product-essential">
-                                    <div class="product-img-box">
-                                        <div class="more-views" style="float: left;">
-                                            <div class="more-views-container">
-                                                <ul>
-                                                    <li>
-                                                        <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width: 64px; height: 85px;" href="" title="" alt="">
-                                                            <img src="" src_main="" title="" alt="" /></a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width: 64px; height: 85px;" href="" title="" alt="">
-                                                            <img src="" src_main="" title="" alt="" /></a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width: 64px; height: 85px;" href="" title="" alt="">
-                                                            <img src="" src_main="" title="" alt="" /></a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width: 64px; height: 85px;" href="" title="" alt="">
-                                                            <img src="" src_main="" title="" alt="" /></a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width: 64px; height: 85px;" href="" title="" alt="">
-                                                            <img src="" src_main="" title="" alt="" /></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+<div class="main_bg">
+    <div class="wrap">
+        <div class="main">
+            <!-- start content -->
+            <div class="single">
+                <!-- start span1_of_1 -->
+                <div class="left_content">
+                    <div class="span1_of_1">
+                        <!-- start product_slider -->
+                        <div class="product-view">
+                            <div class="product-essential">
+                                <div class="product-img-box">
+                                    <div class="more-views" style="float: left;">
+                                        <div class="more-views-container">
+                                            <ul>
+                                                <li>
+                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width: 64px; height: 85px;" href="" title="" alt="">
+                                                        <img src="" src_main="" title="" alt="" /></a>
+                                                </li>
+                                                <li>
+                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width: 64px; height: 85px;" href="" title="" alt="">
+                                                        <img src="" src_main="" title="" alt="" /></a>
+                                                </li>
+                                                <li>
+                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width: 64px; height: 85px;" href="" title="" alt="">
+                                                        <img src="" src_main="" title="" alt="" /></a>
+                                                </li>
+                                                <li>
+                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width: 64px; height: 85px;" href="" title="" alt="">
+                                                        <img src="" src_main="" title="" alt="" /></a>
+                                                </li>
+                                                <li>
+                                                    <a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width: 64px; height: 85px;" href="" title="" alt="">
+                                                        <img src="" src_main="" title="" alt="" /></a>
+                                                </li>
+                                            </ul>
                                         </div>
-                                        <div class="product-image">
-                                            <a class="cs-fancybox-thumbs cloud-zoom" 
+                                    </div>
+                                    <div class="product-image">
+                                        <a class="cs-fancybox-thumbs cloud-zoom" 
                                                rel="adjustX:30,adjustY:0,
                                                 position:'right',
                                                 tint:'#202020',
@@ -78,143 +78,144 @@
                                                 href="@a.PImagea" 
                                                 title="@a.Name" 
                                                 alt="@a.Description">
-                                                <img src="@a.PImagea" alt="@a.Name" title="@a.Description" />
-                                            </a>
-                                        </div>
-                                        <script type="text/javascript">
-                                            var prodGallery = jQblvg.parseJSON('@Html.Raw(this.ViewData["pimages"].ToString())'),
-                                                gallery_elmnt = jQblvg('.product-img-box'),
-                                                galleryObj = new Object(),
-                                                gallery_conf = new Object();
-                                                gallery_conf.moreviewitem = '<a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt=""><img src="" src_main="" width="64" height="85" title="" alt="" /></a>';
-                                                gallery_conf.animspeed = 200;
-                                                jQblvg(document).ready(function () {
-                                                    galleryObj[1] = new prodViewGalleryForm(prodGallery, 'prod_1', gallery_elmnt, gallery_conf, '.product-image', '.more-views', 'http:');
-                                                    jQblvg('.product-image .cs-fancybox-thumbs').absoluteClick();
-                                                    jQblvg('.cs-fancybox-thumbs').fancybox({
-                                                        prevEffect: 'none',
-                                                        nextEffect: 'none',
-                                                        closeBtn: true,
-                                                        arrows: true,
-                                                        nextClick: true,
-                                                        helpers: {
-                                                            thumbs: {
-                                                                width: 64,
-                                                                height: 85,
-                                                                position: 'bottom'
-                                                            }
-                                                        }
-                                                    });
-                                                jQblvg('#wrap').css('z-index', '100');
-                                                jQblvg('.more-views-container').elScroll({ type: 'vertical', elqty: 4, btn_pos: 'border', scroll_speed: 400 });
-
+                                            <img src="@a.PImagea" alt="@a.Name" title="@a.Description" />
+                                        </a>
+                                    </div>
+                                    <script type="text/javascript">
+                                        var prodGallery = jQblvg.parseJSON('@Html.Raw(this.ViewData["pimages"].ToString())'),
+                                            gallery_elmnt = jQblvg('.product-img-box'),
+                                            galleryObj = new Object(),
+                                            gallery_conf = new Object();
+                                        gallery_conf.moreviewitem = '<a class="cs-fancybox-thumbs" data-fancybox-group="thumb" style="width:64px;height:85px;" href=""  title="" alt=""><img src="" src_main="" width="64" height="85" title="" alt="" /></a>';
+                                        gallery_conf.animspeed = 200;
+                                        jQblvg(document).ready(function () {
+                                            galleryObj[1] = new prodViewGalleryForm(prodGallery, 'prod_1', gallery_elmnt, gallery_conf, '.product-image', '.more-views', 'http:');
+                                            jQblvg('.product-image .cs-fancybox-thumbs').absoluteClick();
+                                            jQblvg('.cs-fancybox-thumbs').fancybox({
+                                                prevEffect: 'none',
+                                                nextEffect: 'none',
+                                                closeBtn: true,
+                                                arrows: true,
+                                                nextClick: true,
+                                                helpers: {
+                                                    thumbs: {
+                                                        width: 64,
+                                                        height: 85,
+                                                        position: 'bottom'
+                                                    }
+                                                }
                                             });
+                                            jQblvg('#wrap').css('z-index', '100');
+                                            jQblvg('.more-views-container').elScroll({ type: 'vertical', elqty: 4, btn_pos: 'border', scroll_speed: 400 });
 
-                                            function initGallery(a, b, element) {
-                                                galleryObj[a] = new prodViewGalleryForm(prods, b, gallery_elmnt, gallery_conf, '.product-image', '.more-views', '');
-                                            };
-                                        </script>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end product_slider -->
-                        </div>
-                        <!-- start span1_of_1 -->
-                        <div class="span1_of_1_des">
-                            <div class="desc1">
-                                <h3>@(isCN?a.Name:a.NameEn)</h3>
-                                <p>@(isCN?a.Description:a.DescriptionEn)</p>
-                                <h5></h5>
-                                <div class="available">
-                                    <h4></h4>
-                                    <div class="btn_form">
-                                        <form action="@a.BuyLink">
-                                            <input type="submit" value="@(isCN?"去购":"Go Buy")"/>
-                                        </form>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="share-desc">
-                                    <div class="share">
-                                        <h4>@(isCN?"精品宝贝要分享":"Share")</h4>
-                                        <ul class="share_nav">
-                                            <li><a href="#">
-                                                <img src="/images/facebook.png" title="facebook"></a></li>
-                                            <li><a href="#">
-                                                <img src="/images/twitter.png" title="Twiiter"></a></li>
-                                            <li><a href="#">
-                                                <img src="/images/rss.png" title="Rss"></a></li>
-                                            <li><a href="#">
-                                                <img src="/images/gpluse.png" title="Google+"></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="clear"></div>
+                                        });
+
+                                        function initGallery(a, b, element) {
+                                            galleryObj[a] = new prodViewGalleryForm(prods, b, gallery_elmnt, gallery_conf, '.product-image', '.more-views', '');
+                                        };
+                                    </script>
                                 </div>
                             </div>
                         </div>
-                        <div class="clear"></div>
-                        <!-- start tabs -->
-                        <div class="tab">
-                            <div class="tab_menu">
-                                <ul>
-                                    <li class="selected">@(isCN?"宝贝详情":"Detail")</li>
-                                    
-                                </ul>
-                            </div>
-                            <div class="tab_box">
-                                <div  style="padding: 5%;">
-                                   @(isCN?Html.Raw(a.Content):Html.Raw(a.ContentEn))
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <!-- end tabs -->
+                        <!-- end product_slider -->
                     </div>
-                    <!-- start sidebar -->
-                    <div class="left_sidebar">
-                        <div class="sellers">
-                            <h4>@(isCN?a.Category.Forum.Name:a.Category.Forum.NameEn)</h4>
-                            <div class="single-nav">
-                                <ul>
-                                    @{
-                                        foreach (var c in (this.ViewData["CategoryList"] as IEnumerable<Domain.Category>))
-                                        {
-                                            <li><a href="/@a.Category.Forum.ID/PList.html?cid=@c.ID">@(isCN?c.Name:c.NameEn)</a></li>
-                                        }
-                                    }
-                                </ul>
+                    <!-- start span1_of_1 -->
+                    <div class="span1_of_1_des">
+                        <div class="desc1">
+                            <h3>@(isCN ? a.Name : a.NameEn)</h3>
+                            <p>@(isCN ? a.Description : a.DescriptionEn)</p>
+                            <h5></h5>
+                            <div class="available">
+                                <h4></h4>
+                                <div class="btn_form">
+                                    <form action="@a.BuyLink">
+                                        <input type="submit" value="@(isCN ? "去购" : "Go Buy")"/>
+                                    </form>
+                                </div>
+                                <div class="clear"></div>
                             </div>
-                            <div class="brands">
-                                <h1>@(isCN?"热点商品":"Hot Products")</h1>
+                            <div class="share-desc">
+                                <div class="share">
+                                    <h4>@(isCN ? "精品宝贝要分享" : "Share")</h4>
+                                    <!-- JiaThis Button BEGIN -->
+                                    <div class="jiathis_style_32x32">
+                                        <a class="jiathis_button_tsina"></a>
+                                        <a class="jiathis_button_tqq"></a>
+                                        <a class="jiathis_button_weixin"></a>
+                                        <a class="jiathis_button_fb"></a>
+                                        <a class="jiathis_button_googleplus"></a>
+                                        <a class="jiathis_button_twitter"></a>
+                                        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+                                    </div>
+                                    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                                    <!-- JiaThis Button END -->
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                    <!-- start tabs -->
+                    <div class="tab">
+                        <div class="tab_menu">
+                            <ul>
+                                <li class="selected">@(isCN ? "宝贝详情" : "Detail")</li>
+                            </ul>
+                        </div>
+                        <div class="tab_box">
+                            <div style="padding: 5%;">
+                                @(isCN ? Html.Raw(a.Content) : Html.Raw(a.ContentEn))
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- end tabs -->
+                </div>
+                <!-- start sidebar -->
+                <div class="left_sidebar">
+                    <div class="sellers">
+                        <h4>@(isCN ? a.Category.Forum.Name : a.Category.Forum.NameEn)</h4>
+                        <div class="single-nav">
+                            <ul>
                                 @{
+                                    foreach (var c in (this.ViewData["CategoryList"] as IEnumerable<Domain.Category>))
+                                    {
+                                    <li><a href="/@a.Category.Forum.ID/PList.html?cid=@c.ID">@(isCN ? c.Name : c.NameEn)</a></li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        <div class="brands">
+                            <h1>@(isCN ? "热点商品" : "Hot Products")</h1>
+                            @{
                                 foreach (var p in (this.ViewData["hotp"] as IEnumerable<Domain.Article>))
                                 {
                                 <div class="field">
                                     <a href="/Article/Product/@p.ID">
                                         <img src="@p.PImagea" alt="" />
-                                        <h3>@(isCN?p.Name:p.NameEn)</h3>
+                                        <h3>@(isCN ? p.Name : p.NameEn)</h3>
                                     </a>
                                 </div>
                                 }
                             }
-                            </div>
-                            <div class="banner-wrap bottom_banner color_link">
-                                <a href="#" class="main_link">
-                                    <figure>
-                                        <img src="/images/delivery.png" alt="">
-                                    </figure>
-                                    <h5><span>Free Shipping</span><br>
-                                        on orders over $99.</h5>
-                                    <p>This offer is valid on all our store items.</p>
-                                </a>
-                            </div>
-                            
                         </div>
+                        <div class="banner-wrap bottom_banner color_link">
+                            <a href="#" class="main_link">
+                                <figure>
+                                    <img src="/images/delivery.png" alt="">
+                                </figure>
+                                <h5><span>Free Shipping</span><br>
+                                    on orders over $99.</h5>
+                                <p>This offer is valid on all our store items.</p>
+                            </a>
+                        </div>
+
                     </div>
-                    <!-- end sidebar -->
-                    <div class="clear"></div>
                 </div>
-                <!-- end content -->
+                <!-- end sidebar -->
+                <div class="clear"></div>
             </div>
+            <!-- end content -->
         </div>
     </div>
+</div>

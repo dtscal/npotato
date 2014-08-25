@@ -46,6 +46,7 @@
             });
         });
     </script>
+    <script language="JavaScript" src="http://code.54kefu.net/kefu/js/10/714210.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
     <!-- start header -->
@@ -68,8 +69,8 @@
                     </ul>
                 </div>
                 <div class="h_search">
-                    <form>
-                        <input type="text" value="">
+                    <form method="POST" action="/Article/SearchView">
+                        <input name="name" type="text" value="">
                         <input type="submit" value="">
                     </form>
                 </div>
@@ -86,6 +87,7 @@
                     }
                 </div>
                 <div class="top-nav">
+                    <!--这里需要用jquery动态的插入-->
                     <nav class="nav">
                         <a href="#" id="w3-menu-trigger"></a>
                         <ul class="nav-list" style="">
@@ -97,8 +99,9 @@
                         </ul>
                     </nav>
                     <div class="search_box">
-                        <form>
-                            <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}"><input type="submit" value="">
+                        <form method="POST" action="/Article/SearchView">
+                            <input name="name" type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                            <input type="submit" value="">
                         </form>
                     </div>
                     <div class="clear"></div>
@@ -169,10 +172,10 @@
                 <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
                 <!--end scroll_top_btn -->
                 <div class="copy">
-                    在线客户：<a target="_blank" href="http://amos1.taobao.com/msg.ww?v=2&uid=dtscal&s=2" ><img border="0" src="http://amos1.taobao.com/online.ww?v=2&uid=dtscal&s=2" alt="点击这里给我发消息" /></a>
-                    <p class="link">Copyright &copy; 2014.Company name All rights reserved. </p>
-                    <p class="link">电话：+86-023-25635563 &nbsp; 手机：+86-186-0231-6992</p>
-                    
+                    <p class="link">@(isCN?"版权所有归广州洛讯皮具有限公司所有":"Copyright &copy; 2014.Company name All rights reserved.") </p>
+                    <p class="link">@(isCN?"电话":"Tel")：+86-020-86166283  </p>
+                    <p class="link">@(isCN?"手机":"Mobile")：+86-136-1002-0058 or +86-136-1762-8976</p>
+                    <p class="link">@(isCN?"广州市白云区均禾街清湖村三社（大山）工业区自编8号A栋三楼":"")</p>
                 </div>
                 <div class="clear"></div>
             </div>
