@@ -152,20 +152,6 @@ namespace NUI.Controllers
             return this.View();
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Review(Review entity, Guid articleId)
-        {
-            Review review = new Review();
-
-            Article arti = ArticleManager.Get(articleId);
-            entity.Article = arti;
-            entity.ID = Guid.NewGuid();
-            entity.ReviewDate = DateTime.Now;
-            entity.ReplyDate = DateTime.Now;
-            ReviewManager.Save(entity);
-            return RedirectToAction("get", "Article", new {id = articleId});
-        }
-
         public ActionResult Product(Guid id)
         {
             var entity = this.ArticleManager.Get(id);
@@ -178,10 +164,8 @@ namespace NUI.Controllers
             var categoryList = this.CategoryManager.LoadAllEnable(entity.Category.Forum.ID);
             long total = 0;
 
-            var reviews = this.ReviewManager.LoadAllWithPage(out total, entity.ID, 1, 5, true, "desc", "ReviewDate");
 
             this.ViewData["entity"] = entity;
-            this.ViewData["reviews"] = reviews;
             this.ViewData["hotp"] = ArticleManager.LoadHotProducts();
             this.ViewData["CategoryList"] = categoryList;
             this.ViewData["pimages"] = this.PImages(entity);

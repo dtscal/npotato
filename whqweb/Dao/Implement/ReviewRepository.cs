@@ -9,19 +9,7 @@ namespace Dao.Implement
     public class ReviewRepository : RepositoryBase<Review>,IReviewRepository
     {
 
-        public IQueryable<Review> LoadAllWithPage(out long total, Guid articleId, int page, int row,bool isEnabled, string order,string sort)
-        {
-            var list = isEnabled ? this.LoadAll().Where(w=>w.Article != null && w.Article.ID == articleId && w.IsEnabled==true)
-                : this.LoadAll().Where(w => w.Article != null && w.Article.ID == articleId);
-
-            total = list.LongCount();
-
-            
-            list = list.OrderBy(sort+" "+order);
-
-            list = list.Skip((page - 1) * row).Take(row);
-            return list;
-        }
+        
 
         public IQueryable<Review> LoadAllWithPage(out long total, int page, int row, bool isEnabled, string order, string sort,bool isReply)
         {

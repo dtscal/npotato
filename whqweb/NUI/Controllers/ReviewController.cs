@@ -21,8 +21,8 @@ namespace NUI.Controllers
             var list = this.ReviewManager.LoadAllWithPage(out total, page, rows, isEnabled, order, sort, isReply).Select(entity => new
                 {
                     entity.ID,
-                    AName = entity.Article.Name,
                     entity.Name,
+                    entity.Mobile,
                     entity.Email,
                     entity.ReviewDate,
                     entity.Content,
@@ -42,13 +42,40 @@ namespace NUI.Controllers
             return View();
         }
 
-        public ActionResult Save(Review entity,string code)
+        [Authorize]
+        [ValidateInput(false)]
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Replay(Guid id, bool isEnabled, String reply)
+        {
+            var entity = this.ReviewManager.Get(id);
+            entity.Reply = reply;
+            entity.IsEnabled = isEnabled;
+            entity.ReplyDate = DateTime.Now;
+
+            this.ReviewManager.Update(entity);
+            return Json(new { IsSuccess = true,Message="更新成功！" }, "text/html", JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Save(string code)
         {
             if (this.Session["ValidateCode"] == null || code != this.Session["ValidateCode"].ToString())
             {
-                return Json(new { IsSuccess = false, Message = "验证码错误，请重新输入" });
+                return Json(new { IsSuccess = false},"text/html", JsonRequestBehavior.AllowGet);
             }
-            return Json(new { IsSuccess = true, Message = "保存成功" }, "text/html", JsonRequestBehavior.AllowGet);
+
+            var entity = new Review()
+            {
+                ID = Guid.NewGuid(),
+                Name = Request["Name"].ToString(),
+                Email = Request["Email"].ToString(),
+                Content = Request["Content"].ToString(),
+                Mobile=Request["Mobile"].ToString(),
+                ReviewDate = DateTime.Now,
+                ReplyDate = DateTime.Now
+            };
+
+            this.ReviewManager.Save(entity);
+            return Json(new { IsSuccess = true }, "text/html", JsonRequestBehavior.AllowGet);
         }
 
         //

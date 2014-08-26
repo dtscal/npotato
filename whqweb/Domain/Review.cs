@@ -9,13 +9,13 @@ namespace Domain
         public virtual string Name{get;set;}
 
         public virtual string Email{get;set;}
-        
+
+        public virtual string Mobile { get; set; }
+
         public virtual int Rating { get; set; }
         
         public virtual string Content { get; set; }
         
-        public virtual Article Article { get; set; }
-
         public virtual string Reply { get; set; }
 
         public virtual DateTime ReviewDate { get; set; }

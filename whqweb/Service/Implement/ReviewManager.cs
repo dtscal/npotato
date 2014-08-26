@@ -9,11 +9,6 @@ namespace Service.Implement
     public class ReviewManager : GenericManagerBase<Review>,IReviewManager
     {
 
-        public IList<Review> LoadAllWithPage(out long total, Guid articleId, int page, int row, bool isEnabled,string order,string sort)
-        {
-            return ((Dao.IReviewRepository) (this.CurrentRepository)).LoadAllWithPage(out total, articleId, page, row,isEnabled,order,sort).ToList();
-        }
-
 
         public IList<Review> LoadAllWithPage(out long total, int page, int row, bool isEnabled, string order, string sort, bool isReply)
         {

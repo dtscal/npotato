@@ -20,9 +20,14 @@
       <column name="Email" length="50" not-null="true"/>
     </property>
 
+    <!--邮箱-->
+    <property name="Mobile" type="string">
+      <column name="Mobile" length="16" not-null="true"/>
+    </property>
+
     <!--评分-->
     <property name="Rating" type="int">
-      <column name="Rating" not-null="true"/>
+      <column name="Rating" not-null="false"/>
     </property>
 
     <!--留言内容-->
@@ -42,7 +47,7 @@
 
     <!--修改日期-->
     <property name="ReplyDate" type="DateTime">
-      <column name="ReplyDate" not-null="true"/>
+      <column name="ReplyDate" not-null="false"/>
     </property>
 
     <!--启用-->
@@ -51,9 +56,6 @@
     </property>
     
     
-    <!--版块-->
-    <many-to-one name="Article" column="ArticleID" class="Article" not-null="false"
-                  cascade="save-update" foreign-key="FK_Review_Article"/>
   </class>
 
 </hibernate-mapping>

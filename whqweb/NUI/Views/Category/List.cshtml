@@ -57,7 +57,7 @@
                                 foreach (var p in (this.ViewData["hotp"] as IEnumerable<Domain.Article>))
                                 {
                                 <div class="field">
-                                    <a href="@p.ID">
+                                    <a href="/Article/Product/@p.ID">
                                         <img src="@p.PImagea" alt="" />
                                         <h3>@(isCN?p.Name:p.NameEn)</h3>
                                     </a>

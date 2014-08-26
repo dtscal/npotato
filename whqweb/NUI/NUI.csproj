@@ -752,11 +752,6 @@
     <Content Include="Images\index.jpg" />
     <Content Include="Images\indexen.jpg" />
     <Content Include="Images\language.png" />
-    <Content Include="Images\large\0001-1.jpg" />
-    <Content Include="Images\large\0001-2.jpg" />
-    <Content Include="Images\large\0001-3.jpg" />
-    <Content Include="Images\large\0001-4.jpg" />
-    <Content Include="Images\large\0001-5.jpg" />
     <Content Include="Images\light_toast.png" />
     <Content Include="Images\list1.jpg" />
     <Content Include="Images\loading.gif" />
@@ -798,20 +793,15 @@
     <Content Include="Images\shoe_pic6.jpg" />
     <Content Include="Images\star-matrix.gif" />
     <Content Include="Images\unchecked.gif" />
-    <Content Include="Images\客户文件\DSC_0004.JPG" />
-    <Content Include="Images\客户文件\DSC_0007.JPG" />
-    <Content Include="Images\客户文件\DSC_0849.JPG" />
-    <Content Include="Images\客户文件\DSC_1151.JPG" />
-    <Content Include="Images\客户文件\S3蝴蝶版海报.jpg" />
+    <Content Include="Images\hb\DSC_0004.JPG" />
+    <Content Include="Images\hb\DSC_0007.JPG" />
+    <Content Include="Images\hb\DSC_0849.JPG" />
+    <Content Include="Images\hb\DSC_1151.JPG" />
+    <Content Include="Images\hb\S3.jpg" />
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.pager.js" />
     <Content Include="Images\slider5.png" />
     <Content Include="Images\slider_bg.jpg" />
-    <Content Include="Images\small\0001-1.jpg" />
-    <Content Include="Images\small\0001-2.jpg" />
-    <Content Include="Images\small\0001-3.jpg" />
-    <Content Include="Images\small\0001-4.jpg" />
-    <Content Include="Images\small\0001-5.jpg" />
     <Content Include="Images\topbackground.gif" />
     <Content Include="Images\top_move.png" />
     <Content Include="Images\twitter.png" />
@@ -915,12 +905,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Images\large\Thumbs.db" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Images\small\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Thumbs.db" />

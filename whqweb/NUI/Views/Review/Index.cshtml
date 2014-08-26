@@ -24,10 +24,9 @@
 
                 columns: [[
                     
-                    { field: 'AName', title: '文章或商品名称', width: 80 },
                     { field: 'Name', title: '客户姓名', width: 50, align: 'right' },
                     { field: 'Email', title: '邮件', width: 70, align: 'right' },
-                    { field: 'Rating', title: '评分', width: 40, align: 'right' },
+                    { field: 'Mobile', title: '手机号', width: 70, align: 'right' },
                     { field: 'Content', title: '内容', width: 170, align: 'right' },
                     {
                         field: 'IsEnabled', title: '是否显示', width: 80, align: 'right',
@@ -56,10 +55,8 @@
                                 document.getElementById(t).innerHTML = v;
                             }
 
-                            setv('aname', row.AName);
                             setv('name', row.Name);
                             setv('email', row.Email);
-                            setv('rating', row.Rating);
                             setv('content', row.Content);
                             setv('reviewdate', row.ReviewDate);
                             setv('show', row.IsEnabled);
@@ -138,13 +135,6 @@
     <div id="win" iconcls="icon-save" title="查看留言" style="padding: 5px; width: 400px; height: 200px;">
         <table style="width: 100%">
             <tr>
-                <td style="text-align: right; width: 120px;">商品或文章标题：
-                </td>
-                <td>
-                    <label id="aname"></label>
-                </td>
-            </tr>
-            <tr>
                 <td style="text-align: right; width: 120px;">昵称：
                 </td>
                 <td>
@@ -165,13 +155,6 @@
                     <label id="show"></label>
                 </td>
 
-            </tr>
-            <tr>
-                <td style="text-align: right; width: 120px;">评分：
-                </td>
-                <td>
-                    <label id="rating"></label>
-                </td>
             </tr>
             <tr>
                 <td style="text-align: right; width: 120px;">内容：

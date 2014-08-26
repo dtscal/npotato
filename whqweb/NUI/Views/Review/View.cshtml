@@ -27,17 +27,9 @@
         </div>
         <div region="center">
 
-            <form id="form" method="post" action="/Review/Save/" enctype="application/x-www-form-urlencoded">
+            <form id="form" method="post" action="/Review/Replay/" enctype="application/x-www-form-urlencoded">
                 <input type="hidden" id="id" name="id" value="@r.ID" />
-                <input type="hidden" name="articleId" value="@r.Article.ID"/>
                 <table style="width: 100%">
-                    <tr>
-                        <td style="text-align: right; width: 120px;">商品或文章标题：
-                        </td>
-                        <td>
-                            <label>@r.Article.Name</label>
-                        </td>
-                    </tr>
                     <tr>
                         <td style="text-align: right; width: 120px;">昵称：
                         </td>
