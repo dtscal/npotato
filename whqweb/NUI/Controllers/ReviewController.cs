@@ -42,34 +42,12 @@ namespace NUI.Controllers
             return View();
         }
 
-        [Authorize]
-        [ValidateInput(false)]
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Save(Guid id, string reply, Guid articleId, bool isEnabled)
+        public ActionResult Save(Review entity,string code)
         {
-            var article = ArticleManager.Get(articleId);
-            if (article == null)
+            if (this.Session["ValidateCode"] == null || code != this.Session["ValidateCode"].ToString())
             {
-                return Json(new
-                {
-                    IsSuccess = false,
-                    Message = "文章不存在不能更新留言！"
-                }, "text/html", JsonRequestBehavior.AllowGet);
+                return Json(new { IsSuccess = false, Message = "验证码错误，请重新输入" });
             }
-            var review = this.ReviewManager.Get(id);
-            if (review == null)
-            {
-                return Json(new
-                {
-                    IsSuccess = false,
-                    Message = "留言记录不存在不能更新留言！"
-                }, "text/html", JsonRequestBehavior.AllowGet);
-            }
-            review.IsEnabled = isEnabled;
-            review.Reply = reply;
-            review.ReplyDate = DateTime.Now;
-
-            this.ReviewManager.Update(review);
             return Json(new { IsSuccess = true, Message = "保存成功" }, "text/html", JsonRequestBehavior.AllowGet);
         }
 

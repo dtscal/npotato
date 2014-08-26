@@ -723,6 +723,7 @@
     <Content Include="Images\c1.jpg" />
     <Content Include="Images\c2.jpg" />
     <Content Include="Images\c3.jpg" />
+    <Content Include="Images\checked.gif" />
     <Content Include="Images\China.png" />
     <Content Include="Images\close.png" />
     <Content Include="Images\contentlist1.gif" />
@@ -796,6 +797,7 @@
     <Content Include="Images\shoe_pic5.jpg" />
     <Content Include="Images\shoe_pic6.jpg" />
     <Content Include="Images\star-matrix.gif" />
+    <Content Include="Images\unchecked.gif" />
     <Content Include="Images\客户文件\DSC_0004.JPG" />
     <Content Include="Images\客户文件\DSC_0007.JPG" />
     <Content Include="Images\客户文件\DSC_0849.JPG" />
@@ -803,10 +805,6 @@
     <Content Include="Images\客户文件\S3蝴蝶版海报.jpg" />
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.pager.js" />
-    <Content Include="UserFiles\slider1.png" />
-    <Content Include="UserFiles\slider2.png" />
-    <Content Include="UserFiles\slider3.png" />
-    <Content Include="UserFiles\slider4.png" />
     <Content Include="Images\slider5.png" />
     <Content Include="Images\slider_bg.jpg" />
     <Content Include="Images\small\0001-1.jpg" />
@@ -851,6 +849,8 @@
     <Content Include="Scripts\jquery.fancybox.pack.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.mixitup.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.messages_cn.js" />
     <Content Include="Scripts\modernizr.custom.28468.js" />
     <Content Include="Scripts\move-top.js" />
     <Content Include="Scripts\owl.carousel.js" />
