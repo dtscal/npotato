@@ -72,7 +72,6 @@
 <div region="center" border="false">
     <div region="north" border="true" class="title" style="text-align: center; height: 40px; line-height: 40px; font-size: x-large;">
         主页设置
-       
     </div>
      
     <div region="center" style="margin: 5px;">
@@ -80,34 +79,19 @@
         <form id="forma" method="post" action="/Setter/SaveSlider/" enctype="application/x-www-form-urlencoded">
             <table style="width: 100%;">
                 <tr>
-                    <td colspan="8">
+                    <td colspan="5">
                         <h3>第一张轮播图片设置</h3>
+                        <input type="hidden" name="entity.ID" value="@slidera.ID"/>
                     </td>
                 </tr>
                 <tr>
-                    <td>轮播中文标题：</td>
-                    <td>
-                        <input type="hidden" name="entity.ID" value="@slidera.ID"/>
-                        <input name="entity.Name" value="@slidera.Valuea.Split('|')[0]"/>
-                    </td>
-                    <td>轮播英文标题：</td>
-                    <td>
-                        <input name="entity.NameEn" value="@slidera.Valuea.Split('|')[1]"/></td>
                     <td>轮播图片地址</td>
                     <td>
-                        <input name="entity.Valued" id="entity.Valued.a" value="@slidera.Valued"/><a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'a');" >浏览</a></td>
-                </tr>
-                <tr>
+                        <input name="entity.Valued" id="entity.Valued.a" value="@slidera.Valued"/>
+                        <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'a');" >浏览</a></td>
                     <td>点击链接地址：</td>
                     <td>
                         <input name="entity.Valuec" value="@slidera.Valuec"/></td>
-                    <td>中文描述：</td>
-                    <td>
-                        <textarea name="entity.Desc">@slidera.Valueb.Split('|')[0]</textarea></td>
-                    <td>英文描述：</td>
-                    <td>
-                        <textarea name="entity.DescEn">@slidera.Valueb.Split('|')[1]</textarea></td>
-                    
                     <td rowspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit('forma');">提交</a></td>
                 </tr>
             </table>
@@ -115,36 +99,21 @@
         <form id="formb" method="post" action="/Setter/SaveSlider/" enctype="application/x-www-form-urlencoded">
             <table style="width: 100%;">
                 <tr>
-                    <td colspan="8">
+                    <td colspan="5">
                         <h3>第二张轮播图片设置</h3>
+                        <input type="hidden" name="entity.ID" value="@sliderb.ID"/>
                     </td>
                 </tr>
                 <tr>
-                    <td>轮播中文标题：</td>
-                    <td>
-                        <input type="hidden" name="entity.ID" value="@sliderb.ID"/>
-                        <input name="entity.Name" value="@sliderb.Valuea.Split('|')[0]"/>
-                    </td>
-                    <td>轮播英文标题：</td>
-                    <td>
-                        <input name="entity.NameEn" value="@sliderb.Valuea.Split('|')[1]"/></td>
                     <td>轮播图片地址</td>
                     <td>
                         <input name="entity.Valued" id="entity.Valued.b" value="@sliderb.Valued"/>
                         <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'b');" >浏览</a></td>
-                </tr>
-                <tr>
-                    <td>点击链接地址：</td>
+                                        <td>点击链接地址：</td>
                     <td>
                         <input name="entity.Valuec" value="@sliderb.Valuec"/></td>
-                    <td>中文描述：</td>
-                    <td>
-                        <textarea name="entity.Desc">@sliderb.Valueb.Split('|')[0]</textarea></td>
-                    <td>英文描述：</td>
-                    <td>
-                        <textarea name="entity.DescEn">@sliderb.Valueb.Split('|')[1]</textarea></td>
-                    
                     <td rowspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit('formb');">提交</a></td>
+
                 </tr>
             </table>
         </form>
@@ -153,33 +122,17 @@
                 <tr>
                     <td colspan="8">
                         <h3>第三张轮播图片设置</h3>
+                        <input type="hidden" name="entity.ID" value="@sliderc.ID"/>
                     </td>
                 </tr>
                 <tr>
-                    <td>轮播中文标题：</td>
-                    <td>
-                        <input type="hidden" name="entity.ID" value="@sliderc.ID"/>
-                        <input name="entity.Name" value="@sliderc.Valuea.Split('|')[0]"/>
-                    </td>
-                    <td>轮播英文标题：</td>
-                    <td>
-                        <input name="entity.NameEn" value="@sliderc.Valuea.Split('|')[1]"/></td>
                     <td>轮播图片地址</td>
                     <td>
-                        <input name="entity.Valued" id="entity.Valued.c" value="@sliderb.Valued"/>
+                        <input name="entity.Valued" id="entity.Valued.c" value="@sliderc.Valued"/>
                         <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'c');" >浏览</a></td>
-                </tr>
-                <tr>
                     <td>点击链接地址：</td>
                     <td>
                         <input name="entity.Valuec" value="@sliderc.Valuec"/></td>
-                    <td>中文描述：</td>
-                    <td>
-                        <textarea name="entity.Desc">@sliderc.Valueb.Split('|')[0]</textarea></td>
-                    <td>英文描述：</td>
-                    <td>
-                        <textarea name="entity.DescEn">@sliderc.Valueb.Split('|')[1]</textarea></td>
-                    
                     <td rowspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit('formc');">提交</a></td>
                 </tr>
             </table>
@@ -189,33 +142,17 @@
                 <tr>
                     <td colspan="8">
                         <h3>第四张轮播图片设置</h3>
+                        <input type="hidden" name="entity.ID" value="@sliderd.ID"/>
                     </td>
                 </tr>
                 <tr>
-                    <td>轮播中文标题：</td>
-                    <td>
-                        <input type="hidden" name="entity.ID" value="@sliderd.ID"/>
-                        <input name="entity.Name" value="@sliderd.Valuea.Split('|')[0]"/>
-                    </td>
-                    <td>轮播英文标题：</td>
-                    <td>
-                        <input name="entity.NameEn" value="@sliderd.Valuea.Split('|')[1]"/></td>
                     <td>轮播图片地址</td>
                     <td>
-                        <input name="entity.Valued" id="entity.Valued.d" value="@sliderb.Valued"/>
+                        <input name="entity.Valued" id="entity.Valued.d" value="@sliderd.Valued"/>
                         <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'd');" >浏览</a></td>
-                </tr>
-                <tr>
                     <td>点击链接地址：</td>
                     <td>
                         <input name="entity.Valuec" value="@sliderd.Valuec"/></td>
-                    <td>中文描述：</td>
-                    <td>
-                        <textarea name="entity.Desc">@sliderd.Valueb.Split('|')[0]</textarea></td>
-                    <td>英文描述：</td>
-                    <td>
-                        <textarea name="entity.DescEn">@sliderd.Valueb.Split('|')[1]</textarea></td>
-                    
                     <td rowspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit('formd');">提交</a></td>
                 </tr>
             </table>
@@ -255,11 +192,11 @@
                     <td>中文名称</td>
                     <td>
                         <input type="hidden" name="entity.ID" value="@categoryb.ID"/>
-                        <input name="entity.Name" value="@categorya.Valuea.Split('|')[0]"/>
+                        <input name="entity.Name" value="@categoryb.Valuea.Split('|')[0]"/>
                     </td>
                     <td>英文名称</td>
                     <td>
-                        <input name="entity.NameEn" value="@categorya.Valuea.Split('|')[1]"/></td>
+                        <input name="entity.NameEn" value="@categoryb.Valuea.Split('|')[1]"/></td>
                     <td>图片地址</td>
                     <td>
                         <input name="entity.Valued" id="entity.Valued.f" value="@categoryb.Valued"/> <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'f');" >浏览</a></td>
@@ -279,12 +216,12 @@
                 <tr>
                     <td>中文名称</td>
                     <td>
-                        <input type="hidden" name="entity.ID" value="@categorya.ID"/>
-                        <input name="entity.Name" value="@categorya.Valuea.Split('|')[0]"/>
+                        <input type="hidden" name="entity.ID" value="@categoryc.ID"/>
+                        <input name="entity.Name" value="@categoryc.Valuea.Split('|')[0]"/>
                     </td>
                     <td>英文名称</td>
                     <td>
-                        <input name="entity.NameEn" value="@categorya.Valuea.Split('|')[1]"/></td>
+                        <input name="entity.NameEn" value="@categoryc.Valuea.Split('|')[1]"/></td>
                     <td>图片地址</td>
                     <td>
                         <input name="entity.Valued" id="entity.Valued.g" value="@categoryc.Valued"/> <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'g');" >浏览</a></td>

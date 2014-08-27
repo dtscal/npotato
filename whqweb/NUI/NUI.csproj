@@ -191,7 +191,6 @@
     <Content Include="Content\pinfen.css" />
     <Content Include="Content\productviewgallery.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\slider.css" />
     <Content Include="Content\style.css" />
     <Content Include="easyui\easyloader.js" />
     <Content Include="easyui\jquery.easyui.min.js" />
@@ -799,6 +798,7 @@
     <Content Include="Images\hb\DSC_1151.JPG" />
     <Content Include="Images\hb\S3.jpg" />
     <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.kinMaxShow-1.0.min.js" />
     <Content Include="Scripts\jquery.pager.js" />
     <Content Include="Images\slider5.png" />
     <Content Include="Images\slider_bg.jpg" />
@@ -832,7 +832,6 @@
     <Content Include="Scripts\cloud-zoom.1.0.3.min.js" />
     <Content Include="Scripts\easing.js" />
     <Content Include="Scripts\fliplightbox.min.js" />
-    <Content Include="Scripts\jquery.cslider.js" />
     <Content Include="Scripts\jquery.easing.min.js" />
     <Content Include="Scripts\jquery.fancybox-buttons.js" />
     <Content Include="Scripts\jquery.fancybox-thumbs.js" />

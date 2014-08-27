@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Domain;
+﻿using System.Web.Mvc;
 using NUI.Models;
 using Service;
 
@@ -48,8 +43,8 @@ namespace NUI.Controllers
                                 "text/x-json", JsonRequestBehavior.AllowGet);
             }
             var setter = SetterManager.Get(entity.ID);
-            setter.Valuea = entity.Name+"|"+entity.NameEn;
-            setter.Valueb = entity.Desc+"|"+entity.DescEn;
+//            setter.Valuea = entity.Name+"|"+entity.NameEn;
+//            setter.Valueb = entity.Desc+"|"+entity.DescEn;
             setter.Valuec = entity.Valuec;
             setter.Valued = entity.Valued;
             setter.Valuee = "";
