@@ -56,7 +56,7 @@ body {
 	float: right;
 	position: relative;
 	border: 1px solid rgb(216, 216, 216);
-	width: 40.3333%;
+	width: 30.3333%;
 	margin: 0.5% 10%;
 	border-radius: 2px;
 	-webkit-border-radius: 2px;
@@ -70,7 +70,7 @@ body {
 	color: #312c3c;
 	background: #FFFFFF;
 	border: none;
-	width: 84.33333%;
+	width: 78.33333%;
 	line-height: 1.5em;
 	position: relative;
 	font-size: 0.8725em;
@@ -82,7 +82,7 @@ body {
 	padding: 6px 0px;
 	border: none;
 	cursor: pointer;
-	width: 8.33%;
+	width: 11.33%;
 	line-height: 1.5em;
 	outline: none;
 	position: absolute;

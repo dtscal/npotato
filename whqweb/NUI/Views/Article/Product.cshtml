@@ -1,9 +1,9 @@
 ﻿@{
-    ViewBag.Title = "Product";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    var a = (Domain.Article)this.ViewData["entity"];
     var language = HttpContext.Current.Session["isCN"];
     var isCN = language == null || language.ToString() != false.ToString();
-    var a = (Domain.Article)this.ViewData["entity"];
+    ViewBag.Title = isCN?a.Name:a.NameEn;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @section home{
     <!-- start details -->
@@ -199,17 +199,6 @@
                                 }
                             }
                         </div>
-                        <div class="banner-wrap bottom_banner color_link">
-                            <a href="#" class="main_link">
-                                <figure>
-                                    <img src="/images/delivery.png" alt="">
-                                </figure>
-                                <h5><span>Free Shipping</span><br>
-                                    on orders over $99.</h5>
-                                <p>This offer is valid on all our store items.</p>
-                            </a>
-                        </div>
-
                     </div>
                 </div>
                 <!-- end sidebar -->
