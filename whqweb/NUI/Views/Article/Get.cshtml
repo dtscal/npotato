@@ -1,9 +1,10 @@
 ﻿@{
-    ViewBag.Title = "Get";
+    
     Layout = "~/Views/Shared/_Layout.cshtml";
     var entity = (Domain.Article) this.ViewData["entity"];
     var language = HttpContext.Current.Session["isCN"];
     var isCN = language == null || language.ToString() != false.ToString();
+    ViewBag.Title = isCN ? "广州洛讯皮具有限公司" : "Guangzhou luoxun leather co.,LTD";
 }
 <div class="main_bg">
         <div class="wrap">

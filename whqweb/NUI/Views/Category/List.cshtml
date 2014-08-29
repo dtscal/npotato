@@ -1,9 +1,10 @@
 ﻿@{
-    ViewBag.Title = "List";
+   
     Layout = "~/Views/Shared/_Layout.cshtml";
     var language = HttpContext.Current.Session["isCN"];
     var isCN = language == null || language.ToString() != false.ToString();
     var f = (Domain.Forum)this.ViewData["forum"];
+    ViewBag.Title = isCN ? "广州洛讯皮具有限公司" : "Guangzhou luoxun leather co.,LTD";
     var entity = (Domain.Category)this.ViewData["entity"];
 }
 <!-- start main -->
