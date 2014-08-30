@@ -701,11 +701,6 @@
     <Content Include="fckeditor2.3.6\Folder.jpg" />
     <Content Include="fckeditor2.3.6\Up.jpg" />
     <Content Include="Global.asax" />
-    <Content Include="Images\0001-1.jpg" />
-    <Content Include="Images\0001-2.jpg" />
-    <Content Include="Images\0001-3.jpg" />
-    <Content Include="Images\0001-4.jpg" />
-    <Content Include="Images\0001-5.jpg" />
     <Content Include="Images\53ec8815e02b6.png" />
     <Content Include="Images\arrow-next.png" />
     <Content Include="Images\arrow-prev.png" />
@@ -719,24 +714,14 @@
     <Content Include="Images\bg_bottom.jpg" />
     <Content Include="Images\bg_left.jpg" />
     <Content Include="Images\c-arrows.png" />
-    <Content Include="Images\c1.jpg" />
-    <Content Include="Images\c2.jpg" />
-    <Content Include="Images\c3.jpg" />
     <Content Include="Images\checked.gif" />
-    <Content Include="Images\China.png" />
     <Content Include="Images\close.png" />
     <Content Include="Images\contentlist1.gif" />
     <Content Include="Images\delivery.png" />
-    <Content Include="Images\det_pic.jpg" />
-    <Content Include="Images\det_pic1.jpg" />
-    <Content Include="Images\det_pic2.jpg" />
-    <Content Include="Images\det_pic3.jpg" />
     <Content Include="Images\down_arrow.png" />
     <Content Include="Images\dsh.jpg" />
-    <Content Include="Images\English.png" />
     <Content Include="Images\EN_user_botton.png" />
     <Content Include="Images\facebook.png" />
-    <Content Include="Images\Favorites.png" />
     <Content Include="Images\flashbg1.swf" />
     <Content Include="Images\flashbg2.swf" />
     <Content Include="Images\gpluse.png" />
@@ -756,51 +741,19 @@
     <Content Include="Images\loading.gif" />
     <Content Include="Images\logo.jpg" />
     <Content Include="Images\logo.png" />
-    <Content Include="Images\logoen.jpg" />
     <Content Include="Images\logo_small.jpg" />
     <Content Include="Images\look.gif" />
     <Content Include="Images\menuBg1.gif" />
-    <Content Include="Images\menulist1.jpg" />
     <Content Include="Images\menulist2.jpg" />
     <Content Include="Images\nav_icon.png" />
-    <Content Include="Images\pic1.jpg" />
-    <Content Include="Images\pic2.jpg" />
-    <Content Include="Images\pic3.jpg" />
-    <Content Include="Images\pic4.jpg" />
-    <Content Include="Images\pic5.jpg" />
-    <Content Include="Images\pic6.jpg" />
     <Content Include="Images\rss.png" />
-    <Content Include="Images\sale_pic1.jpg" />
-    <Content Include="Images\sale_pic10.jpg" />
-    <Content Include="Images\sale_pic11.jpg" />
-    <Content Include="Images\sale_pic12.jpg" />
-    <Content Include="Images\sale_pic2.jpg" />
-    <Content Include="Images\sale_pic3.jpg" />
-    <Content Include="Images\sale_pic4.jpg" />
-    <Content Include="Images\sale_pic5.jpg" />
-    <Content Include="Images\sale_pic6.jpg" />
-    <Content Include="Images\sale_pic7.jpg" />
-    <Content Include="Images\sale_pic8.jpg" />
-    <Content Include="Images\sale_pic9.jpg" />
     <Content Include="Images\search.png" />
     <Content Include="Images\search_h.png" />
-    <Content Include="Images\shoe_pic1.jpg" />
-    <Content Include="Images\shoe_pic2.jpg" />
-    <Content Include="Images\shoe_pic3.jpg" />
-    <Content Include="Images\shoe_pic4.jpg" />
-    <Content Include="Images\shoe_pic5.jpg" />
-    <Content Include="Images\shoe_pic6.jpg" />
     <Content Include="Images\star-matrix.gif" />
     <Content Include="Images\unchecked.gif" />
-    <Content Include="Images\hb\DSC_0004.JPG" />
-    <Content Include="Images\hb\DSC_0007.JPG" />
-    <Content Include="Images\hb\DSC_0849.JPG" />
-    <Content Include="Images\hb\DSC_1151.JPG" />
-    <Content Include="Images\hb\S3.jpg" />
     <Content Include="Scripts\jquery.form.js" />
     <Content Include="Scripts\jquery.kinMaxShow-1.0.min.js" />
     <Content Include="Scripts\jquery.pager.js" />
-    <Content Include="Images\slider5.png" />
     <Content Include="Images\slider_bg.jpg" />
     <Content Include="Images\topbackground.gif" />
     <Content Include="Images\top_move.png" />
@@ -845,7 +798,38 @@
     <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\productviewgallery.js" />
     <Content Include="Scripts\responsive.menu.js" />
-    <Content Include="UserFiles\60cb6b01-42b5-4cda-b0ce-0e08592f1fe9\1204720678.jpg" />
+    <Content Include="UserFiles\hb\DSC_0004.JPG" />
+    <Content Include="UserFiles\hb\DSC_0007.JPG" />
+    <Content Include="UserFiles\hb\DSC_0849.JPG" />
+    <Content Include="UserFiles\hb\DSC_1151.JPG" />
+    <Content Include="UserFiles\hb\S3.jpg" />
+    <Content Include="UserFiles\shouji\1353575993383361_middle %281%29.jpg" />
+    <Content Include="UserFiles\shouji\1353575993383361_middle.jpg" />
+    <Content Include="UserFiles\shouji\157c05e6cff3f53022e9c00d9f9b_400_400.jpeg" />
+    <Content Include="UserFiles\shouji\20130731170757_NN8rz.thumb.600_0.jpeg" />
+    <Content Include="UserFiles\shouji\220x220.jpg" />
+    <Content Include="UserFiles\shouji\8136e2f215a0b354cf8d62a726a1_600_600_1_1.jpeg" />
+    <Content Include="UserFiles\shouji\93c8c6fc7645e62981761fbde1da_600_600_1_1.jpeg" />
+    <Content Include="UserFiles\shouji\bee0614ea533b072.jpg" />
+    <Content Include="UserFiles\shouji\d120876f6e5f0ad4019f09c5c2b0_500_500.jpg" />
+    <Content Include="UserFiles\shouji\e40936477ba365a4aa4f6c7f9ea0_1000_1000.jpeg" />
+    <Content Include="UserFiles\shouji\f230be2c481657bf.jpg" />
+    <Content Include="UserFiles\shouji\item-52943C52-35FBFE17000000000401000034F118CD.0.300x300.jpg" />
+    <Content Include="UserFiles\shouji\pg_180x180.jpg" />
+    <Content Include="UserFiles\shouji\T19jz0FqpXXXXXXXXX_!!0-item_pic.jpg_180x180.jpg" />
+    <Content Include="UserFiles\shouji\T1Bne7FK4XXXXXXXXX_!!0-item_pic_jpg_220x220.jpg" />
+    <Content Include="UserFiles\shouji\T1Ng9jFNdXXXXXXXXX_!!0-item_pic_jpg_220x220.jpg" />
+    <Content Include="UserFiles\shouji\T1qT56FS8XXXXXXXXX_!!0-item_pic.jpg_180x180.jpg" />
+    <Content Include="UserFiles\shouji\T1TJMHFPxcXXXXXXXX_!!0-item_pic_jpg_220x220.jpg" />
+    <Content Include="UserFiles\shouji\T1xc.IFttkXXXXXXXX_!!0-item_pic.jpg_180x180.jpg" />
+    <Content Include="UserFiles\shouji\T1zcWPFApgXXXXXXXX_!!0-item_pic_jpg_220x220.jpg" />
+    <Content Include="UserFiles\shouji\TB100XCFVXXXXbAXFXXXXXXXXXX_!!0-item_pic.jpg_180x180.jpg" />
+    <Content Include="UserFiles\shouji\TB14XtjFVXXXXXgapXXXXXXXXXX_!!0-item_pic.jpg_180x180.jpg" />
+    <Content Include="UserFiles\shouji\TB1DBDqFVXXXXX_XpXXXXXXXXXX_!!0-item_pic.jpg_180x180.jpg" />
+    <Content Include="UserFiles\shouji\TB1E.4kFVXXXXXlXVXXXXXXXXXX_!!0-item_pic.jpg_180x180.jpg" />
+    <Content Include="UserFiles\shouji\TB1fVz2FVXXXXcVXpXXXXXXXXXX_!!0-item_pic.jpg_180x180.jpg" />
+    <Content Include="UserFiles\shouji\TB1sOxTFVXXXXbtXpXXXXXXXXXX_!!0-item_pic.jpg_180x180.jpg" />
+    <Content Include="UserFiles\shouji\TB1zV42FVXXXXaqXXXXXXXXXXXX_!!0-item_pic.jpg_180x180.jpg" />
     <Content Include="Views\FckEditor\Browser.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -904,9 +888,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="fckeditor2.3.6\editor\dialog\fck_spellerpages\spellerpages\server-scripts\spellchecker.pl" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Images\Thumbs.db" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Logs\Log.log" />
@@ -976,6 +957,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Article\SearchView.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\whqweb.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

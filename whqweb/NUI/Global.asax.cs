@@ -139,22 +139,22 @@ namespace NUI
 
             if (slidera == null)
             {
-                 slidera = new Setter{NKey = lba,ID = Guid.NewGuid()};
+                slidera = new Setter { NKey = lba, ID = Guid.NewGuid(), Valuea = "海报2234|haibao2", Valued = "/userfiles/hb/DSC_0849.JPG", Valuec = "/Article/Product/cdd70b17-ef96-4ca2-a972-432e5ec2d7a9" };
                 SetterManager.Save(slidera);
             }
             if (sliderb == null)
             {
-                 sliderb = new Setter{NKey = lbb,ID = Guid.NewGuid()};
+                sliderb = new Setter { NKey = lbb, ID = Guid.NewGuid(), Valuea = "海报1|haibao1", Valued = "/userfiles/hb/DSC_0849.JPG", Valuec = "/Article/Product/9a196b79-a316-4f1d-9e83-8e523e8713f3" };
                 SetterManager.Save(sliderb);
             }
             if (sliderc == null)
             {
-                sliderc = new Setter { NKey = lbc, ID = Guid.NewGuid() };
+                sliderc = new Setter { NKey = lbc, ID = Guid.NewGuid(), Valuea = "海报3|haibao3", Valued = "/userfiles/hb/DSC_0004.JPG", Valuec = "979ad2a3ac44" };
                 SetterManager.Save(sliderc);
             }
             if (sliderd == null)
             {
-                sliderd = new Setter { NKey = lbd, ID = Guid.NewGuid() };
+                sliderd = new Setter { NKey = lbd, ID = Guid.NewGuid(), Valuea = "海报4|haibao4", Valued = "/userfiles/hb/DSC_0007.JPG", Valuec = "066c2b6d4df8" };
                 SetterManager.Save(sliderd);
             }
 
@@ -169,17 +169,17 @@ namespace NUI
 
             if (categorya == null)
             {
-                categorya = new Setter { NKey = ctga, ID = Guid.NewGuid() };
+                categorya = new Setter { NKey = ctga, ID = Guid.NewGuid(), Valuea = "海报2234|haibao2", Valued = "/userfiles/shouji/pg_180x180.jpg", Valuec = "/c123" };
                 SetterManager.Save(categorya);
             }
             if (categoryb == null)
             {
-                categoryb = new Setter { NKey = ctgb, ID = Guid.NewGuid() };
+                categoryb = new Setter { NKey = ctgb, ID = Guid.NewGuid(), Valuea = "海报1|haibao1", Valued = "/userfiles/shouji/d120876f6e5f0ad4019f09c5c2b0_500_500.jpg",Valuec = "/sdf"};
                 SetterManager.Save(categoryb);
             }
             if (categoryc == null)
             {
-                categoryc = new Setter { NKey = ctgc, ID = Guid.NewGuid() };
+                categoryc = new Setter { NKey = ctgc, ID = Guid.NewGuid(), Valuea = "海报3|haibao3", Valued = "/userfiles/shouji/93c8c6fc7645e62981761fbde1da_600_600_1_1.jpeg",Valuec = "/sdfd"};
                 SetterManager.Save(categoryc);
             }
         }
