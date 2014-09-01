@@ -29,8 +29,7 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*end reset*/
 @font-face {
-    font-family: 'bebas_neueregular';
-    src:url(../fonts/BebasNeue-webfont.ttf) format('truetype');
+    font-family: 'ºÚÌå';
 }
 body {
 	font-family: 'bebas_neueregular';
@@ -56,7 +55,7 @@ body {
 	float: right;
 	position: relative;
 	border: 1px solid rgb(216, 216, 216);
-	width: 30.3333%;
+	width: 18.3333%;
 	margin: 0.5% 10%;
 	border-radius: 2px;
 	-webkit-border-radius: 2px;
@@ -70,7 +69,7 @@ body {
 	color: #312c3c;
 	background: #FFFFFF;
 	border: none;
-	width: 78.33333%;
+	width: 72.33333%;
 	line-height: 1.5em;
 	position: relative;
 	font-size: 0.8725em;
@@ -82,7 +81,7 @@ body {
 	padding: 6px 0px;
 	border: none;
 	cursor: pointer;
-	width: 11.33%;
+	width: 15.33%;
 	line-height: 1.5em;
 	outline: none;
 	position: absolute;
