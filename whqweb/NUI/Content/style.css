@@ -238,7 +238,8 @@ body {
 }
 #fdw ul li a:link, #fdw ul li a:visited {
     color:#ffffff;
-    font:normal 20px 'Yanone Kaffeesatz', sans-serif;
+    font:normal 20px "Hiragino Sans GB", "Microsoft YaHei",
+             "WenQuanYi Micro Hei", sans-serif;
     text-transform:uppercase;
     display:inline-block;
     position:relative;

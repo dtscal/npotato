@@ -4,43 +4,54 @@
         var language = HttpContext.Current.Session["isCN"];
         var isCN = language == null || language.ToString() != false.ToString();
     }
-    <li class="active"><a href="/Home/Index">@(isCN?"主页":"Home")</a></li>
+    <li class="active"><a href="/Home/Index">@(isCN ? "主页" : "Home")</a></li>
     @{
         foreach (var f in Model)
         {
-            <li>
-                @{
-                    if (f.IsProuduct)
-                    {
-                        <a href="/@f.ID/PList.html">@(isCN ? f.Name : f.NameEn)</a>
-                    }
-                    else
-                    {
-                        <a href="/@f.ID/Category.html">@(isCN ? f.Name : f.NameEn)</a>
-                    }
-                    var categorys = f.CategoryList.Where(w => w.CategoryType == "列表");
-                    if (categorys.Any())
-                    {
-                        <ul style="display: none;" class="sub_menu">
-                            <li class="arrow_top"></li>
-                            @{
-                                foreach (var c in categorys)
-                                {
-                                    if (c.Forum.IsProuduct)
+            if (f.Name == "关于我们" || f.NameEn == "Our World")
+            {
+
+            }
+            else
+            {
+                <li>
+                    @{
+                        if (f.IsProuduct)
+                        {
+                            <a href="/@f.ID/PList.html">@(isCN ? f.Name : f.NameEn)</a>
+                        }
+                        else
+                        {
+                            <a href="/@f.ID/Category.html">@(isCN ? f.Name : f.NameEn)</a>
+
+                        }
+                        var categorys = f.CategoryList.Where(w => w.CategoryType == "列表" && w.Name != "关于我们" && w.NameEn != "Our World");
+                        if (categorys.Any())
+                        {
+                            <ul style="display: none;" class="sub_menu">
+                                <li class="arrow_top"></li>
+                                @{
+                                    foreach (var c in categorys)
                                     {
-                                        <li><a href="/@f.ID/PList.html?cid=@c.ID">@(isCN ? c.Name : c.NameEn)</a></li>
-                                    }
-                                    else
-                                    {
-                                        <li><a href="/@f.ID/@c.ID/Category.html">@(isCN?c.Name:c.NameEn)</a></li>
+                                        if (c.Forum.IsProuduct)
+                                        {
+                                            <li><a href="/@f.ID/PList.html?cid=@c.ID">@(isCN ? c.Name : c.NameEn)</a></li>
+                                        }
+                                        else
+                                        {
+                                            if (c.Name != "公司新闻" || c.NameEn != "News")
+                                            {
+                                                <li><a href="/@f.ID/@c.ID/Category.html">@(isCN ? c.Name : c.NameEn)</a></li>
+                                            }
+                                        }
                                     }
                                 }
-                            }
-                        </ul>
+                            </ul>
+                        }
                     }
-                }
-            </li>
+                </li>
+            }
         }
     }
-    <li><a href="/Home/Contact">@(isCN?"联系我们":"Contact")</a></li>
+    <li><a href="/Home/Contact">@(isCN ? "联系我们" : "Contact")</a></li>
 </ul>

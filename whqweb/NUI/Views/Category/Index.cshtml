@@ -3,8 +3,8 @@
     Layout = "~/Views/Shared/_LayoutMg.cshtml";
 }
 @section mg{
-     <script type="text/javascript" language="javascript">
-        $(function () {
+    <script type="text/javascript" language="javascript">
+        $(function() {
 
             $('#grid').datagrid({
                 title: '分类信息',
@@ -18,91 +18,107 @@
                 fitColumns: true,
                 fit: true,
                 idField: 'ID',
-                frozenColumns: [[
-	                { field: 'ID', checkbox: true }
-				]],
+                frozenColumns: [
+                    [
+                        { field: 'ID', checkbox: true }
+                    ]
+                ],
 
-                columns: [[
-                    { field: 'OrderNo', title: '序号', width: 40, align: 'left' },
-                    { field: 'Name', title: '中文名', width: 80, align: 'right' },
-                    { field: 'NameEn', title: '英文名', width: 80, align: 'right' },
-                    { field: 'ForumName', title: '版块', width: 80, align: 'right' },
-                    { field: 'CategoryType', title: '类型', width: 80, align: 'right' },
-                    { field: 'IsEnabled', title: '状态', width: 40, align: 'right',
-                        formatter: function (value, rec) {
-                            return value ? '显示' : '隐藏';
+                columns: [
+                    [
+                        { field: 'OrderNo', title: '序号', width: 40, align: 'left' },
+                        { field: 'Name', title: '中文名', width: 80, align: 'right' },
+                        { field: 'NameEn', title: '英文名', width: 80, align: 'right' },
+                        { field: 'ForumName', title: '版块', width: 80, align: 'right' },
+                        { field: 'CategoryType', title: '类型', width: 80, align: 'right' },
+                        {
+                            field: 'IsEnabled',
+                            title: '状态',
+                            width: 40,
+                            align: 'right',
+                            formatter: function(value, rec) {
+                                return value ? '显示' : '隐藏';
+                            }
                         }
-                    }
-                ]],
+                    ]
+                ],
                 pagination: true,
                 rownumbers: true,
-                toolbar: ['-', {
-                    id: 'btnSave',
-                    text: '添加',
-                    iconCls: 'icon-add',
-                    handler: function () {
-                        this.href = "/Category/View/";
-                    }
-                }, '-', {
-                    id: 'btnUpdate',
-                    text: '修改',
-                    iconCls: 'icon-save',
-                    handler: function () {
-
-                        var row = $('#grid').datagrid('getSelected');
-                        if (row) {
-                            this.href = "/Category/View/" + row.ID;
+                toolbar: [
+                    '-', {
+                        id: 'btnSave',
+                        text: '添加',
+                        iconCls: 'icon-add',
+                        handler: function() {
+                            this.href = "/Category/View/";
                         }
-                        else {
-                            $.messager.alert('提示', '请选择要修改的数据');
-                            return;
-                        }
-
-                    }
-                }, '-', {
-                    id: 'btnDelete',
-                    text: '删除',
-                    disabled: false,
-                    iconCls: 'icon-cut',
-                    handler: function () {
-
-                        var rows = $('#grid').datagrid('getSelections');
-                        if (!rows || rows.length == 0) {
-                            $.messager.alert('提示', '请选择要删除的数据');
-                            return;
-                        }
-                        var parm;
-                        $.each(rows, function (i, n) {
-                            if (i == 0) {
-                                parm = "idList=" + n.ID;
+                    }, '-', {
+                        id: 'btnUpdate',
+                        text: '修改',
+                        iconCls: 'icon-save',
+                        handler: function() {
+                            
+                            var row = $('#grid').datagrid('getSelected');
+                            if (row.Name == "公司简介" || row.Name == "公司新闻" || row.Name == "招聘信息") {
+                                $.messager.alert('提示', row.Name + '是内置分类禁止删除');
+                                return;
                             }
-                            else {
-                                parm += "&idList=" + n.ID;
-                            }
-                        });
-                        $.messager.confirm('提示', '是否删除这些数据?', function (r) {
-                            if (!r) {
+                            if (row) {
+                                this.href = "/Category/View/" + row.ID;
+                            } else {
+                                $.messager.alert('提示', '请选择要修改的数据');
                                 return;
                             }
 
-                            $.ajax({
-                                type: "POST",
-                                url: "/Category/Delete/",
-                                data: parm,
-                                success: function (msg) {
-                                    if (msg.IsSuccess) {
-                                        $.messager.alert('提示', '删除成功！', "info", function () {
-                                            $('#grid').datagrid("reload");
-                                        });
-                                    }
-                                },
-                                error: function () {
-                                    $.messager.alert('错误', '删除失败！', "error");
+                        }
+                    }, '-', {
+                        id: 'btnDelete',
+                        text: '删除',
+                        disabled: false,
+                        iconCls: 'icon-cut',
+                        handler: function() {
+
+                            var rows = $('#grid').datagrid('getSelections');
+                            if (!rows || rows.length == 0) {
+                                $.messager.alert('提示', '请选择要删除的数据');
+                                return;
+                            }
+                            var parm;
+                            $.each(rows, function(i, n) {
+                                if (n.Name == "公司简介" || n.Name == "公司新闻" || n.Name == "招聘信息") {
+                                    $.messager.alert('提示', n.Name + '是内置分类禁止删除');
+                                    return;
+                                }
+                                if (i == 0) {
+                                    parm = "idList=" + n.ID;
+                                } else {
+                                    parm += "&idList=" + n.ID;
                                 }
                             });
-                        });
-                    }
-                }, '-']
+                            $.messager.confirm('提示', '是否删除这些数据?', function(r) {
+                                if (!r) {
+                                    return;
+                                }
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: "/Category/Delete/",
+                                    data: parm,
+                                    success: function(msg) {
+                                        if (msg.IsSuccess) {
+                                            $.messager.alert('提示', '删除成功！', "info", function() {
+                                                $('#grid').datagrid("reload");
+                                            });
+                                        }
+                                    },
+                                    error: function() {
+                                        $.messager.alert('错误', '删除失败！', "error");
+                                    }
+                                });
+                            });
+                        }
+                    }, '-'
+                ]
             });
 
 
