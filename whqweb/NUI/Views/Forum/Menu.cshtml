@@ -8,13 +8,7 @@
     @{
         foreach (var f in Model)
         {
-            if (f.Name == "关于我们" || f.NameEn == "Our World")
-            {
-
-            }
-            else
-            {
-                <li>
+             <li>
                     @{
                         if (f.IsProuduct)
                         {
@@ -25,7 +19,7 @@
                             <a href="/@f.ID/Category.html">@(isCN ? f.Name : f.NameEn)</a>
 
                         }
-                        var categorys = f.CategoryList.Where(w => w.CategoryType == "列表" && w.Name != "关于我们" && w.NameEn != "Our World");
+                        var categorys = f.CategoryList;
                         if (categorys.Any())
                         {
                             <ul style="display: none;" class="sub_menu">
@@ -50,7 +44,7 @@
                         }
                     }
                 </li>
-            }
+            
         }
     }
     <li><a href="/Home/Contact">@(isCN ? "联系我们" : "Contact")</a></li>
