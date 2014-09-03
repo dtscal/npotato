@@ -28,12 +28,10 @@ nav.vertical ul li{	display:block;}/* vertical menu */
 nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*end reset*/
-@font-face {
-    font-family: 'ºÚÌå';
-}
 body {
 	font-family: 'bebas_neueregular';
 	background:#ffffff;
+    font: normal 20px "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 	font-size: 100%;
 }
 .wrap{
