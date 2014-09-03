@@ -192,6 +192,7 @@
     <Content Include="Content\productviewgallery.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
+    <Content Include="Content\zzsc.css" />
     <Content Include="easyui\easyloader.js" />
     <Content Include="easyui\jquery.easyui.min.js" />
     <Content Include="easyui\locale\easyui-lang-af.js" />
@@ -734,6 +735,8 @@
     <Content Include="Images\menuBg1.gif" />
     <Content Include="Images\menulist2.jpg" />
     <Content Include="Images\nav_icon.png" />
+    <Content Include="Images\online_bg.png" />
+    <Content Include="Images\qrcode.jpg" />
     <Content Include="Images\rss.png" />
     <Content Include="Images\search.png" />
     <Content Include="Images\search_h.png" />
@@ -774,6 +777,7 @@
     <Content Include="Scripts\jquery.fancybox.pack.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\jquery.mixitup.min.js" />
+    <Content Include="Scripts\jquery.tipsy.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.messages_cn.js" />
     <Content Include="Scripts\modernizr.custom.28468.js" />
@@ -781,6 +785,7 @@
     <Content Include="Scripts\owl.carousel.js" />
     <Content Include="Scripts\productviewgallery.js" />
     <Content Include="Scripts\responsive.menu.js" />
+    <Content Include="Scripts\start_v5.js" />
     <Content Include="UserFiles\hb\DSC_0004.JPG" />
     <Content Include="UserFiles\hb\DSC_0007.JPG" />
     <Content Include="UserFiles\hb\DSC_0849.JPG" />
