@@ -154,11 +154,36 @@
                 </tr>
             </table>
         </form>
+        
+        <form id="cb" method="post" action="/Setter/SaveCate/" enctype="application/x-www-form-urlencoded">
+            <table style="width: 100%">
+                <tr>
+                    <td colspan="8"><h3>中间第一张图片</h3></td>
+                </tr>
+                <tr>
+                    <td>中文名称</td>
+                    <td>
+                        <input type="hidden" name="entity.ID" value="@categoryb.ID"/>
+                        <input name="entity.Name" value="@categoryb.Valuea.Split('|')[0]"/>
+                    </td>
+                    <td>英文名称</td>
+                    <td>
+                        <input name="entity.NameEn" value="@categoryb.Valuea.Split('|')[1]"/></td>
+                    <td>图片地址</td>
+                    <td>
+                        <input name="entity.Valued" id="entity.Valued.f" value="@categoryb.Valued"/> <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'f');" >浏览</a></td>
+                    <td>链接地址</td>
+                    <td>
+                        <input name="entity.Valuec" value="@categoryb.Valuec"/></td>
+                    <td rowspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit('cb');">提交</a></td>
+                </tr>
+            </table>
+        </form>
 
         <form id="ca" method="post" action="/Setter/SaveCate/" enctype="application/x-www-form-urlencoded">
             <table style="width: 100%">
                 <tr>
-                    <td colspan="8"><h3>中间第一张图片</h3></td>
+                    <td colspan="8"><h3>中间第二张图片</h3></td>
                 </tr>
                 <tr>
                     <td>中文名称</td>
@@ -180,30 +205,7 @@
             </table>
         </form>
 
-        <form id="cb" method="post" action="/Setter/SaveCate/" enctype="application/x-www-form-urlencoded">
-            <table style="width: 100%">
-                <tr>
-                    <td colspan="8"><h3>中间第二张图片</h3></td>
-                </tr>
-                <tr>
-                    <td>中文名称</td>
-                    <td>
-                        <input type="hidden" name="entity.ID" value="@categoryb.ID"/>
-                        <input name="entity.Name" value="@categoryb.Valuea.Split('|')[0]"/>
-                    </td>
-                    <td>英文名称</td>
-                    <td>
-                        <input name="entity.NameEn" value="@categoryb.Valuea.Split('|')[1]"/></td>
-                    <td>图片地址</td>
-                    <td>
-                        <input name="entity.Valued" id="entity.Valued.f" value="@categoryb.Valued"/> <a href="#" class="easyui-linkbutton" onclick="FCK_ExecuteCommand('Image', 'f');" >浏览</a></td>
-                    <td>链接地址</td>
-                    <td>
-                        <input name="entity.Valuec" value="@categoryb.Valuec"/></td>
-                    <td rowspan="2"><a href="#" class="easyui-linkbutton" iconcls="icon-save" onclick="submit('cb');">提交</a></td>
-                </tr>
-            </table>
-        </form>
+        
 
         <form id="cc" method="post" action="/Setter/SaveCate/" enctype="application/x-www-form-urlencoded">
             <table style="width: 100%">

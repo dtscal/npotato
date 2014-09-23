@@ -54,7 +54,7 @@ body {
 	position: relative;
 	border: 1px solid rgb(216, 216, 216);
 	width: 18.3333%;
-	margin: 0.5% 10%;
+	margin: 1.5% 10%;
 	border-radius: 2px;
 	-webkit-border-radius: 2px;
 	-moz-border-radius: 2px;
@@ -378,7 +378,7 @@ body {
 	white-space: nowrap;
 	float: none;
 	text-transform: none;
-    font-family: serif;
+    font-family: ºÚÌå;
     font-size: 11px;
     color: #ffffff;
     height: 11px;

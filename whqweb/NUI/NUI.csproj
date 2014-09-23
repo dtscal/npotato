@@ -498,7 +498,6 @@
     <Content Include="fckeditor2.3.6\editor\fckdebug.html" />
     <Content Include="fckeditor2.3.6\editor\fckdialog.html" />
     <Content Include="fckeditor2.3.6\editor\fckeditor.html" />
-    <Content Include="fckeditor2.3.6\editor\fckeditor.original.html" />
     <Content Include="fckeditor2.3.6\editor\images\anchor.gif" />
     <Content Include="fckeditor2.3.6\editor\images\arrow_ltr.gif" />
     <Content Include="fckeditor2.3.6\editor\images\arrow_rtl.gif" />
