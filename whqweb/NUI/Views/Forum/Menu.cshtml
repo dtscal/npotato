@@ -33,10 +33,7 @@
                                         }
                                         else
                                         {
-                                            if (c.Name != "公司新闻" || c.NameEn != "News")
-                                            {
-                                                <li><a href="/@f.ID/@c.ID/Category.html">@(isCN ? c.Name : c.NameEn)</a></li>
-                                            }
+                                            <li><a href="/@f.ID/@c.ID/Category.html">@(isCN ? c.Name : c.NameEn)</a></li>
                                         }
                                     }
                                 }

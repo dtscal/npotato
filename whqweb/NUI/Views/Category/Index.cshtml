@@ -59,10 +59,7 @@
                         handler: function() {
                             
                             var row = $('#grid').datagrid('getSelected');
-                            if (row.Name == "公司简介" || row.Name == "公司新闻" || row.Name == "招聘信息") {
-                                $.messager.alert('提示', row.Name + '是内置分类禁止删除');
-                                return;
-                            }
+                            
                             if (row) {
                                 this.href = "/Category/View/" + row.ID;
                             } else {
